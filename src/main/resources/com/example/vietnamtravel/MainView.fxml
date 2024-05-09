@@ -10,12 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane prefHeight="600.0" prefWidth="1080.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
-=======
 
-<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
->>>>>>> f8e0043e622eb93426eca47cd2499345f5ffd7e8
+<AnchorPane prefHeight="600.0" prefWidth="1080.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <children>
       <AnchorPane id="menuPane" layoutY="14.0" prefHeight="42.0" prefWidth="1094.0">
          <children>
@@ -47,11 +43,7 @@
             <Button id="btLogin" fx:id="btLogin" layoutX="985.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Button" />
             <ImageView id="imgMainLogo" fitHeight="42.0" fitWidth="60.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-<<<<<<< HEAD
-<!--                  <Image url="/img/MainLogo.png" />-->
-=======
-<!--                  <Image url= "/img/MainLogo.png" />-->
->>>>>>> f8e0043e622eb93426eca47cd2499345f5ffd7e8
+
                </image>
             </ImageView>
             <Label id="labelName" layoutX="33.0" layoutY="7.0" prefHeight="26.0" prefWidth="122.0" text="VIETNAM TRAVEL" />

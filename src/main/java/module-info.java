@@ -8,6 +8,6 @@ module com.example.vietnamtravel {
     opens com.example.vietnamtravel to javafx.fxml;
     exports com.example.vietnamtravel;
 
-    opens View to javafx.fxml;
-    exports View;
+    opens controller to javafx.fxml;
+    exports controller;
 }

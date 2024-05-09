@@ -10,4 +10,5 @@ module com.example.vietnamtravel {
 
     opens controller to javafx.fxml;
     exports controller;
+
 }

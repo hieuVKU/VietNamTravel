@@ -6,10 +6,10 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="1080.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <children>
@@ -43,7 +43,7 @@
             <Button id="btLogin" fx:id="btLogin" layoutX="985.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Button" />
             <ImageView id="imgMainLogo" fitHeight="42.0" fitWidth="60.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-
+                  <Image url="@../../../img/MainLogo.png" />
                </image>
             </ImageView>
             <Label id="labelName" layoutX="33.0" layoutY="7.0" prefHeight="26.0" prefWidth="122.0" text="VIETNAM TRAVEL" />
@@ -52,11 +52,11 @@
       <TextField layoutX="327.0" layoutY="106.0" prefHeight="34.0" prefWidth="326.0" />
       <Button id="btSearch" fx:id="btSearch" layoutX="671.0" layoutY="106.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="42.0" />
       <Label layoutX="146.0" layoutY="200.0" prefHeight="26.0" prefWidth="222.0" text="Bla bla bla bla bla" />
-      <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="51.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-<!--            <Image url="/img/Location_icon.png" />-->
-         </image>
-      </ImageView>
+<!--      <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="51.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">-->
+<!--         <image>-->
+<!--&lt;!&ndash;            <Image url="/img/Location_icon.png" />&ndash;&gt;-->
+<!--         </image>-->
+<!--      </ImageView>-->
       <Label layoutX="122.0" layoutY="226.0" prefHeight="42.0" prefWidth="269.0" text="Title 1 ABCXYZ">
          <font>
             <Font size="40.0" />
@@ -70,5 +70,6 @@
       <Button id="btBooking" fx:id="btBooking" layoutX="122.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Booking" />
       <Button id="btLocation" fx:id="btLocation" layoutX="257.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
       <Button id="btLocation" fx:id="btLocation1" layoutX="395.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
+      <Label id="lableTest" layoutX="671.0" layoutY="276.0" prefHeight="140.0" prefWidth="166.0" />
    </children>
 </AnchorPane>

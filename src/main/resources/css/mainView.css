@@ -44,11 +44,16 @@
 /*    -fx-border-radius: 10px; !* Bán kính bo tròn viền *!*/
 /*}*/
 .root{
-
+    -fx-background-image: url("../img/HaLongBay.jpeg");
+    -fx-background-size: cover;
 }
 #menuPane{
     -fx-background-color: #f9f7e8;
 }
 #menuBar{
     -fx-background-color: #f9f7e8;
+}
+#lableTest{
+    -fx-graphic: url("/img/Location_icon.png");
+    /*-fx-background-color: #263e2a;*/
 }

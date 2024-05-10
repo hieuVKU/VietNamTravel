@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,63 +14,100 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1080.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <children>
-      <AnchorPane id="menuPane" layoutY="14.0" prefHeight="42.0" prefWidth="1094.0">
+      <AnchorPane id="blurPane" prefHeight="600.0" prefWidth="1094.0" />
+      <AnchorPane layoutX="-1.0" prefHeight="600.0" prefWidth="1094.0">
          <children>
-            <MenuBar id="menuBar" layoutX="479.0" layoutY="8.0" prefHeight="26.0" prefWidth="398.0">
+            <Button id="btLocation" fx:id="btLocation" layoutX="232.0" layoutY="500.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0">
+                  <Image url="@../../../img/Location_icon.png" />
+                  <effect>
+                     <ColorAdjust hue="0.3" />
+                  </effect>
+               </ImageView>
+            </graphic>
+            </Button>
+            <Button id="btPrice" fx:id="btPrice" layoutX="360.0" layoutY="500.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="120.0" text="700.000 VND">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0">
+                  <Image url="@../../../img/Coin.png" />
+                  <effect>
+                     <ColorAdjust hue="0.3" />
+                  </effect>
+               </ImageView>
+            </graphic>
+            </Button>
+            <Label layoutX="104.0" layoutY="300.0" prefHeight="74.0" prefWidth="446.0" styleClass="font" text="HA LONG BAY" textFill="WHITE">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="133.0" layoutY="270.0" prefHeight="26.0" prefWidth="222.0" styleClass="font" text="Quang Ninh, Viet Nam" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ImageView id="location_logo" fitHeight="34.0" fitWidth="36.0" layoutX="97.0" layoutY="266.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../img/Location_icon.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.95" />
+               </effect>
+            </ImageView>
+            <TextField id="searchTextField" cache="true" depthTest="DISABLE" layoutX="360.0" layoutY="105.0" prefHeight="42.0" prefWidth="402.0" promptText="Search tourist spots">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button id="btSearch" fx:id="btSearch" layoutX="712.0" layoutY="109.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" />
+            <Button id="btBooking" fx:id="btBooking" layoutX="104.0" layoutY="500.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Booking">
+               <graphic>
+                  <ImageView id="imgBooking" fitHeight="20.0" fitWidth="20.0">
+                     <Image url="@../../../img/Pointer.png" />
+                     <effect>
+                        <ColorAdjust hue="0.3" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="menuPane" layoutY="-2.0" prefHeight="42.0" prefWidth="1094.0">
+         <children>
+            <MenuBar id="menuBar" layoutX="230.0" layoutY="4.0" prefHeight="50.0" prefWidth="560.0">
               <menus>
-                <Menu fx:id="menuHome" mnemonicParsing="false" text="Home">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu fx:id="menuDesti" mnemonicParsing="false" text="Destinations">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu fx:id="menuHotel" mnemonicParsing="false" text="Hotel">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
+                <Menu id="menuHome" fx:id="menuHome" mnemonicParsing="false" text="Home" />
+                <Menu fx:id="menuDesti" mnemonicParsing="false" text="Destinations" />
+                <Menu fx:id="menuHotel" mnemonicParsing="false" text="Hotel" />
                   <Menu fx:id="menuTicket" mnemonicParsing="false" text="My ticket">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Visit" />
+                      <MenuItem mnemonicParsing="false" text="Room" />
+                        <MenuItem mnemonicParsing="false" text="Bla bla" />
                     </items>
                   </Menu>
               </menus>
             </MenuBar>
-            <Button id="btSignUp" fx:id="btSignUp" layoutX="913.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Button" />
-            <Button id="btLogin" fx:id="btLogin" layoutX="985.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Button" />
-            <ImageView id="imgMainLogo" fitHeight="42.0" fitWidth="60.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <Button id="btSignUp" fx:id="btSignUp" layoutX="798.0" layoutY="7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="101.0" text="Sign-Up">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font></Button>
+            <ImageView id="imgMainLogo" fitHeight="58.0" fitWidth="66.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-size: cover;">
                <image>
                   <Image url="@../../../img/MainLogo.png" />
                </image>
             </ImageView>
-            <Label id="labelName" layoutX="33.0" layoutY="7.0" prefHeight="26.0" prefWidth="122.0" text="VIETNAM TRAVEL" />
+            <Label id="lableName" layoutX="39.0" layoutY="8.0" prefHeight="42.0" prefWidth="178.0" text="VIETNAM TRAVEL">
+               <font>
+                  <Font name="Tempus Sans ITC" size="20.0" />
+               </font></Label>
+            <Button id="btLogin" fx:id="btLogin" layoutX="910.0" layoutY="7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="101.0" text="Login">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <TextField layoutX="327.0" layoutY="106.0" prefHeight="34.0" prefWidth="326.0" />
-      <Button id="btSearch" fx:id="btSearch" layoutX="671.0" layoutY="106.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="42.0" />
-      <Label layoutX="146.0" layoutY="200.0" prefHeight="26.0" prefWidth="222.0" text="Bla bla bla bla bla" />
-<!--      <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="51.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">-->
-<!--         <image>-->
-<!--&lt;!&ndash;            <Image url="/img/Location_icon.png" />&ndash;&gt;-->
-<!--         </image>-->
-<!--      </ImageView>-->
-      <Label layoutX="122.0" layoutY="226.0" prefHeight="42.0" prefWidth="269.0" text="Title 1 ABCXYZ">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-      <Label layoutX="122.0" layoutY="284.0" prefHeight="42.0" prefWidth="269.0" text="Content">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button id="btBooking" fx:id="btBooking" layoutX="122.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Booking" />
-      <Button id="btLocation" fx:id="btLocation" layoutX="257.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
-      <Button id="btLocation" fx:id="btLocation1" layoutX="395.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
-      <Label id="lableTest" layoutX="671.0" layoutY="276.0" prefHeight="140.0" prefWidth="166.0" />
    </children>
 </AnchorPane>

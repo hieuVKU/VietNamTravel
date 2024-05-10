@@ -8,16 +8,6 @@ import javafx.scene.image.ImageView;
 
 public class MainViewController {
 
-//    @FXML
-//    ImageView imgMainLogo;
-//
-//    public void initialize() {
-//        // Tải hình ảnh và đặt cho ImageView
-//        Image image = new Image("@/img/MainLogo.png");
-//        imgMainLogo.setImage(image);
-//    }
-
-
 
 
     @FXML

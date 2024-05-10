@@ -46,14 +46,97 @@
 .root{
     -fx-background-image: url("../img/HaLongBay.jpeg");
     -fx-background-size: cover;
+
 }
 #menuPane{
     -fx-background-color: #f9f7e8;
 }
 #menuBar{
     -fx-background-color: #f9f7e8;
+    -fx-font-family: 'Times New Roman', serif;
+    -fx-font-size: 25px;
+    -fx-text-fill: #263e2a;
+
+    -fx-alignment: center;
 }
-#lableTest{
-    -fx-graphic: url("/img/Location_icon.png");
+#menuHome{
+    -fx-text-fill: #263e2a;
+}
+#blurPane{
+    -fx-background-color: rgba(11, 22, 22, 0.45);
+}
+#location_logo {
+
+}
+#searchTextField{
+        -fx-border-color: #263e2a; /* Màu viền */
+        /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+        -fx-border-width: 1px; /* Độ rộng viền */
+        -fx-border-radius: 23px; /* Bán kính bo tròn viền */
+        -fx-background-radius: 28;
+}
+#searchTextField{
+    -fx-text-fill: #a1a2b4;
+    -fx-background-color: #f9f7e8;
+}
+#btSearch{
+    -fx-background-image: url("../img/Search_logo.png");
+    -fx-background-size: cover;
+    -fx-background-color: #f9f7e8;
+
+    -fx-transition: all 0.5s ease;
+
+}
+#btSearch:hover{
     /*-fx-background-color: #263e2a;*/
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+#btSignUp{
+
+        -fx-text-fill: #263e2a;
+        -fx-background-color: #f9f7e8;
+
+        -fx-border-color: #263e2a; /* Màu viền */
+        /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 10px; /* Bán kính bo tròn viền */
+        -fx-background-radius: 15;
+
+        -fx-transition: all 0.5s ease;
+}
+#btLogin{
+    -fx-text-fill: #f9f7e8;
+
+    -fx-background-color: #263e2a;
+
+    -fx-border-color: #263e2a; /* Màu viền */
+    /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+    -fx-border-width: 2px; /* Độ rộng viền */
+    -fx-border-radius: 10px; /* Bán kính bo tròn viền */
+    -fx-background-radius: 13;
+
+}
+#btLogin:hover{
+    -fx-background-color: #f9f7e8;
+    -fx-text-fill: #263e2a;
+
+}
+#btSignUp:hover{
+    -fx-background-color: #263e2a;
+    -fx-text-fill: #f9f7e8;
+
+}
+#lableName{
+    -fx-text-fill: #263e2a;
+}
+.font{
+    -fx-font-family: 'Times New Roman', serif;
+    -fx-text-fill: #ffffff;
+}
+.blur{
+    -fx-background-color: rgba(255, 255, 255, 0.16);
+}
+#imgBooking{
+    -fx-background-size: cover;
 }

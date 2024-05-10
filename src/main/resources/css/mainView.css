@@ -46,7 +46,6 @@
 .root{
     -fx-background-image: url("../img/HaLongBay.jpeg");
     -fx-background-size: cover;
-
 }
 #menuPane{
     -fx-background-color: #f9f7e8;

@@ -28,8 +28,26 @@
 #btLogin:hover{
     -fx-background-color: #f9f7e8;
     -fx-text-fill: #263e2a;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 #btSignUp:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
     -fx-background-color: #263e2a;
     -fx-text-fill: #f9f7e8;
+
 }
+.label_font {
+    -fx-font-family: 'Alatsi Regular'
+}
+.custom-text-field {
+    -fx-font-family: 'Josefin Sans SemiBold';
+    -fx-font-size: 12.0;
+     -fx-effect: dropshadow(gaussian, rgba(255, 125, 18, 0.45), 2.0, 2.0, 0.0, 0.0);
+  }
+ #Pay_Button:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2.0, 2, 0.0, 0.0);
+ }

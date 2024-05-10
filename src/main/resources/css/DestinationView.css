@@ -1,0 +1,35 @@
+#menuBar{
+    -fx-background-color: #f9f7e8;
+    -fx-font-family: 'Times New Roman', serif;
+    -fx-font-size: 25px;
+    -fx-text-fill: #263e2a;
+    -fx-alignment: center;
+}
+#btSignUp{
+
+        -fx-text-fill: #263e2a;
+        -fx-background-color: #f9f7e8;
+        -fx-border-color: #263e2a; /* Màu viền */
+        /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 10px; /* Bán kính bo tròn viền */
+        -fx-background-radius: 15;
+        -fx-transition: all 0.5s ease;
+}
+#btLogin{
+    -fx-text-fill: #f9f7e8;
+    -fx-background-color: #263e2a;
+    -fx-border-color: #263e2a; /* Màu viền */
+    /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+    -fx-border-width: 2px; /* Độ rộng viền */
+    -fx-border-radius: 10px; /* Bán kính bo tròn viền */
+    -fx-background-radius: 13;
+}
+#btLogin:hover{
+    -fx-background-color: #f9f7e8;
+    -fx-text-fill: #263e2a;
+}
+#btSignUp:hover{
+    -fx-background-color: #263e2a;
+    -fx-text-fill: #f9f7e8;
+}

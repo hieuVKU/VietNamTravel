@@ -102,7 +102,7 @@
             <Font name="Agency FB" size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btSubmit" layoutX="614.0" layoutY="449.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8">
+      <Button fx:id="btSubmit" layoutX="614.0" layoutY="449.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8" onAction="#handleSubmit">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>

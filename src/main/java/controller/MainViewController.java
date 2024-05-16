@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainViewController {
 
-
+    @FXML
+    private Button btAccount;
 
     @FXML
     private Button btBooking;
@@ -25,6 +27,9 @@ public class MainViewController {
 
     @FXML
     private Button btLogin;
+
+    @FXML
+    private Button btPrice;
 
     @FXML
     private Button btSearch;
@@ -45,6 +50,12 @@ public class MainViewController {
     private Menu menuTicket;
 
     @FXML
+    private AnchorPane paneAccount;
+
+    @FXML
+    private AnchorPane paneLogin;
+
+    @FXML
     public void openSignUpView(ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -63,6 +74,13 @@ public class MainViewController {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/com/example/vietnamtravel/Login.fxml")));
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void showAccountPane() {
+        if (paneAccount != null) {
+            paneAccount.setVisible(true);
+            paneLogin.setVisible(false);
+        }
     }
 }
 

@@ -163,7 +163,7 @@
                </children>
             </AnchorPane>
 <!--            ACCOUNT PANE-->
-            <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="false">
+            <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="false" >
                <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Account">
                   <font>
                      <Font name="Alatsi Regular" size="15.0" />

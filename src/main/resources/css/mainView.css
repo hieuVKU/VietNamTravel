@@ -61,6 +61,15 @@
 #menuHome{
     -fx-text-fill: #263e2a;
 }
+.btMenu{
+    -fx-background-color: #f9f7e8;
+    -fx-font-family: 'Times New Roman', serif;
+    -fx-font-size: 25px;
+    -fx-text-fill: #263e2a;
+}
+.btMenu:hover{
+    -fx-background-color: #327da8;
+}
 #blurPane{
     -fx-background-color: rgba(11, 22, 22, 0.45);
 }

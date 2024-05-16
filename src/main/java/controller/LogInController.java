@@ -72,6 +72,7 @@ public class LogInController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/MainView.fxml"));
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.show();
 
             MainViewController mainViewController = loader.getController();

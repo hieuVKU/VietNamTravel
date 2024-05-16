@@ -27,8 +27,8 @@
             <BoxBlur height="252.0" iterations="3" width="255.0" />
          </effect>
       </AnchorPane>
-      <AnchorPane id="blurPane" prefHeight="730.0" prefWidth="1350.0" />
-      <AnchorPane layoutX="-1.0" prefHeight="730.0" prefWidth="1350.0">
+      <AnchorPane id="blurPane" prefHeight="730.0" prefWidth="1362.0" />
+      <AnchorPane layoutX="-1.0" prefHeight="730.0" prefWidth="1362.0">
          <children>
             <Button id="btLocation" fx:id="btLocation" layoutX="272.0" layoutY="534.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="128.0" style="-fx-background-color: #f9f7e8;" text="Location" textFill="#263e2a">
             <graphic>
@@ -60,7 +60,7 @@
                </ImageView>
             </graphic>
                <font>
-                  <Font name="BenguiatStd-MediumCondensed" size="17.0" />
+                  <Font size="15.0" />
                </font>
                <effect>
                   <DropShadow height="6.34" radius="4.8" spread="0.02" width="14.86">
@@ -88,12 +88,12 @@
                   <ColorAdjust brightness="0.95" />
                </effect>
             </ImageView>
-            <TextField id="searchTextField" cache="true" depthTest="DISABLE" layoutX="436.0" layoutY="103.0" prefHeight="58.0" prefWidth="478.0" promptText="Search tourist spots">
+            <TextField id="searchTextField" cache="true" depthTest="DISABLE" layoutX="436.0" layoutY="103.0" prefHeight="44.0" prefWidth="478.0" promptText="Search tourist spots">
                <font>
                   <Font name="Alatsi Regular" size="18.0" />
                </font>
             </TextField>
-            <Button id="btSearch" fx:id="btSearch" layoutX="849.0" layoutY="111.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: transparent;;" />
+            <Button id="btSearch" fx:id="btSearch" layoutX="863.0" layoutY="107.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="30.0" style="-fx-background-color: transparent;;" />
             <Button id="btBooking" fx:id="btBooking" layoutX="104.0" layoutY="534.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="128.0" style="-fx-background-color: #f9f7e8;" text="Booking" textFill="#263e2a">
                <graphic>
                   <ImageView id="imgBooking" fitHeight="20.0" fitWidth="20.0">
@@ -121,38 +121,39 @@
             </TextArea>
          </children>
       </AnchorPane>
-      <AnchorPane id="menuPane" layoutY="-2.0" prefHeight="57.0" prefWidth="1349.0">
+      <AnchorPane id="menuPane" layoutY="-3.0" prefHeight="57.0" prefWidth="1361.0" style="-fx-background-color: #f7f9e8;">
          <children>
-            <MenuBar id="menuBar" layoutX="389.0" layoutY="3.0" prefHeight="50.0" prefWidth="560.0">
-              <menus>
-                <Menu id="menuHome" fx:id="menuHome" mnemonicParsing="false" text="Home" />
-                <Menu fx:id="menuDesti" mnemonicParsing="false" text="Destinations" />
-                <Menu fx:id="menuHotel" mnemonicParsing="false" text="Hotel" />
-                  <Menu fx:id="menuTicket" mnemonicParsing="false" text="My ticket">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Visit" />
-                      <MenuItem mnemonicParsing="false" text="Room" />
-                        <MenuItem mnemonicParsing="false" text="Bla bla" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
-            <Button id="btSignUp" fx:id="btSignUp" layoutX="1085.0" layoutY="7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="101.0" text="SignUp">
-               <font>
-                  <Font name="Alatsi Regular" size="20.0" />
-               </font></Button>
-            <ImageView id="imgMainLogo" fitHeight="58.0" fitWidth="66.0" layoutX="-7.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-size: cover;">
+            <ImageView id="imgMainLogo" fitHeight="63.0" fitWidth="52.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/MainLogo.png" />
                </image>
             </ImageView>
-            <Label id="lableName" layoutX="51.0" layoutY="9.0" prefHeight="42.0" prefWidth="178.0" text="VIETNAM TRAVEL">
+            <MenuBar id="menuBar" layoutX="401.0" layoutY="3.0" prefHeight="50.0" prefWidth="560.0" style="-fx-background-color: #f7f9e8;">
+               <menus>
+                  <Menu fx:id="menuHome" mnemonicParsing="false" text="Home" />
+                  <Menu fx:id="menuDesti" mnemonicParsing="false" text="Destinations" />
+                  <Menu fx:id="menuHotel" mnemonicParsing="false" text="Hotel" />
+                  <Menu fx:id="menuTicket" mnemonicParsing="false" text="My ticket">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Visit ticket" />
+                        <MenuItem mnemonicParsing="false" text="Room" />
+                        <MenuItem mnemonicParsing="false" text="Transportaiton" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <Button id="btSignUp" fx:id="btSignUp" cache="true" layoutX="1135.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="SignUp" onAction="#openSignUpView">
+               <font>
+                  <Font name="Alatsi Regular" size="15.0" />
+               </font></Button>
+            <Label id="labelName" layoutX="51.0" layoutY="17.0" prefHeight="27.0" prefWidth="184.0" text="VIETNAMTRAVEL" textAlignment="CENTER">
                <font>
                   <Font name="BenguiatStd-MediumCondensed" size="20.0" />
-               </font></Label>
-            <Button id="btLogin" fx:id="btLogin" layoutX="1203.0" layoutY="5.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="101.0" text="LogIn">
+               </font>
+            </Label>
+            <Button id="btLogin" fx:id="btLogin" layoutX="1231.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="LogIn" onAction="#openLoginView">
                <font>
-                  <Font name="Alatsi Regular" size="20.0" />
+                  <Font name="Alatsi Regular" size="15.0" />
                </font>
             </Button>
          </children>

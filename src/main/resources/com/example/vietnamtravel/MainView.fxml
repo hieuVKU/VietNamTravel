@@ -128,7 +128,7 @@
                   <Image url="@../../../img/MainLogo.png" />
                </image>
             </ImageView>
-            <MenuBar id="menuBar" layoutX="401.0" layoutY="3.0" prefHeight="50.0" prefWidth="560.0" style="-fx-background-color: #f7f9e8;">
+            <MenuBar id="menuBar" layoutX="320.0" layoutY="3.0" prefHeight="54.0" prefWidth="744.0" style="-fx-background-color: #f7f9e8;">
                <menus>
                   <Menu fx:id="menuHome" mnemonicParsing="false" text="Home" />
                   <Menu fx:id="menuDesti" mnemonicParsing="false" text="Destinations" />
@@ -142,20 +142,41 @@
                   </Menu>
                </menus>
             </MenuBar>
-            <Button id="btSignUp" fx:id="btSignUp" cache="true" layoutX="1135.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="SignUp" onAction="#openSignUpView">
-               <font>
-                  <Font name="Alatsi Regular" size="15.0" />
-               </font></Button>
             <Label id="labelName" layoutX="51.0" layoutY="17.0" prefHeight="27.0" prefWidth="184.0" text="VIETNAMTRAVEL" textAlignment="CENTER">
                <font>
                   <Font name="BenguiatStd-MediumCondensed" size="20.0" />
                </font>
             </Label>
-            <Button id="btLogin" fx:id="btLogin" layoutX="1231.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="80.0" text="LogIn" onAction="#openLoginView">
-               <font>
-                  <Font name="Alatsi Regular" size="15.0" />
-               </font>
-            </Button>
+<!--            PANE LOGIN-->
+            <AnchorPane fx:id="paneLogin" layoutX="1127.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="true">
+               <children>
+                  <Button id="btLogin" fx:id="btLogin" layoutX="106.0" layoutY="4.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="36.0" prefWidth="80.0" text="LogIn">
+                     <font>
+                        <Font name="Alatsi Regular" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button id="btSignUp" fx:id="btSignUp" cache="true" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#openSignUpView" prefHeight="36.0" prefWidth="80.0" text="SignUp">
+                     <font>
+                        <Font name="Alatsi Regular" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+<!--            ACCOUNT PANE-->
+            <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="false">
+               <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Account">
+                  <font>
+                     <Font name="Alatsi Regular" size="15.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../img/Account_icon.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

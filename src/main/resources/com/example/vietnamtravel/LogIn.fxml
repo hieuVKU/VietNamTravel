@@ -122,6 +122,6 @@
             <Image url="@../../../img/twitter.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="linkSignUp" layoutX="825.0" layoutY="419.0" text="Sign up" textFill="#1c5196" onAction="#openSignUpView" />
+      <Hyperlink fx:id="linkSignUp" layoutX="825.0" layoutY="419.0" text="Sign up"  textFill="#ffffff" onAction="#openSignUpView" />
    </children>
 </AnchorPane>

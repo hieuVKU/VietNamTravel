@@ -121,22 +121,22 @@
                 <Image url="@../../../img/twitter.png" />
             </image>
         </ImageView>
-      <PasswordField fx:id="ConPassTF" layoutX="614.0" layoutY="416.0" prefHeight="36.0" prefWidth="260.0" promptText="Confirm your password">
-         <effect>
-            <Glow />
-         </effect>
-         <font>
-            <Font name="Agency FB" size="15.0" />
-         </font>
-      </PasswordField>
-      <Hyperlink fx:id="linkLogin" layoutX="836.0" layoutY="452.0" text="Login" textFill="#1c5196" onAction="#openLogInView"/>
-      <Label layoutX="613.0" layoutY="381.0" text="Confirm Password" textFill="#fff9d4">
-         <font>
-            <Font name="Alatsi Regular" size="20.0" />
-         </font>
-         <effect>
-            <Glow level="0.4" />
-         </effect>
-      </Label>
+        <PasswordField fx:id="ConPassTF" layoutX="614.0" layoutY="416.0" prefHeight="36.0" prefWidth="260.0" promptText="Confirm your password">
+            <effect>
+                <Glow />
+            </effect>
+            <font>
+                <Font name="Agency FB" size="15.0" />
+            </font>
+        </PasswordField>
+        <Hyperlink fx:id="linkLogin" layoutX="836.0" layoutY="452.0" text="Login" textFill="#ffffff" onAction="#openLogInView"/>
+        <Label layoutX="613.0" layoutY="381.0" text="Confirm Password" textFill="#fff9d4">
+            <font>
+                <Font name="Alatsi Regular" size="20.0" />
+            </font>
+            <effect>
+                <Glow level="0.4" />
+            </effect>
+        </Label>
     </children>
 </AnchorPane>

@@ -21,12 +21,12 @@
 
 <AnchorPane prefHeight="737.0" prefWidth="1122.0" style="-fx-background-color: black;" stylesheets="@../../../css/LogIn.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
-        <ImageView fitHeight="743.0" fitWidth="1122.0" opacity="0.5">
+        <ImageView fitHeight="811.0" fitWidth="1122.0" opacity="0.5">
             <image>
                 <Image url="@../../../img/LogInBackground.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="626.0" fitWidth="924.0" layoutX="99.0" layoutY="68.0">
+        <ImageView fitHeight="626.0" fitWidth="924.0" layoutX="99.0" layoutY="103.0">
             <image>
                 <Image url="@../../../img/LogInBackground.jpg" />
             </image>
@@ -41,16 +41,17 @@
                 </DropShadow>
             </effect>
         </ImageView>
-        <Pane layoutX="104.0" layoutY="29.0" opacity="0.5" prefHeight="756.0" prefWidth="763.0" rotate="-116.6" style="-fx-background-color: black;">
+        <Pane layoutX="105.0" layoutY="58.0" opacity="0.5" prefHeight="756.0" prefWidth="763.0" rotate="-116.6" style="-fx-background-color: black;">
             <effect>
                 <BoxBlur height="170.0" width="158.0" />
             </effect>
         </Pane>
         <Line endX="14.0" layoutX="282.0" layoutY="361.0" startX="-100.0" stroke="WHITE" strokeWidth="4.0" />
-        <Pane layoutX="561.0" layoutY="131.0" opacity="0.5" prefHeight="480.0" prefWidth="380.0" style="-fx-background-color: #bcd59c;">
+        <Pane layoutX="561.0" layoutY="120.0" opacity="0.5" prefHeight="586.0" prefWidth="380.0" style="-fx-background-color: #bcd59c;">
             <effect>
                 <MotionBlur angle="131.3" radius="19.64" />
-            </effect></Pane>
+            </effect>
+      </Pane>
         <Text fill="#fff9d4" layoutX="180.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hope you have the best experience, thank you for choosing us!" wrappingWidth="360.0">
             <font>
                 <Font name="Alatsi Regular" size="22.0" />
@@ -61,7 +62,7 @@
                 <Font name="BenguiatStd-MediumCondensed" size="63.0" />
             </font>
         </Label>
-        <Label layoutX="692.0" layoutY="156.0" prefHeight="66.0" prefWidth="171.0" text="Sign Up" textFill="#fff9d4" underline="true">
+        <Label layoutX="687.0" layoutY="136.0" prefHeight="66.0" prefWidth="171.0" text="Sign Up" textFill="#fff9d4" underline="true">
             <font>
                 <Font name="BenguiatStd-MediumCondensed" size="45.0" />
             </font>
@@ -69,7 +70,7 @@
                 <Glow level="0.4" />
             </effect>
         </Label>
-        <Label layoutX="613.0" layoutY="231.0" text="PhoneNumber" textFill="WHITE">
+        <Label layoutX="616.0" layoutY="208.0" text="Name" textFill="#fff9d4">
             <font>
                 <Font name="Alatsi Regular" size="20.0" />
             </font>
@@ -77,7 +78,7 @@
                 <Glow level="0.4" />
             </effect>
         </Label>
-        <TextField fx:id="PhoneNumTF" layoutX="614.0" layoutY="262.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your phone number">
+        <TextField fx:id="nameTF" layoutX="618.0" layoutY="239.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your full name">
             <font>
                 <Font name="Agency FB" size="15.0" />
             </font>
@@ -85,7 +86,7 @@
                 <Glow />
             </effect>
         </TextField>
-        <Label layoutX="614.0" layoutY="308.0" text="Password" textFill="#fff9d4">
+        <Label layoutX="618.0" layoutY="416.0" text="Password" textFill="#fff9d4">
             <font>
                 <Font name="Alatsi Regular" size="20.0" />
             </font>
@@ -93,7 +94,7 @@
                 <Glow level="0.4" />
             </effect>
         </Label>
-        <PasswordField fx:id="passTF" layoutX="614.0" layoutY="338.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your password">
+        <PasswordField fx:id="passTF" layoutX="618.0" layoutY="446.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your password">
             <effect>
                 <Glow />
             </effect>
@@ -101,27 +102,27 @@
                 <Font name="Agency FB" size="15.0" />
             </font>
         </PasswordField>
-        <Button fx:id="btSubmit" layoutX="612.0" layoutY="486.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8">
+        <Button fx:id="btSubmit" layoutX="615.0" layoutY="599.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8">
             <font>
                 <Font name="Alatsi Regular" size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="655.0" layoutY="538.0">
+        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="658.0" layoutY="651.0">
             <image>
                 <Image url="@../../../img/facebook.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="722.0" layoutY="538.0">
+        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="725.0" layoutY="651.0">
             <image>
                 <Image url="@../../../img/instagram.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="787.0" layoutY="538.0">
+        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="790.0" layoutY="651.0">
             <image>
                 <Image url="@../../../img/twitter.png" />
             </image>
         </ImageView>
-        <PasswordField fx:id="ConPassTF" layoutX="614.0" layoutY="416.0" prefHeight="36.0" prefWidth="260.0" promptText="Confirm your password">
+        <PasswordField fx:id="ConPassTF" layoutX="618.0" layoutY="516.0" prefHeight="36.0" prefWidth="260.0" promptText="Confirm your password">
             <effect>
                 <Glow />
             </effect>
@@ -129,8 +130,8 @@
                 <Font name="Agency FB" size="15.0" />
             </font>
         </PasswordField>
-        <Hyperlink fx:id="linkLogin" layoutX="836.0" layoutY="452.0" text="Login" textFill="#ffffff" onAction="#openLogInView"/>
-        <Label layoutX="613.0" layoutY="381.0" text="Confirm Password" textFill="#fff9d4">
+        <Hyperlink fx:id="linkLogin" layoutX="839.0" layoutY="563.0" onAction="#openLogInView" text="Login" textFill="#ffffff" />
+        <Label layoutX="616.0" layoutY="486.0" text="Confirm Password" textFill="#fff9d4">
             <font>
                 <Font name="Alatsi Regular" size="20.0" />
             </font>
@@ -138,5 +139,37 @@
                 <Glow level="0.4" />
             </effect>
         </Label>
+      <Label layoutX="620.0" layoutY="275.0" text="PhoneNumber" textFill="#fff9d4">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+         <effect>
+            <Glow level="0.4" />
+         </effect>
+      </Label>
+      <TextField fx:id="PhoneNumTF" layoutX="619.0" layoutY="305.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your phone number">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </TextField>
+      <Label layoutX="620.0" layoutY="350.0" text="Email" textFill="#fff9d4">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+         <effect>
+            <Glow level="0.4" />
+         </effect>
+      </Label>
+      <TextField fx:id="emailTF" layoutX="618.0" layoutY="380.0" prefHeight="36.0" prefWidth="260.0" promptText="Enter your email">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </TextField>
     </children>
 </AnchorPane>

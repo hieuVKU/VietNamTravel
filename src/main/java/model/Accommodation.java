@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Accommodations")
+@Table(name = "Accommodations")	
 public class Accommodation {
     @Id
     @Column(name = "Accommodations_ID", nullable = false)
@@ -22,7 +22,7 @@ public class Accommodation {
 
     @Nationalized
     @Lob
-    @Column(name = "MoTa")
+    @Column(name = "MoTa", columnDefinition = "nvarchar(max)")
     private String moTa;
 
     @Column(name = "GiaPhong", precision = 10, scale = 2)

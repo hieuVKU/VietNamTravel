@@ -19,7 +19,7 @@ public class TouristAttraction {
 
     @Nationalized
     @Lob
-    @Column(name = "MoTa")
+    @Column(name = "MoTa", columnDefinition = "nvarchar(max)")
     private String moTa;
 
     @Column(name = "GiaVe", precision = 10, scale = 2)

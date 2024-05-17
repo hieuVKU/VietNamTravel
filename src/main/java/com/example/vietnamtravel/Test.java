@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import Util.HibernateUtil;
 
 import java.io.IOException;
 
@@ -19,6 +21,11 @@ public class Test extends Application {
         stage.setTitle("Vietnam Travel");
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest((WindowEvent event) -> {
+            // Gọi shutdown() của HibernateUtil khi ứng dụng kết thúc
+            HibernateUtil.shutdown();
+        });
     }
 
     public static void main(String[] args) {

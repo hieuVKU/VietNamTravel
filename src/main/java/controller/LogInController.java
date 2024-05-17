@@ -82,30 +82,30 @@ public class LogInController {
         }
     }
 
-    private boolean isLoginValid(String phoneNumber, String password) {
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(User.class)
-                .buildSessionFactory();
+    private static SessionFactory factory; // Tạo SessionFactory tĩnh
 
-        Session session = factory.getCurrentSession();
+    public boolean isLoginValid(String phoneNumber, String password) {
+        if (factory == null) {
+            factory = new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        }
 
-        try {
+        try (Session session = factory.openSession()) { // Sử dụng try-with-resources để tự động đóng Session
             session.beginTransaction();
 
-            Query<User> query = session.createQuery("FROM User WHERE soDienThoai = :phoneNumber AND matKhau = :password", User.class);
+            Query<User> query = session.createQuery("FROM User u WHERE u.soDienThoai = :phoneNumber AND u.matKhau = :password", User.class);
             query.setParameter("phoneNumber", phoneNumber);
             query.setParameter("password", password);
 
             List<User> users = query.getResultList();
 
             session.getTransaction().commit();
-
             return !users.isEmpty();
-        } finally {
-            factory.close();
         }
     }
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

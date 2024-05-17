@@ -15,11 +15,6 @@
         <class>model.TouristAttraction</class>
         <class>model.Transportation</class>
         <class>model.User</class>
-
-
-
-
-
         <properties>
             <property name="toplink.jdbc.url"
                       value="jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;database=VietNameTravel"/>

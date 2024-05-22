@@ -10,12 +10,15 @@ module com.example.vietnamtravel {
 
     // Add this line
     requires org.hibernate.orm.core;
+    requires java.xml.bind;
+    requires java.desktop;
 
     opens model to org.hibernate.orm.core;
 
     opens com.example.vietnamtravel to javafx.fxml;
     exports com.example.vietnamtravel;
 
-    opens controller to javafx.fxml;
+    opens controller to javafx.fxml, java.xml.bind;
     exports controller;
+
 }

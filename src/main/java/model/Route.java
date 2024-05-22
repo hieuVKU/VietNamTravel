@@ -27,7 +27,7 @@ public class Route {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Images_ID")
-    private Image images;
+    private Images images;
 
     @OneToMany(mappedBy = "routes")
     private Set<Schedule> schedules = new LinkedHashSet<>();
@@ -40,11 +40,11 @@ public class Route {
         this.schedules = schedules;
     }
 
-    public Image getImages() {
+    public Images getImages() {
         return images;
     }
 
-    public void setImages(Image images) {
+    public void setImages(Images images) {
         this.images = images;
     }
 

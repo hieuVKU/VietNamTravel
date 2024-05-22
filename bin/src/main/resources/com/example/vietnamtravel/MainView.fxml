@@ -67,7 +67,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button id="btBooking" fx:id="btBooking" layoutX="122.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Booking" />
+      <Button id="btBooking" fx:id="btBooking" layoutX="122.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Booking" onAction="#handleBookingAction" />
       <Button id="btLocation" fx:id="btLocation" layoutX="257.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
       <Button id="btLocation" fx:id="btLocation1" layoutX="395.0" layoutY="358.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="Location" />
       <Label id="lableTest" layoutX="671.0" layoutY="276.0" prefHeight="140.0" prefWidth="166.0" />

@@ -33,9 +33,9 @@ public class TouristAttraction {
     @Column(name = "ToaDoGoogleMaps")
     private String toaDoGoogleMaps;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Images_ID")
-    private Image images;
+    private Images images;
 
     public Integer getId() {
         return id;
@@ -85,11 +85,11 @@ public class TouristAttraction {
         this.toaDoGoogleMaps = toaDoGoogleMaps;
     }
 
-    public Image getImages() {
+    public Images getImages() {
         return images;
     }
 
-    public void setImages(Image images) {
+    public void setImages(Images images) {
         this.images = images;
     }
 

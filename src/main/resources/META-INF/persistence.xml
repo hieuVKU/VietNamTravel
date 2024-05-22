@@ -8,7 +8,7 @@
         <class>model.Accommodation</class>
         <class>model.Booking</class>
         <class>model.Flight</class>
-        <class>model.Image</class>
+        <class>model.Images</class>
         <class>model.PassengerInformation</class>
         <class>model.Route</class>
         <class>model.Schedule</class>

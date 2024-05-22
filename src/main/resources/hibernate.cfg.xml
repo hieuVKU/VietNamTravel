@@ -18,7 +18,7 @@
         <mapping class="model.Accommodation"/>
         <mapping class="model.Booking"/>
         <mapping class="model.Flight"/>
-        <mapping class="model.Image"/>
+        <mapping class="model.Images"/>
         <mapping class="model.PassengerInformation"/>
         <mapping class="model.Route"/>
         <mapping class="model.Schedule"/>

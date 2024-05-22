@@ -12,9 +12,9 @@ import java.io.IOException;
 public class Test extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Destination.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
+////        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DestinationView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StayView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1350, 730);
@@ -23,7 +23,6 @@ public class Test extends Application {
         stage.show();
 
         stage.setOnCloseRequest((WindowEvent event) -> {
-            // Gọi shutdown() của HibernateUtil khi ứng dụng kết thúc
             HibernateUtil.shutdown();
         });
     }

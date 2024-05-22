@@ -11,6 +11,7 @@ import java.util.Set;
 @Table(name = "Bookings")
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Bookings_ID", nullable = false)
     private Integer id;
 
@@ -34,7 +35,7 @@ public class Booking {
     private Schedule schedules;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Plane_ID")
+    @JoinColumn(name = "FlightID")
     private Flight plane;
 
     @OneToMany(mappedBy = "bookings")

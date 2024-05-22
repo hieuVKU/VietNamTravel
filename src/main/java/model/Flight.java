@@ -3,7 +3,11 @@ package model;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -30,14 +34,29 @@ public class Flight {
     @Column(name = "SanBayDen", nullable = false)
     private String sanBayDen;
 
-    @Column(name = "NgayGioKhoiHanh", nullable = false)
-    private Instant ngayGioKhoiHanh;
+    @Column(name = "NgayKhoiHanh", nullable = false)
+    private LocalDate ngayKhoiHanh;
 
-    @Column(name = "NgayGioDen", nullable = false)
-    private Instant ngayGioDen;
+    @Column(name = "NgayDen", nullable = false)
+    private LocalDate ngayDen;
 
     @Column(name = "SoGheConLai", nullable = false)
     private Integer soGheConLai;
+
+    @Column(name = "DiemKhoiHanh", nullable = false)
+    private String diemKhoiHanh;
+
+    @Column(name = "DiemDen", nullable = false)
+    private String diemDen;
+
+    @Column(name = "GioKhoiHanh", nullable = false)
+    private LocalTime gioKhoiHanh;
+
+    @Column(name = "GioDen", nullable =false)
+    private LocalTime gioDen;
+
+    @Column(name = "GiaVe", nullable = false)
+    private BigDecimal giaVe;
 
     @OneToMany(mappedBy = "plane")
     private Set<Booking> bookings = new LinkedHashSet<>();
@@ -54,64 +73,54 @@ public class Flight {
         return maChuyenBay;
     }
 
-    public void setMaChuyenBay(String maChuyenBay) {
-        this.maChuyenBay = maChuyenBay;
-    }
 
     public String getHangHangKhong() {
         return hangHangKhong;
-    }
-
-    public void setHangHangKhong(String hangHangKhong) {
-        this.hangHangKhong = hangHangKhong;
     }
 
     public String getSanBayDi() {
         return sanBayDi;
     }
 
-    public void setSanBayDi(String sanBayDi) {
-        this.sanBayDi = sanBayDi;
-    }
 
     public String getSanBayDen() {
         return sanBayDen;
-    }
-
-    public void setSanBayDen(String sanBayDen) {
-        this.sanBayDen = sanBayDen;
-    }
-
-    public Instant getNgayGioKhoiHanh() {
-        return ngayGioKhoiHanh;
-    }
-
-    public void setNgayGioKhoiHanh(Instant ngayGioKhoiHanh) {
-        this.ngayGioKhoiHanh = ngayGioKhoiHanh;
-    }
-
-    public Instant getNgayGioDen() {
-        return ngayGioDen;
-    }
-
-    public void setNgayGioDen(Instant ngayGioDen) {
-        this.ngayGioDen = ngayGioDen;
     }
 
     public Integer getSoGheConLai() {
         return soGheConLai;
     }
 
-    public void setSoGheConLai(Integer soGheConLai) {
-        this.soGheConLai = soGheConLai;
+    public LocalDate getNgayKhoiHanh() {
+        return ngayKhoiHanh;
+    }
+
+    public LocalDate getNgayDen() {
+        return ngayDen;
+    }
+
+    public LocalTime getGioKhoiHanh() {
+        return gioKhoiHanh;
+    }
+
+    public LocalTime getGioDen() {
+        return gioDen;
+    }
+
+    public String getDiemKhoiHanh() {
+        return diemKhoiHanh;
+    }
+
+    public String getDiemDen() {
+        return diemDen;
     }
 
     public Set<Booking> getBookings() {
         return bookings;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
+    public BigDecimal getGiaVe() {
+        return giaVe;
     }
 
 }

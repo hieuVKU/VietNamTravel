@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Table(name = "Accommodations")	
 public class Accommodation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Accommodations_ID", nullable = false)
     private Integer id;
 

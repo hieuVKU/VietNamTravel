@@ -10,6 +10,7 @@ import java.util.Set;
 @Table(name = "Images")
 public class Image {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Images_ID", nullable = false)
     private Integer id;
 
@@ -27,8 +28,6 @@ public class Image {
     @OneToMany(mappedBy = "images")
     private Set<Accommodation> accommodations = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "images")
-    private Set<Route> routes = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "images")
     private Set<TouristAttraction> touristAttractions = new LinkedHashSet<>();
@@ -39,14 +38,6 @@ public class Image {
 
     public void setTouristAttractions(Set<TouristAttraction> touristAttractions) {
         this.touristAttractions = touristAttractions;
-    }
-
-    public Set<Route> getRoutes() {
-        return routes;
-    }
-
-    public void setRoutes(Set<Route> routes) {
-        this.routes = routes;
     }
 
     public Set<Accommodation> getAccommodations() {

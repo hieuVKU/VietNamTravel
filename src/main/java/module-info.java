@@ -10,6 +10,7 @@ module com.example.vietnamtravel {
 
     // Add this line
     requires org.hibernate.orm.core;
+//    requires javaee.api;
 
     opens model to org.hibernate.orm.core;
 

@@ -10,6 +10,7 @@ import java.util.Set;
 @Table(name = "Routes")
 public class Route {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Routes_ID", nullable = false)
     private Integer id;
 
@@ -24,29 +25,6 @@ public class Route {
     @Nationalized
     @Column(name = "LoaiPhuongTien", nullable = false, length = 50)
     private String loaiPhuongTien;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Images_ID")
-    private Image images;
-
-    @OneToMany(mappedBy = "routes")
-    private Set<Schedule> schedules = new LinkedHashSet<>();
-
-    public Set<Schedule> getSchedules() {
-        return schedules;
-    }
-
-    public void setSchedules(Set<Schedule> schedules) {
-        this.schedules = schedules;
-    }
-
-    public Image getImages() {
-        return images;
-    }
-
-    public void setImages(Image images) {
-        this.images = images;
-    }
 
     public Integer getId() {
         return id;

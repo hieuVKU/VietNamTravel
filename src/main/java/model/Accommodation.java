@@ -31,7 +31,7 @@ public class Accommodation {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Images_ID")
-    private Image images;
+    private Images images;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class Accommodation {
         this.giaPhong = giaPhong;
     }
 
-    public Image getImages() {
+    public Images getImages() {
         return images;
     }
 
-    public void setImages(Image images) {
+    public void setImages(Images images) {
         this.images = images;
     }
 

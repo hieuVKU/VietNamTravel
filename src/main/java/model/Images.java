@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Images")
-public class Image {
+public class Images {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Images_ID", nullable = false)
@@ -22,6 +22,7 @@ public class Image {
     @Column(name = "LoaiFile", nullable = false, length = 50)
     private String loaiFile;
 
+    @Basic(fetch = FetchType.EAGER)
     @Column(name = "DuLieuAnh", nullable = false)
     private byte[] duLieuAnh;
 

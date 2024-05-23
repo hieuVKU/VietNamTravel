@@ -4,7 +4,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -23,7 +22,7 @@
             </image>
         </ImageView>
         <AnchorPane disable="true" opacity="0.55" prefHeight="730.0" prefWidth="1350.0" style="-fx-background-color: black;" />
-        <Pane layoutX="126.0" layoutY="322.0" prefHeight="137.0" prefWidth="1100.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
+        <Pane layoutX="126.0" layoutY="213.0" prefHeight="137.0" prefWidth="1100.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
             <children>
                 <Label layoutX="63.0" layoutY="23.0" text="From" textFill="#000000b3">
                     <font>
@@ -35,11 +34,11 @@
                         <Font name="Alatsi Regular" size="20.0" />
                     </font>
                 </Label>
-                <TextField layoutX="63.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" text="Da Nang">
+                <TextField fx:id="FromTF" layoutX="63.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" text="Da Nang">
                     <font>
                         <Font name="Alatsi Regular" size="17.0" />
                     </font></TextField>
-                <TextField layoutX="255.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" text="Hue">
+                <TextField fx:id="ToTF" layoutX="255.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" text="Hue">
                     <font>
                         <Font name="Alatsi Regular" size="17.0" />
                     </font></TextField>
@@ -53,9 +52,9 @@
                         <Font name="Alatsi Regular" size="20.0" />
                     </font>
                 </Label>
-                <DatePicker layoutX="463.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" />
-                <DatePicker layoutX="690.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" />
-                <Button id="searchButton" layoutX="942.0" layoutY="55.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #263e2a;" text="SEARCH" textFill="#f9f7e8">
+                <DatePicker fx:id="GoTF" layoutX="463.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" />
+                <DatePicker fx:id="ReturnTF" layoutX="690.0" layoutY="55.0" prefHeight="40.0" prefWidth="175.0" />
+                <Button fx:id="searchButton" layoutX="942.0" layoutY="55.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #263e2a;" text="SEARCH" textFill="#f9f7e8" onAction="#handleSearchButtonClick">
                     <font>
                         <Font name="Alatsi Regular" size="18.0" />
                     </font>
@@ -69,12 +68,12 @@
                 </DropShadow>
             </effect>
         </Pane>
-        <Pane layoutX="337.0" layoutY="271.0" opacity="0.66" prefHeight="62.0" prefWidth="678.0" style="-fx-background-color: #f9f7e8; -fx-background-radius: 40px;">
+        <Pane layoutX="337.0" layoutY="162.0" opacity="0.66" prefHeight="62.0" prefWidth="678.0" style="-fx-background-color: #f9f7e8; -fx-background-radius: 40px;">
             <effect>
                 <DropShadow height="29.79" radius="20.2575" spread="0.17" width="53.24" />
             </effect>
             <children>
-                <HBox layoutX="78.0" layoutY="4.0" spacing="10.0" styleClass="transport-option">
+                <HBox fx:id="BusBox" layoutX="78.0" layoutY="4.0" spacing="10.0" styleClass="transport-option" >
                     <ImageView fitHeight="34.0" fitWidth="40.0">
                         <image>
                             <Image url="@../../../img/front-of-bus.png" />
@@ -86,7 +85,7 @@
                         </font>
                     </Label>
                 </HBox>
-                <HBox layoutX="270.0" layoutY="4.0" spacing="10.0" styleClass="transport-option">
+                <HBox fx:id="TrainBox" layoutX="270.0" layoutY="4.0" spacing="10.0" styleClass="transport-option" >
                     <ImageView fitHeight="34.0" fitWidth="40.0">
                         <image>
                             <Image url="@../../../img/train.png" />
@@ -98,7 +97,7 @@
                         </font>
                     </Label>
                 </HBox>
-                <HBox layoutX="468.0" layoutY="4.0" prefHeight="54.0" prefWidth="149.0" styleClass="transport-option">
+                <HBox fx:id="PlaneBox" layoutX="468.0" layoutY="4.0" prefHeight="54.0" prefWidth="149.0" styleClass="transport-option">
                     <children>
                         <ImageView fitHeight="31.0" fitWidth="53.0">
                             <image>
@@ -114,7 +113,7 @@
                 </HBox>
             </children>
         </Pane>
-        <Label layoutX="462.0" layoutY="152.0" text="Your Trip Starts Here" textFill="#f9f7e8">
+        <Label layoutX="462.0" layoutY="78.0" text="Your Trip Starts Here" textFill="#f9f7e8">
             <font>
                 <Font name="BenguiatStd-MediumCondensed" size="50.0" />
             </font>
@@ -126,7 +125,6 @@
                 </DropShadow>
             </effect>
         </Label>
-        <ListView layoutX="126.0" layoutY="482.0" prefHeight="200.0" prefWidth="1100.0" style="-fx-background-radius: 20px;" />
-        <ScrollBar layoutX="1212.0" layoutY="483.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="14.0" />
+        <ListView fx:id="listRoutes" layoutX="126.0" layoutY="373.0" prefHeight="337.0" prefWidth="1100.0" style="-fx-background-radius: 20px;" />
     </children>
 </AnchorPane>

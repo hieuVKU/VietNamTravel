@@ -25,7 +25,7 @@ public class Pay {
 
     @ManyToOne
     @JoinColumn(name = "Bookings_ID", nullable = false)
-    private Booking bookings;
+    private TransportBooking bookings;
 
     // Getters and Setters
 }

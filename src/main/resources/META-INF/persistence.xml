@@ -6,7 +6,7 @@
     <persistence-unit name="VietNamTravel">
 
         <class>model.Accommodation</class>
-        <class>model.Booking</class>
+        <class>model.TransportBooking</class>
         <class>model.Flight</class>
         <class>model.Images</class>
         <class>model.PassengerInformation</class>

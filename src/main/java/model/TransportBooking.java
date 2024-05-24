@@ -8,11 +8,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Bookings")
-public class Booking {
+@Table(name = "TransportBookings")
+public class TransportBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Bookings_ID", nullable = false)
+    @Column(name = "TransportBookings_ID", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -28,7 +28,7 @@ public class User {
     private String matKhau;
 
     @OneToMany(mappedBy = "users")
-    private Set<Booking> bookings = new LinkedHashSet<>();
+    private Set<TransportBooking> transportBookings = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -70,12 +70,12 @@ public class User {
         this.matKhau = matKhau;
     }
 
-    public Set<Booking> getBookings() {
-        return bookings;
+    public Set<TransportBooking> getBookings() {
+        return transportBookings;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBookings(Set<TransportBooking> transportBookings) {
+        this.transportBookings = transportBookings;
     }
 
 }

@@ -4,9 +4,7 @@ import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -59,7 +57,7 @@ public class Flight {
     private BigDecimal giaVe;
 
     @OneToMany(mappedBy = "plane")
-    private Set<Booking> bookings = new LinkedHashSet<>();
+    private Set<TransportBooking> transportBookings = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -115,8 +113,8 @@ public class Flight {
         return diemDen;
     }
 
-    public Set<Booking> getBookings() {
-        return bookings;
+    public Set<TransportBooking> getBookings() {
+        return transportBookings;
     }
 
     public BigDecimal getGiaVe() {

@@ -39,14 +39,14 @@ public class Schedule {
     private Route routes;
 
     @OneToMany(mappedBy = "schedules")
-    private Set<Booking> bookings = new LinkedHashSet<>();
+    private Set<TransportBooking> transportBookings = new LinkedHashSet<>();
 
-    public Set<Booking> getBookings() {
-        return bookings;
+    public Set<TransportBooking> getBookings() {
+        return transportBookings;
     }
 
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBookings(Set<TransportBooking> transportBookings) {
+        this.transportBookings = transportBookings;
     }
 
     public Route getRoutes() {

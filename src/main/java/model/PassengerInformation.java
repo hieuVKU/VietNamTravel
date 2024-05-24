@@ -16,8 +16,9 @@ public class PassengerInformation {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "Bookings_ID", nullable = false)
-    private Booking bookings;
+
+    @JoinColumn(name = "TransportBookings_ID", nullable = false)
+    private TransportBooking bookings;
 
     @Nationalized
     @Column(name = "HoTen", nullable = false)
@@ -34,11 +35,11 @@ public class PassengerInformation {
         this.id = id;
     }
 
-    public Booking getBookings() {
+    public TransportBooking getBookings() {
         return bookings;
     }
 
-    public void setBookings(Booking bookings) {
+    public void setBookings(TransportBooking bookings) {
         this.bookings = bookings;
     }
 

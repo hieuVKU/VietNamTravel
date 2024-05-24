@@ -16,7 +16,7 @@
 
         <!-- Mapping files -->
         <mapping class="model.Accommodation"/>
-        <mapping class="model.Booking"/>
+        <mapping class="model.TransportBooking"/>
         <mapping class="model.Flight"/>
         <mapping class="model.Images"/>
         <mapping class="model.PassengerInformation"/>

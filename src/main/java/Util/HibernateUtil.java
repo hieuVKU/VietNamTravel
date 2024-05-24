@@ -21,7 +21,7 @@ public class HibernateUtil {
                     .addAnnotatedClass(PassengerInformation.class)
                     .addAnnotatedClass(Images.class)
                     .addAnnotatedClass(Flight.class)
-                    .addAnnotatedClass(Booking.class)
+                    .addAnnotatedClass(TransportBooking.class)
                     .addAnnotatedClass(Accommodation.class)
                     .addAnnotatedClass(StayBooking.class)
                     .addAnnotatedClass(TourBooking.class)

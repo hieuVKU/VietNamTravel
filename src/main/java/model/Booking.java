@@ -35,7 +35,7 @@ public class Booking {
     private Schedule schedules;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FlightID")
+    @JoinColumn(name = "Flight_ID")
     private Flight plane;
 
     @OneToMany(mappedBy = "bookings")

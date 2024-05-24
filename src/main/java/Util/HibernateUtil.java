@@ -1,11 +1,13 @@
 package Util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import model.*;
 
 public class HibernateUtil {
     private static final SessionFactory factory = buildSessionFactory();
+    private static Session session;
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -21,6 +23,9 @@ public class HibernateUtil {
                     .addAnnotatedClass(Flight.class)
                     .addAnnotatedClass(Booking.class)
                     .addAnnotatedClass(Accommodation.class)
+                    .addAnnotatedClass(StayBooking.class)
+                    .addAnnotatedClass(TourBooking.class)
+                    .addAnnotatedClass(Pay.class)
                     .buildSessionFactory();
         } catch (Throwable throwable)
         {
@@ -30,6 +35,18 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory(){
         return factory;
     }
+
+//    public static Session getSession()
+//    {
+//        if(session == null || !session.isOpen()) session = factory.openSession();
+//        return session;
+//    }
+//
+//    public static void closeSession()
+//    {
+//        if(session != null && session.isOpen()) session.close();
+//    }
+
     public static void shutdown()
     {
         getSessionFactory().close();

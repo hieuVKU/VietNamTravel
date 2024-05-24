@@ -1,5 +1,6 @@
 package controller;
 
+import Util.HibernateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -91,6 +92,13 @@ public class MainViewController {
 
     @FXML
     private Label textContent;
+
+    private Session session;
+
+    public MainViewController()
+    {
+        this.session = HibernateUtil.getSessionFactory().openSession();
+    }
 
     @FXML
     public void openSignUpView(ActionEvent event) throws IOException {
@@ -205,11 +213,6 @@ public class MainViewController {
     public void handleSearchAction(ActionEvent event) {
         try{
             String keyword = textSearch.getText();
-
-            // Create a Hibernate SessionFactory and Session
-            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-            Session session = sessionFactory.openSession();
-
             // Begin a transaction
             session.beginTransaction();
 
@@ -222,7 +225,6 @@ public class MainViewController {
 
             // Commit the transaction and close the session
             session.getTransaction().commit();
-            session.close();
 
             // Clear the vBoxSearch
             vBoxSearch.getChildren().clear();
@@ -241,10 +243,6 @@ public class MainViewController {
                         // Handle the button click here
                         System.out.println("Button clicked: " + resultButton.getText());
 
-                        // Create a Hibernate SessionFactory and Session
-                        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-                        Session session = sessionFactory.openSession();
-
                         // Begin a transaction
                         session.beginTransaction();
 
@@ -257,7 +255,6 @@ public class MainViewController {
 
                         // Commit the transaction and close the session
                         session.getTransaction().commit();
-                        session.close();
 
                         // Parse giaVe from BigDecimal to int
                         int giaVe = attraction.getGiaVe().intValueExact();

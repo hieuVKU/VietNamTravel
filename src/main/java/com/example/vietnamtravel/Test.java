@@ -12,10 +12,10 @@ import java.io.IOException;
 public class Test extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminAttractions.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DestinationView.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DestinationView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StayView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MyTicketView.fxml"));

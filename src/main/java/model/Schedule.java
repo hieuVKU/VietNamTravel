@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
@@ -22,14 +21,14 @@ public class Schedule {
     @Column(name = "NgayKhoiHanh", nullable = false)
     private LocalDate ngayKhoiHanh;
 
-    @Column(name = "GioKhoiHanh", nullable = false)
+    @Column(name = "GioKhoiHanh", columnDefinition = "time", nullable = false)
     private LocalTime gioKhoiHanh;
 
-    @Column(name = "GioDen", nullable = false)
+    @Column(name = "GioDen", columnDefinition = "time", nullable = false)
     private LocalTime gioDen;
 
     @Column(name = "GiaVe", nullable = false, precision = 10, scale = 2)
-    private BigDecimal giaVe;
+    private Double giaVe;
 
     @Column(name = "SoChoConLai", nullable = false)
     private Integer soChoConLai;
@@ -97,11 +96,11 @@ public class Schedule {
         this.gioDen = gioDen;
     }
 
-    public BigDecimal getGiaVe() {
+    public Double getGiaVe() {
         return giaVe;
     }
 
-    public void setGiaVe(BigDecimal giaVe) {
+    public void setGiaVe(Double giaVe) {
         this.giaVe = giaVe;
     }
 

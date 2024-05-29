@@ -2,17 +2,19 @@ package controller;
 
 import Util.HibernateUtil;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
 import model.Schedule;
-
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,31 +24,33 @@ import java.util.Locale;
 
 public class DestinationViewController {
     @FXML
-    private TextField FromTF;
+    private  TextField FromTF;
     @FXML
-    private TextField ToTF;
+    private  TextField ToTF;
     @FXML
-    private DatePicker GoTF;
+    private  DatePicker GoTF;
     @FXML
-    private DatePicker ReturnTF;
+    private  DatePicker ReturnTF;
     @FXML
-    private Button searchButton;
+    private  ListView<Pane> listRoutes;
     @FXML
-    private ListView<Pane> listRoutes;
+    private  HBox BusBox;
     @FXML
-    private HBox BusBox;
+    private  HBox TrainBox;
     @FXML
-    private HBox TrainBox;
-    @FXML
-    private HBox PlaneBox;
+    private  HBox PlaneBox;
 
     private HBox lastSelectedBox;
 
     private Session session;
 
+    private ButtonController bc = new ButtonController();
+
+
     public DestinationViewController(){
         this.session = HibernateUtil.getSessionFactory().openSession();
     }
+
     @FXML
     private void initialize() {
         // Bắt sự kiện click cho các HBox
@@ -71,7 +75,7 @@ public class DestinationViewController {
         // Kiểm tra xem đã chọn loại phương tiện chưa
         if (lastSelectedBox == null) {
             // Hiển thị thông báo lỗi hoặc thực hiện hành động phù hợp
-            System.out.println("Vui lòng chọn loại phương tiện!");
+            bc.showErrorAlert("ERROR", "Please choose transportaotion");
             return; // Thoát khỏi phương thức nếu chưa chọn
         }
 
@@ -162,23 +166,38 @@ public class DestinationViewController {
     private void displayRoutes(ListView<Pane> listRoutes, List<Object> allRoutes, String type) {
         listRoutes.getItems().clear();
 
-        for (Object route : allRoutes) {
-            if (route instanceof Schedule) {
-                Schedule schedule = (Schedule) route;
-                Pane pane = createRoutePane(schedule, type);
-                listRoutes.getItems().add(pane);
-            } else if (route instanceof Flight) {
-                Flight flight = (Flight) route;
-                Pane pane = createRoutePane(flight, type);
-                listRoutes.getItems().add(pane);
+        if (allRoutes.isEmpty()) {
+            Pane pane = new Pane();
+            Label noRouteLabel = new Label("Không có chuyến đi nào trong khoảng thời gian này");
+            // Đặt vị trí cho Label ở chính giữa của Pane
+            noRouteLabel.layoutXProperty().bind(pane.widthProperty().subtract(noRouteLabel.widthProperty()).divide(2));
+            noRouteLabel.layoutYProperty().bind(pane.heightProperty().subtract(noRouteLabel.heightProperty()).divide(2));
+
+            pane.setPrefSize(300, 70);
+            pane.setStyle("-fx-border-color: lightgray; -fx-border-width: 1px;");
+            Font font = Font.font("Calibri", 30);
+            noRouteLabel.setFont(font);
+            pane.getChildren().add(noRouteLabel);
+            listRoutes.getItems().add(pane);
+        } else {
+            for (Object route : allRoutes) {
+                if (route instanceof Schedule) {
+                    Schedule schedule = (Schedule) route;
+                    Pane pane = createRoutePane(schedule, type);
+                    listRoutes.getItems().add(pane);
+                } else if (route instanceof Flight) {
+                    Flight flight = (Flight) route;
+                    Pane pane = createRoutePane(flight, type);
+                    listRoutes.getItems().add(pane);
+                }
             }
         }
     }
 
     private Pane createRoutePane(Object entity, String type) {
         Pane pane = new Pane();
-        pane.setPrefSize(300, 70); // Kích thước mới: 300x70
-        pane.setStyle("-fx-border-color: lightgray; -fx-border-width: 1px;"); // Thêm viền cho dễ nhìn
+        pane.setPrefSize(300, 70);
+        pane.setStyle("-fx-border-color: lightgray; -fx-border-width: 1px;");
         Font font = Font.font("Calibri", 20);
 
         Label labelTop = new Label(); // Label cho hàng trên cùng
@@ -203,8 +222,6 @@ public class DestinationViewController {
                 labelBottom.setText(schedule.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " | "
                         + schedule.getGioKhoiHanh() + " - " + schedule.getGioDen() + " | "
                         + formatter.format(schedule.getGiaVe()) + " VND | " + schedule.getSoChoConLai() + " chỗ");
-            } else {
-                labelTop.setText("Không tìm thấy thông tin phương tiện");
             }
         }
 
@@ -215,10 +232,62 @@ public class DestinationViewController {
         labelBottom.setLayoutY(35);
 
         pane.getChildren().addAll(labelTop, labelBottom);
-
+        pane.setOnMouseClicked(event -> openTransportBooking(entity));
         return pane;
     }
 
+    private void openTransportBooking(Object route) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/TransportationBookingView.fxml"));
+            Pane bookingPane = loader.load();
+
+            TransportBookingController controller = loader.getController();
+
+            if (route instanceof Schedule) {
+                Schedule schedule = (Schedule) route;
+                controller.setBookingDetails(
+                        schedule.getRoutes().getDiemKhoiHanh(),
+                        schedule.getRoutes().getDiemDen(),
+                        LocalDate.parse(schedule.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))),
+                        schedule.getGioKhoiHanh(),
+                        schedule.getGioDen(),
+                        getTransportation()
+                );
+            } else if (route instanceof Flight) {
+                Flight flight = (Flight) route;
+                controller.setBookingDetails(
+                        flight.getDiemKhoiHanh(),
+                        flight.getDiemDen(),
+                        LocalDate.parse(flight.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))),
+                        flight.getGioKhoiHanh(),
+                        flight.getGioDen(),
+                        getTransportation()
+                );
+            }
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(bookingPane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
+    public String getTransportation()
+    {
+        if (lastSelectedBox==null)
+        {
+            bc.showErrorAlert("ERROR", "Please choose transportation!");
+        }
+        String loaiPhuongTien = "";
+        if (lastSelectedBox == BusBox) {
+            loaiPhuongTien = "Bus";
+        } else if (lastSelectedBox == TrainBox) {
+            loaiPhuongTien = "Train";
+        } else if (lastSelectedBox == PlaneBox) {
+            loaiPhuongTien = "Plane";
+        }
+        return loaiPhuongTien;
+    }
 }

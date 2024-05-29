@@ -36,6 +36,9 @@ public class SignUpController {
 
     @FXML
     private Hyperlink linkLogin;
+
+    private ButtonController bc = new ButtonController();
+
     @FXML
     public void openLogInView(ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();
@@ -54,20 +57,20 @@ public class SignUpController {
       String email = emailTF.getText();
       String confirmPassword = ConPassTF.getText();
         if (phoneNumber.isEmpty() || passWord.isEmpty() || confirmPassword.isEmpty()) {
-            showAlert("Error", "Phone number and password cannot be empty.");
+            bc.showErrorAlert("Error", "Phone number and password cannot be empty.");
             return;
         }
 
         if (!passWord.equals(confirmPassword)) {
-            showAlert("Error", "Password and confirm password do not match.");
+            bc.showErrorAlert("Error", "Password and confirm password do not match.");
             return;
         }
 
         if (isPhoneNumberExists(phoneNumber)) {
-            showAlert("Error", "Phone number already exists.");
+            bc.showErrorAlert("Error", "Phone number already exists.");
         } else {
             registerUser(email, name, phoneNumber, passWord);
-            showAlert("Success", "Registration successful!");
+            bc.showInformationAlert("Success", "Registration successful!");
             openLogInView(e);
         }
     }
@@ -91,12 +94,5 @@ public class SignUpController {
             session.save(user);
             session.getTransaction().commit();
         }
-    }
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

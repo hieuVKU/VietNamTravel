@@ -30,5 +30,59 @@ public class StayBooking {
     @Column(name = "CCCD", nullable = false, unique = true)
     private String cccd;
 
-    // Getters and Setters
+    public int getStayId() {
+        return stayId;
+    }
+
+    public void setStayId(int stayId) {
+        this.stayId = stayId;
+    }
+
+    public Accommodation getAccommodations() {
+        return accommodations;
+    }
+
+    public void setAccommodations(Accommodation accommodations) {
+        this.accommodations = accommodations;
+    }
+
+    public PassengerInformation getPassengerInformation() {
+        return passengerInformation;
+    }
+
+    public void setPassengerInformation(PassengerInformation passengerInformation) {
+        this.passengerInformation = passengerInformation;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
+    }
+
+    public int getSoNguoi() {
+        return soNguoi;
+    }
+
+    public void setSoNguoi(int soNguoi) {
+        this.soNguoi = soNguoi;
+    }
+
+    public int getSoPhong() {
+        return soPhong;
+    }
+
+    public void setSoPhong(int soPhong) {
+        this.soPhong = soPhong;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
+    }
 }

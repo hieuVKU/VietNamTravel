@@ -24,8 +24,54 @@ public class Pay {
     private TourBooking tourBookings;
 
     @ManyToOne
-    @JoinColumn(name = "Bookings_ID", nullable = false)
+    @JoinColumn(name = "TransportBookings_ID", nullable = false)
     private TransportBooking bookings;
 
-    // Getters and Setters
+    public int getPayId() {
+        return payId;
+    }
+
+    public void setPayId(int payId) {
+        this.payId = payId;
+    }
+
+    public String getPhuongThucThanhToan() {
+        return phuongThucThanhToan;
+    }
+
+    public void setPhuongThucThanhToan(String phuongThucThanhToan) {
+        this.phuongThucThanhToan = phuongThucThanhToan;
+    }
+
+    public String getTrangThaiThanhToan() {
+        return trangThaiThanhToan;
+    }
+
+    public void setTrangThaiThanhToan(String trangThaiThanhToan) {
+        this.trangThaiThanhToan = trangThaiThanhToan;
+    }
+
+    public StayBooking getStayBookings() {
+        return stayBookings;
+    }
+
+    public void setStayBookings(StayBooking stayBookings) {
+        this.stayBookings = stayBookings;
+    }
+
+    public TourBooking getTourBookings() {
+        return tourBookings;
+    }
+
+    public void setTourBookings(TourBooking tourBookings) {
+        this.tourBookings = tourBookings;
+    }
+
+    public TransportBooking getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(TransportBooking bookings) {
+        this.bookings = bookings;
+    }
 }

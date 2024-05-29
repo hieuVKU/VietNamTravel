@@ -56,9 +56,6 @@ public class Flight {
     @Column(name = "GiaVe", nullable = false)
     private BigDecimal giaVe;
 
-    @OneToMany(mappedBy = "plane")
-    private Set<TransportBooking> transportBookings = new LinkedHashSet<>();
-
     public Integer getId() {
         return id;
     }
@@ -111,10 +108,6 @@ public class Flight {
 
     public String getDiemDen() {
         return diemDen;
-    }
-
-    public Set<TransportBooking> getBookings() {
-        return transportBookings;
     }
 
     public BigDecimal getGiaVe() {

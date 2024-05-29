@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccomodationBookingController">
+   <children>
+      <ImageView fitHeight="601.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../img/hotelSwimming.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="601.0" fitWidth="1000.0" opacity="0.6">
+         <image>
+            <Image url="@../../../img/2838316.jpg" />
+         </image>
+      </ImageView>
+      <Pane id="EnterAttractionPane" prefHeight="601.0" prefWidth="1000.0">
+         <children>
+            <Pane layoutX="50.0" layoutY="58.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: white; -fx-background-radius: 15px;">
+               <effect>
+                  <DropShadow height="23.93" radius="15.8625" spread="0.05" width="41.52">
+                     <color>
+                        <Color opacity="0.4770992398262024" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Pane layoutY="94.0" prefHeight="391.0" prefWidth="900.0" style="-fx-background-radius: 0 0 15 15; -fx-background-color: #f9f7e8;">
+                     <children>
+                        <Label layoutX="236.0" layoutY="14.0" text="Name:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="nameTF" layoutX="236.0" layoutY="49.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your name">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="236.0" layoutY="90.0" text="Phone Number:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="phoneTF" layoutX="236.0" layoutY="124.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your phone number">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="236.0" layoutY="165.0" text="Birth:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="mailTF" layoutX="236.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your birth">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="25.0" layoutY="19.0" text="Number of Person" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="PersonNumber" alignment="TOP_CENTER" layoutX="89.0" layoutY="53.0" prefHeight="35.0" prefWidth="51.0" text="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                        <Button id="plusButt" layoutX="148.0" layoutY="56.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="12.0" style="-fx-background-radius: 50px;" text="+">
+                           <font>
+                              <Font name="Berlin Sans FB" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button id="minusButt" layoutX="52.0" layoutY="56.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="12.0" style="-fx-background-radius: 50px;" text="-">
+                           <font>
+                              <Font name="Berlin Sans FB" size="16.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="758.0" layoutY="250.0" text="Total" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label id="totalMoney" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="281.0" opacity="0.9" prefHeight="30.0" prefWidth="200.0" text="XXX.XXX VND" textFill="#040046cc">
+                           <font>
+                              <Font name="Britannic Bold" size="23.0" />
+                           </font>
+                        </Label>
+                        <ListView id="PassengerList" layoutX="14.0" layoutY="99.0" prefHeight="200.0" prefWidth="210.0" style="-fx-border-color: black;" />
+                        <Button id="continueButt" layoutX="736.0" layoutY="334.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 11.3744% 100.0%, #110ec7 0.0%, #33bcde 47.8659%, #7216eb 100.0%);" text="Continue" textFill="WHITE">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.7580549716949463" green="0.7469000220298767" blue="0.9700000286102295" opacity="0.6450381875038147" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Button>
+                        <Label layoutX="459.0" layoutY="14.0" text="Check-in:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="goDate" editable="false" layoutX="459.0" layoutY="49.0" prefHeight="35.0" prefWidth="200.0" text="24/06/2024">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="459.0" layoutY="89.0" text="Check-out:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="returnDate" editable="false" layoutX="459.0" layoutY="124.0" prefHeight="35.0" prefWidth="200.0" text="25/06/2024">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="236.0" layoutY="245.0" text="Accomodation:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="returnDate" editable="false" layoutX="236.0" layoutY="280.0" prefHeight="35.0" prefWidth="200.0" text="Marriot">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="459.0" layoutY="164.0" text="Number of Room:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="returnDate" editable="false" layoutX="459.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="459.0" layoutY="245.0" text="ID Card:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField id="returnDate" editable="false" layoutX="459.0" layoutY="280.0" prefHeight="35.0" prefWidth="200.0">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </Pane>
+                  <Label layoutX="216.0" layoutY="21.0" opacity="0.8" text="Let's start your best stay in" textFill="#424242e6">
+                     <font>
+                        <Font name="Eras Demi ITC" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="201.0" layoutY="36.0" opacity="0.8" prefHeight="56.0" prefWidth="499.0" text="Thua Thien Hue">
+                     <font>
+                        <Font name="Eras Demi ITC" size="47.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.11374407582938384" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.06841713935136795" green="0.05460000038146973" blue="0.7799999713897705" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.4786585365853659">
+                                 <color>
+                                    <Color red="0.20010000467300415" green="0.736020028591156" blue="0.8700000047683716" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.447449654340744" green="0.08528265357017517" blue="0.9210526347160339" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="233.0" layoutY="14.0" text="Enter Passenger Information" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+               <effect>
+                  <DropShadow height="23.93" radius="12.1975" spread="0.13" width="26.86">
+                     <color>
+                        <Color red="0.29760000109672546" green="0.47999998927116394" blue="0.30671998858451843" opacity="0.9045801758766174" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="714.0" layoutY="18.0" opacity="0.7" text="Pay" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="19.0" />
+               </font>
+               <effect>
+                  <DropShadow height="23.93" radius="12.1975" spread="0.13" width="26.86">
+                     <color>
+                        <Color red="0.29760000109672546" green="0.47999998927116394" blue="0.30671998858451843" opacity="0.9045801758766174" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="PayPane" layoutX="-4.0" prefHeight="601.0" prefWidth="1000.0" visible="false">
+         <children>
+            <Label layoutX="666.0" layoutY="21.0" text="Pay" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+               <effect>
+                  <DropShadow height="23.93" radius="12.1975" spread="0.13" width="26.86">
+                     <color>
+                        <Color red="0.29760000109672546" green="0.47999998927116394" blue="0.30671998858451843" opacity="0.9045801758766174" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="270.0" layoutY="25.0" opacity="0.7" text="Enter Passernger Information" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="19.0" />
+               </font>
+               <effect>
+                  <DropShadow height="23.93" radius="12.1975" spread="0.13" width="26.86">
+                     <color>
+                        <Color red="0.29760000109672546" green="0.47999998927116394" blue="0.30671998858451843" opacity="0.9045801758766174" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Button id="backButton" layoutY="-6.0" mnemonicParsing="false" prefWidth="51.0" style="-fx-background-color: transparent;" text="&lt;-">
+               <font>
+                  <Font name="Alatsi Regular" size="21.0" />
+               </font>
+            </Button>
+            <Pane focusTraversable="true" layoutX="75.0" layoutY="60.0" prefHeight="485.0" prefWidth="850.0" style="-fx-background-color: white; -fx-background-radius: 15px;" visible="false">
+               <effect>
+                  <DropShadow height="29.79" radius="14.395" spread="0.01" width="29.79">
+                     <color>
+                        <Color opacity="0.7748091816902161" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="22.0" layoutY="14.0" text="SELECT PAYMENT METHOD">
+                     <font>
+                        <Font name="Alatsi Regular" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-2.0" layoutX="123.0" layoutY="54.0" startX="-100.0" />
+                  <Pane id="CreditCardPaneButton" layoutX="72.0" layoutY="87.0" prefHeight="53.0" prefWidth="175.0" style="-fx-border-color: black; -fx-background-color: #f9f7e8; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+                     <children>
+                        <Label layoutX="68.0" layoutY="16.0" text="Credit Card">
+                           <font>
+                              <Font name="Berlin Sans FB" size="20.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="0.9620853080568721" startX="0.6492890995260664" startY="0.5781990521327014">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.18585526943206787" green="0.3552631437778473" blue="0.2112664431333542" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.22770467400550842" green="0.5526315569877625" blue="0.33059820532798767" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="11.0" layoutY="4.0">
+                           <image>
+                              <Image url="@../../../img/credit-card.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow spread="0.11">
+                           <color>
+                              <Color red="0.5" green="0.34259259700775146" blue="0.34259259700775146" opacity="0.47999998927116394" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Pane>
+                  <Pane id="QRBankingPaneButton" layoutX="256.0" layoutY="90.0" opacity="0.8" prefHeight="46.0" prefWidth="166.0" style="-fx-border-color: black;">
+                     <children>
+                        <Label layoutX="60.0" layoutY="12.0" text="QR Banking">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="20.0" layoutY="8.0">
+                           <image>
+                              <Image url="@../../../img/qr-code.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane id="OrderPane" layoutX="562.0" layoutY="73.0" prefHeight="259.0" prefWidth="222.0" style="-fx-border-radius: 10px; -fx-border-color: black;">
+                     <children>
+                        <Label layoutX="55.0" layoutY="14.0" text="YOUR ORDER">
+                           <font>
+                              <Font name="Alatsi Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="91.0" layoutX="115.0" layoutY="40.0" startX="-100.0" />
+                        <Label id="HotelName" layoutX="15.0" layoutY="58.0" text="Marriot">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label id="CheckInDay" layoutX="15.0" layoutY="87.0" text="Check-in: 24/06/2024">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label id="CheckOutDay" layoutX="14.0" layoutY="116.0" text="Check-out: 25/06/2024">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label id="RoomNum" layoutX="14.0" layoutY="145.0" text="Number of Room: 1">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label id="phoneNum" layoutX="14.0" layoutY="174.0" text="0379032294">
+                           <font>
+                              <Font name="Alatsi Regular" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label id="totalMoney" layoutX="45.0" layoutY="211.0" text="240.600 VND" textFill="#9a3c3c">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button id="PurchasetButton" layoutX="562.0" layoutY="352.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 11.3744% 100.0%, #110ec7 0.0%, #33bcde 47.8659%, #7216eb 100.0%);" text="PURCHASET" textFill="#f9f7e8">
+                     <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                     </font>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="0.3077999949455261" green="0.3799999952316284" blue="0.3306633234024048" opacity="0.7480915784835815" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Pane id="CreditCardPane" layoutX="72.0" layoutY="152.0" prefHeight="246.0" prefWidth="371.0">
+                     <children>
+                        <Label layoutY="4.0" text="NAME ON CARD">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="nameCard" layoutY="35.0" prefHeight="35.0" prefWidth="350.0" promptText="Nguyen Van A" />
+                        <Label layoutX="4.0" layoutY="80.0" text="CARD NUMBER">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="numberCard" layoutY="111.0" prefHeight="35.0" prefWidth="350.0" promptText="XXXX XXXX XXXX XXXX" />
+                        <Label layoutY="156.0" text="MONTH/YEAR">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="monthYear" layoutY="190.0" prefHeight="35.0" prefWidth="153.0" promptText="mm/yy" />
+                        <Label layoutX="197.0" layoutY="156.0" text="CVV">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="cvv" layoutX="197.0" layoutY="190.0" prefHeight="35.0" prefWidth="153.0" promptText="XXX" />
+                     </children>
+                  </Pane>
+                  <ImageView id="QRBankingPane" fitHeight="311.0" fitWidth="305.0" layoutX="109.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../img/QRHIEUNGU.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

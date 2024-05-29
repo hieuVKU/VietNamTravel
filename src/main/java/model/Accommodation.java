@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Accommodations")	
+@Table(name = "Accommodations")
 public class Accommodation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,22 @@ public class Accommodation {
     private String ten;
 
     @Nationalized
-    @Column(name = "DiaChi")
+    @Column(name = "DiaChi", nullable = false)
     private String diaChi;
 
     @Nationalized
     @Lob
-    @Column(name = "MoTa", columnDefinition = "nvarchar(max)")
+    @Column(name = "MoTa", columnDefinition = "nvarchar(max)" , nullable = false)
     private String moTa;
 
-    @Column(name = "GiaPhong", precision = 10, scale = 2)
+    @Column(name = "GiaPhong", precision = 10, scale = 2, nullable = false)
     private BigDecimal giaPhong;
+
+    @Column(name = "SoPhongConLai", nullable = false)
+    private Integer SoPhongConLai;
+
+    @Column(name = "TheLoai", nullable = false)
+    private String TheLoai;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Images_ID")

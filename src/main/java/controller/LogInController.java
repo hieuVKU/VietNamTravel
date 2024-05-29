@@ -41,6 +41,8 @@ public class LogInController {
     @FXML
     private Hyperlink linkSignUp;
 
+    private ButtonController bc = new ButtonController();
+
     public void openSignUpView(ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -57,12 +59,12 @@ public class LogInController {
         String password = passTF.getText();
 
         if (phoneNumber.isEmpty() || password.isEmpty()) {
-            showAlert("Error", "Phone number and password cannot be empty.");
+            bc.showErrorAlert("Error", "Phone number and password cannot be empty.");
             return;
         }
 
         if (isLoginValid(phoneNumber, password)) {
-            showAlert("Success", "Login successful!");
+            bc.showInformationAlert("Success", "Login successful!");
 
 
 //Open MainView when successfully login
@@ -78,7 +80,7 @@ public class LogInController {
             MainViewController mainViewController = loader.getController();
             mainViewController.showAccountPane();
         } else {
-            showAlert("Error", "Invalid phone number or password.");
+            bc.showErrorAlert("Error", "Invalid phone number or password.");
         }
     }
 
@@ -106,12 +108,4 @@ public class LogInController {
         }
     }
 
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

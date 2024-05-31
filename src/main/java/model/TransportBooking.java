@@ -19,16 +19,9 @@ public class TransportBooking {
     @JoinColumn(name = "Users_ID", nullable = false)
     private User users;
 
-    @Nationalized
-    @Column(name = "LoaiVe", nullable = false, length = 50)
-    private String loaiVe;
-
-    @Column(name = "NgayDat", nullable = false)
-    private LocalDate ngayDat;
-
-    @Nationalized
-    @Column(name = "TrangThai", nullable = false, length = 50)
-    private String trangThai;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Transportations_ID", nullable = false) 
+    private Transportation transportation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Schedules_ID")
@@ -77,32 +70,16 @@ public class TransportBooking {
         return users;
     }
 
+    public Transportation getTransportation() {
+        return transportation;
+    }
+
+    public void setTransportation(Transportation transportation) {
+        this.transportation = transportation;
+    }
+
     public void setUsers(User users) {
         this.users = users;
-    }
-
-    public String getLoaiVe() {
-        return loaiVe;
-    }
-
-    public void setLoaiVe(String loaiVe) {
-        this.loaiVe = loaiVe;
-    }
-
-    public LocalDate getNgayDat() {
-        return ngayDat;
-    }
-
-    public void setNgayDat(LocalDate ngayDat) {
-        this.ngayDat = ngayDat;
-    }
-
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
     }
 
 }

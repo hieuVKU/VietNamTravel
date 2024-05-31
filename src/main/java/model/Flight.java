@@ -4,6 +4,7 @@ import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
@@ -48,10 +49,10 @@ public class Flight {
     private String diemDen;
 
     @Column(name = "GioKhoiHanh", nullable = false)
-    private LocalTime gioKhoiHanh;
+    private Time gioKhoiHanh;
 
     @Column(name = "GioDen", nullable =false)
-    private LocalTime gioDen;
+    private Time gioDen;
 
     @Column(name = "GiaVe", nullable = false)
     private BigDecimal giaVe;
@@ -94,11 +95,11 @@ public class Flight {
         return ngayDen;
     }
 
-    public LocalTime getGioKhoiHanh() {
+    public Time getGioKhoiHanh() {
         return gioKhoiHanh;
     }
 
-    public LocalTime getGioDen() {
+    public Time getGioDen() {
         return gioDen;
     }
 

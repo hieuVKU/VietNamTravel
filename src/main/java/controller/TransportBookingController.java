@@ -9,11 +9,21 @@ import javafx.scene.text.Font;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import model.*;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
+import javax.persistence.PersistenceException;
+import java.sql.Time;
+import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class TransportBookingController {
     @FXML
@@ -59,6 +69,9 @@ public class TransportBookingController {
     private Label FromToLabel;
 
     @FXML
+    private TextField mailTF;
+
+    @FXML
     private Button plusButt;
 
     @FXML
@@ -70,33 +83,45 @@ public class TransportBookingController {
     @FXML
     private VBox passengerContainer;
 
+    @FXML
+    private Pane OrderPane;
+
     private Session session;
 
     private double totalAmount = 0.0;
 
     private ObservableList<Pane> passengerPanes;
 
+    private String schedule_ID;
+
+    private String routeID;
+
+    private double ticketPrice;
+
     private ButtonController bc = new ButtonController();
 
-    public TransportBookingController()
-    {
+    private TransportBooking transportBooking;
+
+    private User HieuNgu;
+
+    public TransportBookingController() {
         this.session = HibernateUtil.getSessionFactory().openSession();
     }
 
     @FXML
     private void initialize() {
+        HieuNgu = new User();
+        HieuNgu.setId(1);
+        HieuNgu.setHoTen("hiếu sữa bò");
+        HieuNgu.setEmail("bosuahieu@booo.com");
+        HieuNgu.setSoDienThoai("0123456789");
+        PersonNumber.setText("1");
+        transportBooking = new TransportBooking();
         passengerPanes = FXCollections.observableArrayList();
-
+        addPassengerPane();
         setupButtonActions();
-        plusButt.setOnMouseClicked(event -> {
-            addPassengerPane();
-            updateTotalAmount();
-        });
-        minusButt.setOnMouseClicked(event -> {
-            removePassengerPane();
-            updateTotalAmount();
-        });
     }
+
     private Pane createPassengerPane(int passengerNumber) {
         Pane pane = new Pane();
         pane.setPrefSize(200, 150);
@@ -129,13 +154,13 @@ public class TransportBookingController {
     }
 
 
-
     private void setupButtonActions() {
         plusButt.setOnMouseClicked(event -> addPassengerPane());
         minusButt.setOnMouseClicked(event -> removePassengerPane());
         continueButt.setOnMouseClicked(event -> {
             EnterAttractionPane.setVisible(false);
             PayPane.setVisible(true);
+            handleContinueButton();
         });
         backButton.setOnMouseClicked(event -> {
             EnterAttractionPane.setVisible(true);
@@ -151,18 +176,20 @@ public class TransportBookingController {
         });
     }
 
-    public void setBookingDetails(String from, String to, LocalDate goDate, LocalTime startTime, LocalTime endTime, String transportation) {
+    public void setBookingDetails(String from, String to, LocalDate goDate, Time startTime, Time endTime, String transportation, String schedule_ID) {
         FromToLabel.setText(from + " to " + to);
         this.goDateTF.setText(String.valueOf(goDate));
         this.startTF.setText(String.valueOf(startTime));
         this.endTF.setText(String.valueOf(endTime));
         this.TransportationTF.setText(transportation);
+        this.schedule_ID = schedule_ID;
     }
 
     @FXML
     private void PlusButton() {
         int currentValue = Integer.parseInt(PersonNumber.getText());
         PersonNumber.setText(String.valueOf(currentValue + 1));
+        updateTotalAmount();
     }
 
     @FXML
@@ -171,6 +198,7 @@ public class TransportBookingController {
             int currentValue = Integer.parseInt(PersonNumber.getText());
             if (currentValue > 1) {
                 PersonNumber.setText(String.valueOf(currentValue - 1));
+                updateTotalAmount();
             } else {
                 bc.showErrorAlert("ERROR", "Person number cannot be less than 1");
             }
@@ -191,52 +219,190 @@ public class TransportBookingController {
             passengerContainer.getChildren().remove(removedPane);
         }
     }
-    private void updateTotalAmount() {
-        int numberPassenger = Integer.parseInt(PersonNumber.getText());
-        String vehicleType = TransportationTF.getText();
-        LocalDate goDate = LocalDate.parse(goDateTF.getText());
-        LocalTime startTime = LocalTime.parse(startTF.getText());
-        LocalTime endTime = LocalTime.parse(endTF.getText());
 
-        double farePerPassenger = getTicketPrice(vehicleType, goDate, startTime, endTime);
-        totalAmount = numberPassenger * farePerPassenger;
-        totalMoney.setText(totalAmount + " VND");
+    public void setScheduleID(String scheduleID) {
+        this.schedule_ID = scheduleID;
+        ticketPrice = getTicketPrice(scheduleID);
+        updateTotalAmount();
     }
 
-    private double getTicketPrice(String vehicleType, LocalDate goDate, LocalTime startTime, LocalTime endTime) {
-        double farePerPassenger = 0.0;
+    private double getTicketPrice(String maChuyenDi) {
         try {
-            // Chuyển đổi LocalTime sang java.sql.Time
-//            java.sql.Time goTimeSQL = java.sql.Time.valueOf(startTime);
-//            java.sql.Time returnTimeSQL = java.sql.Time.valueOf(endTime);
-
-            // Sử dụng java.sql.Time trong câu truy vấn HQL
-            String hql = "SELECT S.giaVe " +
-                    "FROM Schedule S JOIN S.transportations T " +
-                    "WHERE T.loaiPhuongTien = :vehicleType " +
-                    "AND S.ngayKhoiHanh = :goDate " +
-                    "AND S.gioKhoiHanh = :goTime " +
-                    "AND S.gioDen = :returnTime";
-
+            String hql = "SELECT S.giaVe FROM Schedule S WHERE S.id = :scheduleId";
             Query<Double> query = session.createQuery(hql, Double.class);
-            query.setParameter("vehicleType", vehicleType);
-            query.setParameter("goDate", goDate); // Sử dụng LocalDate
-            query.setParameter("goTime", startTime); // Sử dụng java.sql.Time
-            query.setParameter("returnTime", endTime); // Sử dụng java.sql.Time
+            query.setParameter("scheduleId", Integer.parseInt(maChuyenDi));
+            return query.uniqueResultOptional().orElse(0.0); // Sử dụng Optional để xử lý null
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0.0;
+        }
+    }
 
-            // Ghi log thông tin truy vấn và các tham số
-            System.out.println("Query: " + query.getQueryString());
-            System.out.println("Parameters:");
-            System.out.println("  vehicleType: " + vehicleType + " (" + vehicleType.getClass().getName() + ")");
-            System.out.println("  goDate: " + goDate + " (" + goDate.getClass().getName() + ")");
-            System.out.println("  goTime: " + startTime + " (" + startTime.getClass().getName() + ")");
-            System.out.println("  returnTime: " + endTime + " (" + endTime.getClass().getName() + ")");
+    private void updateTotalAmount() {
+        int numberPassenger = Integer.parseInt(PersonNumber.getText());
+        totalAmount = numberPassenger * ticketPrice;
+        totalMoney.setText(String.format("%.0f VND", totalAmount)); // Định dạng tiền tệ
+    }
+    private void handleContinueButton() {
+        String loaiPhuongTien = TransportationTF.getText();
+        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien);
 
-            farePerPassenger = query.uniqueResult();
+        if (transportation == null) {
+            bc.showErrorAlert("Error", "Invalid transportation type");
+            return;
+        }
+
+        updateTotalAmount();
+        String transportTypeLabel = transportation.getLoaiPhuongTien();
+
+        setYourOrder(OrderPane,
+                FromToLabel.getText(),
+                LocalDate.parse(goDateTF.getText()),
+                LocalTime.parse(startTF.getText()),
+                PersonNumber.getText(),
+                mailTF.getText(),
+                transportTypeLabel,
+                totalAmount);
+    }
+
+    public void handlePurchasetButton() {
+        String loaiPhuongTien = TransportationTF.getText();
+        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien);
+
+        if (transportation == null) {
+            bc.showErrorAlert("Error", "Invalid transportation type");
+            return;
+        }
+        // Lưu thông tin đặt vé vào CSDL
+        try {
+            Transaction transaction = session.beginTransaction();
+
+            transportBooking.setUsers(HieuNgu);
+            transportBooking.setTransportation(transportation);
+
+            Schedule schedule = session.get(Schedule.class, Integer.parseInt(schedule_ID));
+            if (schedule == null) {
+                bc.showErrorAlert("Error", "Invalid schedule ID.");
+                return;
+            }
+            // Liên kết transportBooking với schedule
+            transportBooking.setSchedules(schedule);
+            // Lưu thông tin vé phương tiện
+            session.save(transportBooking);
+            // Lưu thông tin hành khách
+            List<PassengerInformation> passengers = getPassengerInformation();
+            savePassengerInf(passengers, transportBooking);
+
+            // Cập nhật số lượng chỗ ngồi còn lại
+            String updateHql = "UPDATE Schedule SET soChoConLai = soChoConLai - :soLuongVe WHERE id = :scheduleId";
+            Query updateQuery = session.createQuery(updateHql);
+            updateQuery.setParameter("soLuongVe", passengers.size());
+            updateQuery.setParameter("scheduleId", Integer.parseInt(schedule_ID));
+            updateQuery.executeUpdate();
+
+            transaction.commit(); // Kết thúc giao dịch
+            bc.showInformationAlert("Success", "Booking successful!");
+
+        } catch (NumberFormatException e) {
+            bc.showErrorAlert("Error", "Invalid schedule ID format.");
+            e.printStackTrace();
+        } catch (PersistenceException e) {
+            bc.showErrorAlert("Error", "Cannot booking");
+            e.printStackTrace();
+        } catch (Exception e) {
+            bc.showErrorAlert("Error", "An error occurred while processing your booking. Please try again.");
+            e.printStackTrace();
+        } finally {
+            if (session.getTransaction().isActive()) { // Đảm bảo rằng giao dịch đã được đóng hoặc rollback
+                session.getTransaction().rollback(); // Rollback giao dịch nếu vẫn còn hoạt động
+            }
+        }
+    }
+
+
+    // Phương thức để lấy đối tượng Transportation từ cơ sở dữ liệu dựa trên loại phương tiện
+    private Transportation getTransportationByLoaiPhuongTien(String loaiPhuongTien) {
+        try{
+            String hql = "FROM Transportation T WHERE T.loaiPhuongTien = :loaiPhuongTien";
+            Query<Transportation> query = session.createQuery(hql, Transportation.class);
+            query.setParameter("loaiPhuongTien", loaiPhuongTien);
+            return query.uniqueResultOptional().orElse(null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<PassengerInformation> getPassengerInformation() {
+        List<PassengerInformation> passengers = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Pane passengerPane : passengerPanes) {
+            TextField nameField = (TextField) passengerPane.getChildren().get(1);
+            TextField birthField = (TextField) passengerPane.getChildren().get(3);
+
+            PassengerInformation passenger = new PassengerInformation();
+            passenger.setHoTen(nameField.getText());
+
+            // Kiểm tra xem trường ngày sinh có giá trị không
+            if (birthField.getText() != null && !birthField.getText().isEmpty()) {
+                try {
+                    LocalDate birthDate = LocalDate.parse(birthField.getText(), formatter);
+                    passenger.setNgaySinh(birthDate);
+                } catch (DateTimeParseException e) {
+                    bc.showErrorAlert("ERROR", "Invalid birth date format or out of range. Please use dd/MM/yyyy.");
+                    return null;
+                }
+            } else {
+                // Xử lý trường hợp không nhập ngày sinh
+                bc.showErrorAlert("ERROR", "Please enter birth date for all passengers.");
+                return null;
+            }
+
+            passengers.add(passenger);
+        }
+        return passengers;
+    }
+
+
+    private void savePassengerInf(List<PassengerInformation> passengers, TransportBooking transportBooking) {
+
+        try {
+            for (PassengerInformation passenger : passengers) {
+                passenger.setBookings(transportBooking);
+                session.save(passenger);
+                System.out.println("Saving passenger: " + passenger.getHoTen() + ", Birth date: " + passenger.getNgaySinh());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return farePerPassenger;
     }
 
+    private void setYourOrder(Pane OrderPane, String fromToLabel, LocalDate goLabel, LocalTime timeLabel, String numberOfSeatLabel, String emailLabel, String transportTypeLabel, double totalMoneyOrderLabel) {
+        try {
+            // Find label by fx:id
+            Label FromAndTo = (Label) OrderPane.lookup("#whereToLabel");
+            Label dayGo = (Label) OrderPane.lookup("#goLabel");
+            Label timeGo = (Label) OrderPane.lookup("#timeLabel");
+            Label numOfSeat = (Label) OrderPane.lookup("#numberOfSeatLabel");
+            Label mail = (Label) OrderPane.lookup("#emailLabel");
+            Label type = (Label) OrderPane.lookup("#transportTypeLabel");
+            Label total = (Label) OrderPane.lookup("#totalMoneyOrderLabel");
+
+            //setText
+            if (FromAndTo != null) FromAndTo.setText(fromToLabel);
+            if (dayGo != null) dayGo.setText("Date: " + goLabel.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            if (timeGo != null) timeGo.setText("Time: " + timeLabel.toString());
+            if (numOfSeat != null) numOfSeat.setText("Number of seats: " + numberOfSeatLabel);
+            if (mail != null) mail.setText("Email: " + emailLabel);
+            if (type != null) type.setText("Transportation type:" + transportTypeLabel);
+            if (total != null) {
+                NumberFormat fommatter = NumberFormat.getNumberInstance(Locale.US);
+                total.setText("Total: " + fommatter.format(totalMoneyOrderLabel) + " VND");
+            }
+        } catch (NullPointerException e)
+        {
+            System.err.println("Error: One or more labels not found in OrderPane.");
+            e.printStackTrace();
+        }
+    }
 }

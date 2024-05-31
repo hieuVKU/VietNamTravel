@@ -42,10 +42,15 @@ public class DestinationViewController {
 
     private HBox lastSelectedBox;
 
+    private String scheduleID;
+
+    private String flightID;
+
     private Session session;
 
     private ButtonController bc = new ButtonController();
 
+    private TransportBookingController tbc = new TransportBookingController();
 
     public DestinationViewController(){
         this.session = HibernateUtil.getSessionFactory().openSession();
@@ -53,6 +58,8 @@ public class DestinationViewController {
 
     @FXML
     private void initialize() {
+//        tbc = new TransportBookingController();
+        System.out.println("TransportBookingController initialized: " + (tbc != null)); // Debugging line
         // Bắt sự kiện click cho các HBox
         System.out.println("Initialize called");
         System.out.println("FromTF: " + FromTF); // Debugging line
@@ -185,14 +192,30 @@ public class DestinationViewController {
                     Schedule schedule = (Schedule) route;
                     Pane pane = createRoutePane(schedule, type);
                     listRoutes.getItems().add(pane);
+                    pane.setOnMouseClicked(event -> {
+                        scheduleID = ((Schedule) route).getId().toString();
+                        openTransportBooking(route);
+                        System.out.println("Schedule route selected: " + scheduleID); // Debugging line
+                    });
                 } else if (route instanceof Flight) {
                     Flight flight = (Flight) route;
                     Pane pane = createRoutePane(flight, type);
                     listRoutes.getItems().add(pane);
+                    pane.setOnMouseClicked(event -> {
+                       // scheduleID = ((Flight) route).getId().toString();
+                        openFlightBooking(flightID);
+                        System.out.println("Flight route selected: " + scheduleID); // Debugging line
+                    });
                 }
             }
         }
     }
+
+    public void openFlightBooking(String flightID)
+    {
+        //Từ từ bố mày code sau
+    }
+
 
     private Pane createRoutePane(Object entity, String type) {
         Pane pane = new Pane();
@@ -208,12 +231,14 @@ public class DestinationViewController {
         NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
 
         if (entity instanceof Flight) {
+            pane.setUserData(((Flight) entity).getId().toString());
             Flight flight = (Flight) entity;
             labelTop.setText(flight.getSanBayDi() + " -> " + flight.getSanBayDen() + " | " + flight.getHangHangKhong());
             labelBottom.setText(flight.getDiemKhoiHanh() + " -> " + flight.getDiemDen() + " | " + flight.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " | "
                     + flight.getGioKhoiHanh() + " | " +flight.getGioDen()
                     + formatter.format(flight.getGiaVe()) + " VND | " + flight.getSoGheConLai() + " chỗ");
         } else if (entity instanceof Schedule) {
+            pane.setUserData(((Schedule) entity).getId().toString());
             Schedule schedule = (Schedule) entity;
             Transportation transportation = schedule.getTransportations();
 
@@ -240,8 +265,9 @@ public class DestinationViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/TransportationBookingView.fxml"));
             Pane bookingPane = loader.load();
-
             TransportBookingController controller = loader.getController();
+//            String scheduleID = (String) ((Pane) route).getUserData();
+             controller.setScheduleID(scheduleID);
 
             if (route instanceof Schedule) {
                 Schedule schedule = (Schedule) route;
@@ -251,20 +277,10 @@ public class DestinationViewController {
                         LocalDate.parse(schedule.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))),
                         schedule.getGioKhoiHanh(),
                         schedule.getGioDen(),
-                        getTransportation()
-                );
-            } else if (route instanceof Flight) {
-                Flight flight = (Flight) route;
-                controller.setBookingDetails(
-                        flight.getDiemKhoiHanh(),
-                        flight.getDiemDen(),
-                        LocalDate.parse(flight.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))),
-                        flight.getGioKhoiHanh(),
-                        flight.getGioDen(),
-                        getTransportation()
+                        getTransportation(),
+                        scheduleID
                 );
             }
-
             Stage stage = new Stage();
             stage.setScene(new Scene(bookingPane));
             stage.show();

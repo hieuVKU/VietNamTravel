@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedHashSet;
@@ -22,10 +23,10 @@ public class Schedule {
     private LocalDate ngayKhoiHanh;
 
     @Column(name = "GioKhoiHanh", columnDefinition = "time", nullable = false)
-    private LocalTime gioKhoiHanh;
+    private Time gioKhoiHanh;
 
     @Column(name = "GioDen", columnDefinition = "time", nullable = false)
-    private LocalTime gioDen;
+    private Time gioDen;
 
     @Column(name = "GiaVe", nullable = false, precision = 10, scale = 2)
     private Double giaVe;
@@ -80,19 +81,19 @@ public class Schedule {
         this.ngayKhoiHanh = ngayKhoiHanh;
     }
 
-    public LocalTime getGioKhoiHanh() {
+    public Time getGioKhoiHanh() {
         return gioKhoiHanh;
     }
 
-    public void setGioKhoiHanh(LocalTime gioKhoiHanh) {
+    public void setGioKhoiHanh(Time gioKhoiHanh) {
         this.gioKhoiHanh = gioKhoiHanh;
     }
 
-    public LocalTime getGioDen() {
+    public Time getGioDen() {
         return gioDen;
     }
 
-    public void setGioDen(LocalTime gioDen) {
+    public void setGioDen(Time gioDen) {
         this.gioDen = gioDen;
     }
 

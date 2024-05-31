@@ -32,9 +32,6 @@ public class Accommodation {
     @Column(name = "SoPhongConLai", nullable = false)
     private Integer SoPhongConLai;
 
-    @Column(name = "TheLoai", nullable = false)
-    private String TheLoai;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Images_ID")
     private Images images;

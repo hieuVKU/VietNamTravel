@@ -46,7 +46,7 @@
                               <Font name="Alatsi Regular" size="23.0" />
                            </font>
                         </Label>
-                        <TextField id="nameTF" layoutX="278.0" layoutY="49.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your name">
+                        <TextField fx:id="nameTF" layoutX="278.0" layoutY="49.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your name">
                            <font>
                               <Font name="Alatsi Regular" size="16.0" />
                            </font>
@@ -66,7 +66,7 @@
                               <Font name="Alatsi Regular" size="23.0" />
                            </font>
                         </Label>
-                        <TextField id="mailTF" layoutX="278.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your email">
+                        <TextField fx:id="mailTF" layoutX="278.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0" promptText="Enter your email">
                            <font>
                               <Font name="Alatsi Regular" size="16.0" />
                            </font>
@@ -76,7 +76,7 @@
                               <Font name="Alatsi Regular" size="23.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="PersonNumber" alignment="TOP_CENTER" layoutX="105.0" layoutY="54.0" prefHeight="35.0" prefWidth="51.0" text="0">
+                        <TextField fx:id="PersonNumber" alignment="TOP_CENTER" layoutX="105.0" layoutY="54.0" prefHeight="35.0" prefWidth="51.0" text="1">
                            <font>
                               <Font size="16.0" />
                            </font></TextField>
@@ -290,7 +290,7 @@
                      </font>
                   </Label>
                   <Line endX="-2.0" layoutX="123.0" layoutY="54.0" startX="-100.0" />
-                  <Pane id="OrderPane" layoutX="562.0" layoutY="73.0" prefHeight="300.0" prefWidth="222.0" style="-fx-border-radius: 10px; -fx-border-color: black;">
+                  <Pane fx:id="OrderPane" layoutX="562.0" layoutY="73.0" prefHeight="300.0" prefWidth="222.0" style="-fx-border-radius: 10px; -fx-border-color: black; -fx-background-color: #DDDDDD; -fx-background-radius: 10px;">
                      <children>
                         <Label layoutX="55.0" layoutY="14.0" text="YOUR ORDER">
                            <font>
@@ -298,44 +298,44 @@
                            </font>
                         </Label>
                         <Line endX="91.0" layoutX="115.0" layoutY="40.0" startX="-100.0" />
-                        <Label id="From_To" layoutX="15.0" layoutY="58.0" text="Da Nang - Hue">
+                        <Label fx:id="whereToLabel" layoutX="15.0" layoutY="58.0" text="Where - to">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
-                        <Label id="GoDate" layoutX="15.0" layoutY="87.0" text="Go: 24/06/2024">
+                           <Label fx:id="goLabel" layoutX="15.0" layoutY="87.0" text="Go: ">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
-                        <Label id="ReturnDate" layoutX="14.0" layoutY="116.0" text="Return: ">
+                        <Label fx:id="timeLabel" layoutX="14.0" layoutY="116.0" text="Time: ">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
-                        <Label id="NumSeat" layoutX="14.0" layoutY="145.0" text="Number of Seat:">
+                        <Label fx:id="numberOfSeatLabel" layoutX="14.0" layoutY="145.0" text="Number of Seat:">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
-                        <Label id="email" layoutX="14.0" layoutY="174.0" text="hahnj24667@gmail.com">
+                        <Label fx:id="emailLabel" layoutX="14.0" layoutY="174.0" text="Email:">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
-                        <Label id="totalMoney" layoutX="45.0" layoutY="247.0" text="240.600 VND" textFill="#9a3c3c">
+                        <Label fx:id="totalMoneyOrderLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="231.0" prefHeight="46.0" prefWidth="222.0" text="240.600 VND" textFill="#9a3c3c">
                            <font>
                               <Font name="Alatsi Regular" size="23.0" />
                            </font>
                         </Label>
-                        <Label id="transport" layoutX="14.0" layoutY="203.0" text="Train">
+                        <Label id="transportTypeLabel" layoutX="14.0" layoutY="203.0" text="Transport type:">
                            <font>
                               <Font name="Alatsi Regular" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Button id="PurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASET" textFill="#f9f7e8">
+                  <Button fx:id="PurchasetButton" onAction="#handlePurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASET" textFill="#f9f7e8">
                      <font>
                         <Font name="Berlin Sans FB" size="22.0" />
                      </font>

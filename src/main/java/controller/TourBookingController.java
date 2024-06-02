@@ -101,17 +101,6 @@ public class TourBookingController {
     //BUTTON DATEPICKER
     @FXML
     public void handleGoDateTFAction(ActionEvent event) {
-        LocalDate goDate = goDateTF.getValue();
-        if (goDate != null) {
-                int soNgay = MainViewController.TourData.getSoNgay();
-                LocalDate returnDate = goDate.plusDays(soNgay);
-
-                // Format the returnDate to "mm-dd-yy"
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-                String formattedReturnDate = returnDate.format(formatter);
-
-                returnDateText.setText(formattedReturnDate);
-        }
     }
 
     //Button + -

@@ -245,11 +245,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
 
                         System.out.println(attraction.getId());
 
-                        //SAVE SoNgay to TourData
-                        int SoNgay = attraction.getSoNgay();
-                        tourData.setSoNgay(SoNgay);
-
-
                         // Parse giaVe from BigDecimal to int
                         int giaVe = attraction.getGiaVe().intValueExact();
 
@@ -361,10 +356,7 @@ public class MainViewController  extends MenuController implements AccountTextCo
     public class TourData {
         private static Integer TouristAttractions_ID;
 
-        private static Integer SoNgay;
-
         private static Integer GiaVe;
-
 
         public static Integer getTouristAttractions_ID() {
             return TouristAttractions_ID;
@@ -372,14 +364,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
 
         public static void setTouristAttractions_ID(Integer TouristAttractions_ID) {
             TourData.TouristAttractions_ID = TouristAttractions_ID;
-        }
-
-        public static Integer getSoNgay() {
-            return SoNgay;
-        }
-
-        public static void setSoNgay(Integer SoNgay) {
-            TourData.SoNgay = SoNgay;
         }
 
         public static Integer getGiaVe() {

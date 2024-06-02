@@ -126,5 +126,43 @@
             </effect>
         </Label>
         <ListView fx:id="listRoutes" layoutX="126.0" layoutY="373.0" prefHeight="337.0" prefWidth="1100.0" style="-fx-background-radius: 20px;" />
+        <!--        MENU BAR-->
+        <AnchorPane id="menuPane" layoutY="-3.0" prefHeight="60.0" prefWidth="1350.0" style="-fx-background-color: #f7f9e8;">
+            <children>
+                <ImageView id="imgMainLogo" fitHeight="63.0" fitWidth="52.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/MainLogo.png" />
+                    </image>
+                </ImageView>
+                <Label id="labelName" layoutX="51.0" layoutY="17.0" prefHeight="27.0" prefWidth="184.0" text="VIETNAMTRAVEL" textAlignment="CENTER">
+                    <font>
+                        <Font name="BenguiatStd-MediumCondensed" size="20.0" />
+                    </font>
+                </Label>
+                <!--            ACCOUNT PANE-->
+                <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="true">
+                    <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Account">
+                        <font>
+                            <Font name="Alatsi Regular" size="15.0" />
+                        </font>
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../img/Account_icon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </AnchorPane>
+                <AnchorPane id="menuPane" layoutX="361.0" layoutY="1.0" prefHeight="58.0" prefWidth="669.0">
+                    <children>
+                        <Button fx:id="menuHome" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuHomeAction" prefHeight="52.0" prefWidth="128.0" styleClass="btMenu" text="Home" />
+                        <Button fx:id="menuDes" layoutX="145.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuDestiAction" prefHeight="52.0" prefWidth="172.0" styleClass="btMenu" text="Destinations" />
+                        <Button fx:id="menuStay" layoutX="317.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuStayAction" prefHeight="52.0" prefWidth="118.0" styleClass="btMenu" text="Stay" />
+                        <Button fx:id="menuTicket" layoutX="435.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuTicketAction" prefHeight="52.0" prefWidth="147.0" styleClass="btMenu" text="My Ticket" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

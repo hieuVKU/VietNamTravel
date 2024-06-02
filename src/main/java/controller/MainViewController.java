@@ -1,6 +1,8 @@
 package controller;
 
 import Util.HibernateUtil;
+import controller.AbstractController.AccountTextController;
+import controller.AbstractController.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +36,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-public class MainViewController {
+import javafx.scene.control.Tooltip;
+
+public class MainViewController  extends MenuController implements AccountTextController {
 
     @FXML
     private Button btAccount;
@@ -98,116 +102,93 @@ public class MainViewController {
     public MainViewController()
     {
         this.session = HibernateUtil.getSessionFactory().openSession();
+
     }
 
     @FXML
-    public void openSignUpView(ActionEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
+    public void initialize() {
+        // Tạo một tooltip mới
+        Tooltip tooltip = new Tooltip("Discount 30% for children!");
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/com/example/vietnamtravel/SignUpView.fxml")));
-        stage.setScene(scene);
-        stage.show();
+        tooltip.setStyle("-fx-font-size: 25; -fx-background-color: #c76b79; -fx-text-fill: #f9f7e8; -fx-background-radius: 6; -fx-background-insets: 0; -fx-padding: 5;");
+
+        // Đặt tooltip cho nút btPrice
+        btPrice.setTooltip(tooltip);
     }
 
-    @FXML
-    public void openLoginView(ActionEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
 
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/com/example/vietnamtravel/Login.fxml")));
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void showAccountPane() {
-        if (paneAccount != null) {
-            paneAccount.setVisible(true);
-            paneLogin.setVisible(false);
-        }
-    }
 
     //Controller MenuBar
-    @FXML
-    public void handleMenuHomeAction(ActionEvent event) throws IOException {
-        openView("/com/example/vietnamtravel/MainView.fxml", event);
-        menuHome.setStyle("-fx-background-color: #327da8;");
-        menuDes.setStyle("");
-        menuStay.setStyle("");
-    }
-
-    @FXML
+    @Override
     public void handleMenuDestiAction(ActionEvent event) throws IOException {
-        openView("/com/example/vietnamtravel/DestinationView.fxml", event);
-        menuHome.setStyle("");
-        menuDes.setStyle("-fx-background-color: #327da8;");
-        menuStay.setStyle("");
+
+        super.handleMenuDestiAction(event);
     }
 
-    @FXML
+    @Override
+    public void handleMenuHomeAction(ActionEvent event) throws IOException {
+
+        super.handleMenuHomeAction(event);
+    }
+
+    @Override
     public void handleMenuStayAction(ActionEvent event) throws IOException {
-        openView("/com/example/vietnamtravel/StayView.fxml", event);
-        menuHome.setStyle("");
-        menuDes.setStyle("");
-        menuStay.setStyle("-fx-background-color: #327da8;");
+
+        super.handleMenuStayAction(event);
     }
 
-    @FXML
+    @Override
     public void handleMenuTicketAction(ActionEvent event) throws IOException {
 
     }
-
-    private void openView(String fxmlPath, ActionEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource(fxmlPath)));
-        stage.setScene(scene);
-        stage.show();
+    //setText ACCOUNT BUTTON
+    public void setBtAccountText(String hoTen) {
+        btAccount.setText(hoTen);
     }
 
-    //CREATE FILE XML FOR SAVE DATA
-    @XmlRootElement
-    public static class AttractionData {
-        private String ten;
-        private String diaChi;
-        private String moTa;
-        private String giaVe;
+//    //CREATE FILE XML FOR SAVE DATA
+//    @XmlRootElement
+//    public static class AttractionData {
+//        private String ten;
+//        private String diaChi;
+//        private String moTa;
+//        private String giaVe;
+//
+//        public String getTen() {
+//            return ten;
+//        }
+//
+//        public void setTen(String ten) {
+//            this.ten = ten;
+//        }
+//
+//        public String getMoTa() {
+//            return moTa;
+//        }
+//
+//        public void setMoTa(String moTa) {
+//            this.moTa = moTa;
+//        }
+//
+//        public String getGiaVe() {
+//            return giaVe;
+//        }
+//
+//        public void setGiaVe(String giaVe) {
+//            this.giaVe = giaVe;
+//        }
+//
+//        public String getDiaChi() {
+//            return diaChi;
+//        }
+//
+//        public void setDiaChi(String diaChi) {
+//            this.diaChi = diaChi;
+//        }
+//
+//    }
 
-        public String getTen() {
-            return ten;
-        }
 
-        public void setTen(String ten) {
-            this.ten = ten;
-        }
-
-        public String getMoTa() {
-            return moTa;
-        }
-
-        public void setMoTa(String moTa) {
-            this.moTa = moTa;
-        }
-
-        public String getGiaVe() {
-            return giaVe;
-        }
-
-        public void setGiaVe(String giaVe) {
-            this.giaVe = giaVe;
-        }
-
-        public String getDiaChi() {
-            return diaChi;
-        }
-
-        public void setDiaChi(String diaChi) {
-            this.diaChi = diaChi;
-        }
-
-    }
     //SEARCH BUTTON
     @FXML
     public void handleSearchAction(ActionEvent event) {
@@ -256,8 +237,27 @@ public class MainViewController {
                         // Commit the transaction and close the session
                         session.getTransaction().commit();
 
+
+                        //SAVE TouristAttractions_ID to TourData
+                        int TouristAttractions_ID = attraction.getId();
+                        TourData tourData = new TourData();
+                        tourData.setTouristAttractions_ID(TouristAttractions_ID);
+
+                        System.out.println(attraction.getId());
+
+                        //SAVE SoNgay to TourData
+                        int SoNgay = attraction.getSoNgay();
+                        tourData.setSoNgay(SoNgay);
+
+
                         // Parse giaVe from BigDecimal to int
                         int giaVe = attraction.getGiaVe().intValueExact();
+
+
+                        //SAVE GiaVe to TourData
+                        tourData.setGiaVe(giaVe);
+
+
 
                         // Create a NumberFormat instance for the default locale
                         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
@@ -279,23 +279,23 @@ public class MainViewController {
                         textContent.setText(attraction.getMoTa());
 //                        btPrice.setText(attraction.getGiaVe()+" VND");
 
-                        AttractionData data = new AttractionData();
-                        data.setTen(attraction.getTen());
-                        data.setDiaChi(attraction.getDiaChi());
-                        data.setMoTa(attraction.getMoTa());
-                        data.setGiaVe(formattedGiaVe);
+//                        AttractionData data = new AttractionData();
+//                        data.setTen(attraction.getTen());
+//                        data.setDiaChi(attraction.getDiaChi());
+//                        data.setMoTa(attraction.getMoTa());
+//                        data.setGiaVe(formattedGiaVe);
 
-                        try{
-                            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
-                            Marshaller marshaller = jaxbContext.createMarshaller();
-                            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-// Write to file
-                            marshaller.marshal(data, new File("src/main/resources/data/attractionData.xml"));
-
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
+//                        try{
+//                            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
+//                            Marshaller marshaller = jaxbContext.createMarshaller();
+//                            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//
+//// Write to file
+//                            marshaller.marshal(data, new File("src/main/resources/data/attractionData.xml"));
+//
+//                        }catch (Exception e){
+//                            e.printStackTrace();
+//                        }
 
                         try{
                             // Get the image data
@@ -326,21 +326,71 @@ public class MainViewController {
     }
     @FXML
     public void handleBookingAction(ActionEvent event) {
+//        try {
+//            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
+//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//
+//            // Read from file
+//            AttractionData data = (AttractionData) unmarshaller.unmarshal(new File("src/main/resources/data/attractionData.xml"));
+//
+//            // Print to console
+//            System.out.println("Ten: " + data.getTen());
+//            System.out.println("Dia Chi: " + data.getDiaChi());
+//            System.out.println("Mo Ta: " + data.getMoTa());
+//            System.out.println("Gia Ve: " + data.getGiaVe());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/TourBookingView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
 
-            // Read from file
-            AttractionData data = (AttractionData) unmarshaller.unmarshal(new File("src/main/resources/data/attractionData.xml"));
+            // Thêm logo cho cửa sổ ứng dụng
+            Image logo = new Image(getClass().getResourceAsStream("/img/MainLogo.png"));
+            Stage stage = new Stage();
+            stage.getIcons().add(logo);
 
-            // Print to console
-            System.out.println("Ten: " + data.getTen());
-            System.out.println("Dia Chi: " + data.getDiaChi());
-            System.out.println("Mo Ta: " + data.getMoTa());
-            System.out.println("Gia Ve: " + data.getGiaVe());
-        } catch (Exception e) {
+            stage.setTitle("Vietnam Travel");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    //Class lưu dữ liệu Tour đã đặt
+    public class TourData {
+        private static Integer TouristAttractions_ID;
+
+        private static Integer SoNgay;
+
+        private static Integer GiaVe;
+
+
+        public static Integer getTouristAttractions_ID() {
+            return TouristAttractions_ID;
+        }
+
+        public static void setTouristAttractions_ID(Integer TouristAttractions_ID) {
+            TourData.TouristAttractions_ID = TouristAttractions_ID;
+        }
+
+        public static Integer getSoNgay() {
+            return SoNgay;
+        }
+
+        public static void setSoNgay(Integer SoNgay) {
+            TourData.SoNgay = SoNgay;
+        }
+
+        public static Integer getGiaVe() {
+            return GiaVe;
+        }
+
+        public static void setGiaVe(Integer GiaVe) {
+            TourData.GiaVe = GiaVe;
+        }
+    }
+
 }
+
 

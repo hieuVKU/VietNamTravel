@@ -1,5 +1,6 @@
 package model;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,10 +16,6 @@ public class TourBooking {
     private TouristAttraction touristAttractions;
 
     @ManyToOne
-    @JoinColumn(name = "PassengerInformation_ID", nullable = false)
-    private PassengerInformation passengerInformation;
-
-    @ManyToOne
     @JoinColumn(name = "Users_ID", nullable = false)
     private User users;
 
@@ -26,11 +23,45 @@ public class TourBooking {
     private String emailNhanVe;
 
     @Column(name = "NgayThamQuan", nullable = false)
-    private Date ngayThamQuan;
+    private LocalDate ngayThamQuan;
 
     @Column(name = "SoVe", nullable = false)
     private int soVe;
-//ten cho tham quan, ngay, ten nguoi dat ve, so dien thoai, email nhan ve, so ve nguoi lon, so ve tre em, tong tien ve
+
+    @Column(name = "CCCD", nullable = false)
+    private String cccd;
+
+    @Column(name = "TotalPayment", nullable = false)
+    private Double totalPayment;
+
+    @Column(name = "SoVeTreEm")
+    private Integer soVeTreEm;
+
+    public Integer getSoVeTreEm() {
+        return soVeTreEm;
+    }
+
+    public void setSoVeTreEm(Integer soVeTreEm) {
+        this.soVeTreEm = soVeTreEm;
+    }
+
+    public Double getTotalPayment() {
+        return totalPayment;
+    }
+
+    public void setTotalPayment(Double totalPayment) {
+        this.totalPayment = totalPayment;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
+    }
+
+    //ten cho tham quan, ngay, ten nguoi dat ve, so dien thoai, email nhan ve, so ve nguoi lon, so ve tre em, tong tien ve
     public int getTourBookingsId() {
         return tourBookingsId;
     }
@@ -46,15 +77,6 @@ public class TourBooking {
     public void setTouristAttractions(TouristAttraction touristAttractions) {
         this.touristAttractions = touristAttractions;
     }
-
-    public PassengerInformation getPassengerInformation() {
-        return passengerInformation;
-    }
-
-    public void setPassengerInformation(PassengerInformation passengerInformation) {
-        this.passengerInformation = passengerInformation;
-    }
-
     public User getUsers() {
         return users;
     }
@@ -71,11 +93,11 @@ public class TourBooking {
         this.emailNhanVe = emailNhanVe;
     }
 
-    public Date getNgayThamQuan() {
+    public LocalDate getNgayThamQuan() {
         return ngayThamQuan;
     }
 
-    public void setNgayThamQuan(Date ngayThamQuan) {
+    public void setNgayThamQuan(LocalDate ngayThamQuan) {
         this.ngayThamQuan = ngayThamQuan;
     }
 

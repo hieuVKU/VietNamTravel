@@ -1,6 +1,9 @@
 package controller;
 
 import Util.HibernateUtil;
+import controller.AbstractController.AccountTextController;
+import controller.AbstractController.MenuController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class DestinationViewController {
+public class DestinationViewController extends MenuController implements AccountTextController {
     @FXML
     private  TextField FromTF;
     @FXML
@@ -41,6 +44,9 @@ public class DestinationViewController {
     @FXML
     private  HBox PlaneBox;
 
+    @FXML
+    private Button btAccount;
+
     private HBox lastSelectedBox;
 
     private String scheduleID;
@@ -55,6 +61,32 @@ public class DestinationViewController {
 
     public DestinationViewController(){
         this.session = HibernateUtil.getSessionFactory().openSession();
+    }
+
+    //Controller MenuBar
+    @Override
+    public void handleMenuDestiAction(ActionEvent event) throws IOException {
+        super.handleMenuDestiAction(event);
+    }
+
+    @Override
+    public void handleMenuHomeAction(ActionEvent event) throws IOException {
+        super.handleMenuHomeAction(event);
+    }
+
+    @Override
+    public void handleMenuStayAction(ActionEvent event) throws IOException {
+        super.handleMenuStayAction(event);
+    }
+
+    @Override
+    public void handleMenuTicketAction(ActionEvent event) throws IOException {
+
+    }
+
+    //setText ACCOUNT BUTTON
+    public void setBtAccountText(String hoTen) {
+        btAccount.setText(hoTen);
     }
 
     @FXML
@@ -231,7 +263,7 @@ public class DestinationViewController {
             Flight flight = (Flight) entity;
             labelTop.setText(flight.getSanBayDi() + " -> " + flight.getSanBayDen() + " | " + flight.getHangHangKhong());
             labelBottom.setText(flight.getDiemKhoiHanh() + " -> " + flight.getDiemDen() + " | " + flight.getNgayKhoiHanh().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " | "
-                    + flight.getGioKhoiHanh() + " | " +flight.getGioDen()
+                    + flight.getGioKhoiHanh() + " | " +flight.getGioDen() + " | "
                     + formatter.format(flight.getGiaVe()) + " VND | " + flight.getSoGheConLai() + " chỗ");
         } else if (entity instanceof Schedule) {
             pane.setUserData(((Schedule) entity).getId().toString());

@@ -15,8 +15,7 @@ public class PassengerInformation {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "TransportBookings_ID", nullable = false)
     private TransportBooking bookings;
 

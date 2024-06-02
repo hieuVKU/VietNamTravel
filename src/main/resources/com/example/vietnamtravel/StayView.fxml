@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -20,10 +19,10 @@
                 <Image url="@../../../img/StayImg.jpg" />
             </image>
         </ImageView>
-        <AnchorPane disable="true" opacity="0.65" prefHeight="730.0" prefWidth="1350.0" style="-fx-background-color: black;" visible="false" />
-        <Pane layoutX="178.0" layoutY="131.0" prefHeight="49.0" prefWidth="995.0" style="-fx-background-color: #f9f7e8; -fx-background-radius: 15px;">
+        <AnchorPane opacity="0.65" prefHeight="730.0" prefWidth="1350.0" style="-fx-background-color: black;" />
+        <Pane layoutX="178.0" layoutY="166.0" prefHeight="49.0" prefWidth="995.0" style="-fx-background-color: #f9f7e8;">
             <children>
-                <TextField layoutX="37.0" layoutY="5.0" prefHeight="40.0" prefWidth="291.0" promptText="Where are you going ?">
+                <TextField fx:id="hotelPlaceTF" layoutX="43.0" layoutY="3.0" prefHeight="40.0" prefWidth="839.0" promptText="Where are you going ?" styleClass="border">
                     <font>
                         <Font name="Alatsi Regular" size="18.0" />
                     </font>
@@ -33,10 +32,7 @@
                         <Image url="@../../../img/hotel.png" />
                     </image>
                 </ImageView>
-                <DatePicker layoutX="333.0" layoutY="5.0" prefHeight="40.0" prefWidth="170.0" promptText="Check-in day" />
-                <DatePicker layoutX="508.0" layoutY="5.0" prefHeight="40.0" prefWidth="170.0" promptText="Check-out day" />
-                <ComboBox layoutX="683.0" layoutY="5.0" prefHeight="40.0" prefWidth="203.0" />
-                <Button layoutX="891.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #263e2a; -fx-background-radius: 15px;" text="Search" textFill="#fffed3">
+                <Button fx:id="btSearch" layoutX="891.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #263e2a;" text="Search" textFill="#fffed3" onAction="#handleBtSearchAction">
                     <font>
                         <Font name="Alatsi Regular" size="18.0" />
                     </font>
@@ -84,6 +80,10 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-      <VBox layoutX="276.0" layoutY="203.0" prefHeight="500.0" prefWidth="800.0" />
+        <ScrollPane layoutX="178.0" layoutY="232.0" prefHeight="452.0" prefWidth="995.0">
+            <content>
+                <VBox fx:id="listVbox" prefHeight="449.0" prefWidth="993.0" />
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>

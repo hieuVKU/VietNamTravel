@@ -26,3 +26,19 @@
 .btMenu:hover{
     -fx-background-color: #327da8;
 }
+.border{
+    -fx-border-color: #263e2a; /* Màu viền */
+    /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+    -fx-border-width: 2px; /* Độ rộng viền */
+    -fx-border-radius: 20px; /* Bán kính bo tròn viền */
+    -fx-background-radius: 25;
+
+}
+.border2{
+    -fx-border-color: #263e2a; /* Màu viền */
+    /*-fx-background-color: #7c7b5a;!*maàu nền*!*/
+    -fx-border-width: 2px; /* Độ rộng viền */
+    -fx-border-radius: 20px; /* Bán kính bo tròn viền */
+    -fx-background-radius: 25;
+    -fx-background-color: #f9f7e8;
+}

@@ -37,6 +37,17 @@ public class TouristAttraction {
     @JoinColumn(name = "Images_ID")
     private Images images;
 
+    @Column(name = "SoNgay", nullable = false)
+    private Integer soNgay;
+
+    public Integer getSoNgay() {
+        return soNgay;
+    }
+
+    public void setSoNgay(Integer soNgay) {
+        this.soNgay = soNgay;
+    }
+
     public Integer getId() {
         return id;
     }

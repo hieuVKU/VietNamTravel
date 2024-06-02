@@ -17,7 +17,7 @@ public class Pay {
 
     @ManyToOne
     @JoinColumn(name = "Stay_ID", nullable = false)
-    private StayBooking stayBookings;
+    private StayBookings stayBookings;
 
     @ManyToOne
     @JoinColumn(name = "TourBookings_ID", nullable = false)
@@ -51,11 +51,11 @@ public class Pay {
         this.trangThaiThanhToan = trangThaiThanhToan;
     }
 
-    public StayBooking getStayBookings() {
+    public StayBookings getStayBookings() {
         return stayBookings;
     }
 
-    public void setStayBookings(StayBooking stayBookings) {
+    public void setStayBookings(StayBookings stayBookings) {
         this.stayBookings = stayBookings;
     }
 

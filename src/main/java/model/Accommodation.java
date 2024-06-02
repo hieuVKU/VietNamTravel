@@ -29,12 +29,23 @@ public class Accommodation {
     @Column(name = "GiaPhong", precision = 10, scale = 2, nullable = false)
     private BigDecimal giaPhong;
 
-    @Column(name = "SoPhongConLai", nullable = false)
-    private Integer SoPhongConLai;
+//    @Column(name = "SoPhongConLai", nullable = false)
+//    private Integer SoPhongConLai;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Images_ID")
     private Images images;
+
+    @Column(name = "DoRongPhong", nullable = false)
+    private Integer doRongPhong;
+
+    public Integer getDoRongPhong() {
+        return doRongPhong;
+    }
+
+    public void setDoRongPhong(Integer doRongPhong) {
+        this.doRongPhong = doRongPhong;
+    }
 
     public Integer getId() {
         return id;

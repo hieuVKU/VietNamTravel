@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="459.0" prefWidth="783.0" stylesheets="@../../../css/TourBooking.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TourBookingController">
+   <children>
+      <Pane layoutX="50.0" prefHeight="458.0" prefWidth="683.0">
+         <children>
+            <Button fx:id="btPlus" layoutX="450.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleBtPlusAction" prefHeight="25.0" prefWidth="21.0" styleClass="formInput" text="+">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label fx:id="textSoLuongVe" layoutX="430.0" layoutY="277.0" styleClass="font" text="1">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <TextField fx:id="cccdTF" alignment="CENTER" layoutX="86.0" layoutY="103.0" prefHeight="41.0" prefWidth="225.0" style="-fx-font-size: 17px;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="fontsize" />
+               </styleClass></TextField>
+            <TextField fx:id="emailTF" alignment="CENTER" layoutX="86.0" layoutY="189.0" prefHeight="39.0" prefWidth="225.0" style="-fx-font-size: 17px;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="formInput" />
+                  <String fx:value="fontsize" />
+               </styleClass></TextField>
+            <Label layoutX="240.0" layoutY="23.0" styleClass="font" text="TOUR BOOKING">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Button fx:id="btSub" layoutX="295.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleBtSubAction" prefHeight="31.0" prefWidth="93.0" text="SUBMIT" />
+            <DatePicker fx:id="goDateTF" layoutX="397.0" layoutY="103.0" onAction="#handleGoDateTFAction" prefHeight="39.0" prefWidth="225.0" styleClass="date-picker" />
+            <Label fx:id="returnDateText" alignment="CENTER" layoutX="398.0" layoutY="188.0" prefHeight="41.0" prefWidth="201.0" styleClass="formInput" text="01/01/2000" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="80.0" styleClass="font" text="CCCD">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="165.0" styleClass="font" text="EMAIL">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="397.0" layoutY="80.0" styleClass="font" text="GO">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="397.0" layoutY="165.0" styleClass="font" text="RETURN">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="textTotalPayment" layoutX="397.0" layoutY="344.0" styleClass="font2" text="000,000,000,000 VND">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="394.0" layoutY="321.0" styleClass="font" text="Total payment:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="87.0" layoutY="266.0" styleClass="font" text="Your PhoneNumber">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="textYourPhoneNum" layoutX="86.0" layoutY="289.0" prefHeight="41.0" prefWidth="225.0" styleClass="formInput" text="0999999999">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="btMinus" layoutX="396.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleBtMinusAction" prefHeight="29.0" prefWidth="30.0" styleClass="formInput" text="-">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="410.0" layoutY="240.0" styleClass="font" text="Adults">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="536.0" layoutY="240.0" styleClass="font" text="Children">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btMinusChild" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleBtMinusChildAction" prefHeight="29.0" prefWidth="30.0" styleClass="formInput" text="-">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btPlusChild" layoutX="583.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleBtPlusChildAction" prefHeight="25.0" prefWidth="21.0" styleClass="formInput" text="+">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="textSoLuongVeChild" layoutX="563.0" layoutY="278.0" styleClass="font" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="BGtour" />
+            <String fx:value="fontsize" />
+         </styleClass>
+      </Pane>
+   </children>
+</AnchorPane>

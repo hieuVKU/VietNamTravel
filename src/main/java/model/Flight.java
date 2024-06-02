@@ -3,8 +3,10 @@ package model;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Flights")
@@ -45,10 +47,10 @@ public class Flight {
     private String diemDen;
 
     @Column(name = "GioKhoiHanh", nullable = false)
-    private Time gioKhoiHanh;
+    private LocalTime gioKhoiHanh;
 
     @Column(name = "GioDen", nullable =false)
-    private Time gioDen;
+    private LocalTime gioDen;
 
     @Column(name = "GiaVe", nullable = false)
     private Double giaVe;
@@ -65,6 +67,53 @@ public class Flight {
         return maChuyenBay;
     }
 
+    public void setSanBayDi(String sanBayDi) {
+        this.sanBayDi = sanBayDi;
+    }
+
+    public void setMaChuyenBay(String maChuyenBay) {
+        this.maChuyenBay = maChuyenBay;
+    }
+
+    public void setHangHangKhong(String hangHangKhong) {
+        this.hangHangKhong = hangHangKhong;
+    }
+
+    public void setSanBayDen(String sanBayDen) {
+        this.sanBayDen = sanBayDen;
+    }
+
+    public void setNgayKhoiHanh(LocalDate ngayKhoiHanh) {
+        this.ngayKhoiHanh = ngayKhoiHanh;
+    }
+
+    public void setNgayDen(LocalDate ngayDen) {
+        this.ngayDen = ngayDen;
+    }
+
+    public void setSoGheConLai(Integer soGheConLai) {
+        this.soGheConLai = soGheConLai;
+    }
+
+    public void setDiemKhoiHanh(String diemKhoiHanh) {
+        this.diemKhoiHanh = diemKhoiHanh;
+    }
+
+    public void setDiemDen(String diemDen) {
+        this.diemDen = diemDen;
+    }
+
+    public void setGioKhoiHanh(LocalTime gioKhoiHanh) {
+        this.gioKhoiHanh = gioKhoiHanh;
+    }
+
+    public void setGioDen(LocalTime gioDen) {
+        this.gioDen = gioDen;
+    }
+
+    public void setGiaVe(Double giaVe) {
+        this.giaVe = giaVe;
+    }
 
     public String getHangHangKhong() {
         return hangHangKhong;
@@ -91,11 +140,11 @@ public class Flight {
         return ngayDen;
     }
 
-    public Time getGioKhoiHanh() {
+    public LocalTime getGioKhoiHanh() {
         return gioKhoiHanh;
     }
 
-    public Time getGioDen() {
+    public LocalTime getGioDen() {
         return gioDen;
     }
 

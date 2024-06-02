@@ -23,7 +23,7 @@ public class HibernateUtil {
                     .addAnnotatedClass(Flight.class)
                     .addAnnotatedClass(TransportBooking.class)
                     .addAnnotatedClass(Accommodation.class)
-                    .addAnnotatedClass(StayBooking.class)
+                    .addAnnotatedClass(StayBookings.class)
                     .addAnnotatedClass(TourBooking.class)
                     .addAnnotatedClass(Pay.class)
                     .buildSessionFactory();

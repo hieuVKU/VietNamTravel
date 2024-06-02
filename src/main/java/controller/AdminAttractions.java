@@ -141,7 +141,7 @@ public class AdminAttractions {
                         session.save(image);
                         session.save(attraction);
                         transaction.commit();
-                        session.close();
+//                        session.close();
 
                         imgViewData.setPreserveRatio(true);
                         imgViewData.setFitWidth(Region.USE_PREF_SIZE);

@@ -25,7 +25,7 @@
         <mapping class="model.TouristAttraction"/>
         <mapping class="model.Transportation"/>
         <mapping class="model.User"/>
-        <mapping class="model.StayBooking"/>
+        <mapping class="model.StayBookings"/>
         <mapping class="model.TourBooking"/>
         <mapping class="model.Pay"/>
 

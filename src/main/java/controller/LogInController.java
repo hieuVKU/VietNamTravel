@@ -1,11 +1,11 @@
 package controller;
 
+import Util.HibernateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -41,6 +41,7 @@ public class LogInController {
     @FXML
     private Hyperlink linkSignUp;
 
+
     private ButtonController bc = new ButtonController();
 
     public void openSignUpView(ActionEvent event) throws IOException {
@@ -66,8 +67,18 @@ public class LogInController {
         if (isLoginValid(phoneNumber, password)) {
             bc.showInformationAlert("Success", "Login successful!");
 
+            // Save phoneNumber to UserSession
+            UserSession.setPhoneNumber(phoneNumber);
 
-//Open MainView when successfully login
+            // Save userID to UserSession
+            Integer userId = getUserId(phoneNumber);
+            UserSession.setUserID(userId);
+
+
+            // Save hoTen to UserSession
+            UserSession.setHoTen(getHoTen(phoneNumber));
+
+            // Open MainView when successfully login
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
@@ -78,7 +89,10 @@ public class LogInController {
             stage.show();
 
             MainViewController mainViewController = loader.getController();
-            mainViewController.showAccountPane();
+
+            // Get HoTen from SoDienThoai and set it to btAccount
+            String hoTen = getHoTen(PhoneNumTF.getText());
+            mainViewController.setBtAccountText(hoTen);
         } else {
             bc.showErrorAlert("Error", "Invalid phone number or password.");
         }
@@ -108,4 +122,53 @@ public class LogInController {
         }
     }
 
+//    lấy HoTen của controller set text cho btAccount
+    public String getHoTen(String phoneNumber) {
+        Session session = factory.openSession();
+        Query<User> query = session.createQuery("FROM User WHERE soDienThoai = :phoneNumber", User.class);
+        query.setParameter("phoneNumber", phoneNumber);
+        User user = query.uniqueResult();
+//        session.close();
+        return user.getHoTen();
+    }
+
+    //lưu trữ phoneNumber vào UserSession  để thực hiện các tác vụ sau
+    public class UserSession {
+        private static Integer userID;
+
+        private static String phoneNumber;
+
+        private static String hoTen;
+
+        public static Integer getUserID() {
+            return userID;
+        }
+
+        public static void setUserID(Integer userID) {
+            UserSession.userID = userID;
+        }
+
+        public static String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public static void setPhoneNumber(String phoneNumber) {
+            UserSession.phoneNumber = phoneNumber;
+        }
+        public static String getHoTen() {
+            return hoTen;
+        }
+
+        public static void setHoTen(String hoTen) {
+            UserSession.hoTen = hoTen;
+        }
+    }
+    //
+    public Integer getUserId(String phoneNumber) {
+        Session session = factory.openSession();
+        Query<User> query = session.createQuery("FROM User WHERE soDienThoai = :phoneNumber", User.class);
+        query.setParameter("phoneNumber", phoneNumber);
+        User user = query.uniqueResult();
+        return user.getId();
+    }
 }

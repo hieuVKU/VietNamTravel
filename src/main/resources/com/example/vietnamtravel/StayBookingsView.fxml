@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="948.0" stylesheets="@../../../css/StayBooking.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StayBookingsController">
+    <children>
+        <AnchorPane id="imgViewSB" opacity="0.65" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: black;" />
+      <AnchorPane layoutX="-5.0" prefHeight="600.0" prefWidth="950.0">
+         <children>
+            <Label fx:id="textTenKhachSan" layoutX="474.0" layoutY="126.0" prefHeight="63.0" prefWidth="449.0" styleClass="font2" text="TEN KHACH SAN" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="36.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="ngayVeDate" layoutX="72.0" layoutY="399.0" prefHeight="38.0" prefWidth="314.0" promptText="Ngày về" />
+            <DatePicker fx:id="ngayDiDate" layoutX="72.0" layoutY="314.0" prefHeight="38.0" prefWidth="314.0" promptText="Ngày đi" styleClass="date-picker" />
+            <TextField fx:id="cccdTF" layoutX="72.0" layoutY="139.0" prefHeight="38.0" prefWidth="314.0" styleClass="formInput" />
+            <Label layoutX="83.0" layoutY="111.0" prefHeight="30.0" prefWidth="62.0" text="CCCD" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="soLuongPhongTF" layoutX="72.0" layoutY="228.0" prefHeight="38.0" prefWidth="314.0" styleClass="formInput" />
+            <Label layoutX="83.0" layoutY="197.0" prefHeight="30.0" prefWidth="147.0" text="Số lượng phòng" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="textTongTien" layoutX="598.0" layoutY="386.0" prefHeight="63.0" prefWidth="295.0" styleClass="font" text="000,000,000,000 VND" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="textDC" layoutX="473.0" layoutY="177.0" prefHeight="54.0" prefWidth="450.0" styleClass="font2" text="Khu 2 Hoàng Dương, Canh 3, Phú Thọ" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="btSub" layoutX="431.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleBtSubAction" text="SUBMIT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="textDoRongPhong" layoutX="760.0" layoutY="260.0" prefHeight="40.0" prefWidth="31.0" text="00" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="791.0" layoutY="260.0" prefHeight="40.0" prefWidth="87.0" text="/Phòng" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

@@ -32,7 +32,7 @@
                         <Image url="@../../../img/hotel.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="btSearch" layoutX="891.0" layoutY="5.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #263e2a;" text="Search" textFill="#fffed3" onAction="#handleBtSearchAction">
+                <Button fx:id="btSearch" layoutX="891.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleBtSearchAction" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #263e2a;" text="Search" textFill="#fffed3">
                     <font>
                         <Font name="Alatsi Regular" size="18.0" />
                     </font>
@@ -57,7 +57,7 @@
                 </Label>
                 <!--            ACCOUNT PANE-->
                 <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0" visible="true">
-                    <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Account">
+                    <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleBtAccountAction" prefHeight="38.0" prefWidth="107.0" text="Account">
                         <font>
                             <Font name="Alatsi Regular" size="15.0" />
                         </font>

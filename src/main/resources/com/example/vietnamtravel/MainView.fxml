@@ -15,7 +15,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Tooltip?>
 <AnchorPane fx:id="mainPane" prefHeight="730.0" prefWidth="1350.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <children>
       <AnchorPane layoutY="55.0" opacity="0.65" prefHeight="670.0" prefWidth="567.0" style="-fx-background-color: #f9f7e8;">
@@ -139,7 +138,7 @@
             </Label>
 <!--            ACCOUNT PANE-->
             <AnchorPane fx:id="paneAccount" layoutX="1135.0" layoutY="8.0" prefHeight="44.0" prefWidth="200.0">
-               <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Account">
+               <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="92.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleBtAccountAction" prefHeight="38.0" prefWidth="107.0" text="Account">
                   <font>
                      <Font name="Alatsi Regular" size="15.0" />
                   </font>

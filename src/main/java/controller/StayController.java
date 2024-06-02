@@ -94,6 +94,11 @@ public class StayController extends MenuController implements AccountTextControl
 
     }
 
+    @Override
+    public void handleBtAccountAction(ActionEvent event) throws IOException {
+        super.handleBtAccountAction(event);
+    }
+
     //setText ACCOUNT BUTTON
     public void setBtAccountText(String hoTen) {
         btAccount.setText(hoTen);

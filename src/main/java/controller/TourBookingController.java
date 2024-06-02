@@ -7,11 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import model.TourBooking;
+import model.Transportation;
 import org.hibernate.Session;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -56,6 +59,33 @@ public class TourBookingController {
     @FXML
     private Label textYourPhoneNum;
 
+    @FXML
+    private Button backButton;
+
+    @FXML
+    private Pane QRBankingPaneButton;
+
+    @FXML
+    private Pane QRBankingPane;
+
+    @FXML
+    private Pane CreditCardPane;
+
+    @FXML
+    private Pane CreditCardPaneButton2;
+
+    @FXML
+    private Pane PayPane;
+
+
+    @FXML
+    private Pane EnterPane;
+
+    @FXML
+    private Button PurchasetButton;
+
+
+
     private Session session;
 
     private int userID;
@@ -80,6 +110,7 @@ public class TourBookingController {
 
 
     public void initialize() {
+        setupButtonActions();
         //Goi ham UserSession de lay ID va PhoneNum
         userID = LogInController.UserSession.getUserID();
         phoneNum = LogInController.UserSession.getPhoneNumber();
@@ -91,11 +122,28 @@ public class TourBookingController {
         numberFormat.setMaximumFractionDigits(0);
         formattedGiaVe = numberFormat.format(giaVe);
 
-
         //setText
         textYourPhoneNum.setText(phoneNum);
         textTotalPayment.setText(formattedGiaVe + " VND");
 
+    }
+    private void setupButtonActions() {
+        btSub.setOnMouseClicked(event -> {
+            EnterPane.setVisible(false);
+            PayPane.setVisible(true);
+        });
+        backButton.setOnMouseClicked(event -> {
+            EnterPane.setVisible(true);
+            PayPane.setVisible(false);
+        });
+        QRBankingPaneButton.setOnMouseClicked(event -> {
+            CreditCardPane.setVisible(false);
+            QRBankingPane.setVisible(true);
+        });
+        CreditCardPaneButton2.setOnMouseClicked(event -> {
+            QRBankingPane.setVisible(false);
+            CreditCardPane.setVisible(true);
+        });
     }
 
     //BUTTON DATEPICKER
@@ -170,7 +218,7 @@ public class TourBookingController {
     }
 
     @FXML
-    public void handleBtSubAction(ActionEvent event) {
+    public void handlePurchasetButtonAction(ActionEvent event) {
         String cccd = cccdTF.getText();
         String email = emailTF.getText();
         LocalDate goDate = goDateTF.getValue();

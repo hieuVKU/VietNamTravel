@@ -28,27 +28,7 @@
       <AnchorPane id="blurPane" prefHeight="730.0" prefWidth="1362.0" />
       <AnchorPane layoutX="-1.0" prefHeight="730.0" prefWidth="1362.0">
          <children>
-            <Button id="btLocation" fx:id="btLocation" layoutX="270.0" layoutY="605.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="128.0" style="-fx-background-color: #f9f7e8;" text="Location" textFill="#263e2a">
-            <graphic>
-               <ImageView fitHeight="20.0" fitWidth="20.0">
-                  <Image url="@../../../img/Location_icon.png" />
-                  <effect>
-                     <ColorAdjust hue="0.3" />
-                  </effect>
-               </ImageView>
-            </graphic>
-               <font>
-                  <Font name="BenguiatStd-MediumCondensed" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow height="6.34" radius="4.8" spread="0.02" width="14.86">
-                     <color>
-                        <Color opacity="0.885496199131012" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <Button id="btPrice" fx:id="btPrice" layoutX="436.0" layoutY="605.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #f9f7e8;" text="700.000 VND" textFill="#263e2a">
+            <Button id="btPrice" fx:id="btPrice" layoutX="278.0" layoutY="605.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #f9f7e8;" text="700.000 VND" textFill="#263e2a">
             <graphic>
                <ImageView fitHeight="20.0" fitWidth="20.0">
                   <Image url="@../../../img/Coin.png" />
@@ -117,7 +97,7 @@
                   <VBox fx:id="vBoxSearch" prefHeight="114.0" prefWidth="455.0" />
                </content>
             </ScrollPane>
-            <Label fx:id="textContent" layoutX="102.0" layoutY="344.0" prefHeight="246.0" prefWidth="616.0" textFill="#fffcfc" wrapText="true">
+            <Label fx:id="textContent" alignment="TOP_CENTER" layoutX="102.0" layoutY="365.0" prefHeight="214.0" prefWidth="616.0" text="Ha Long Bay is undoubtedly one of the most renowned tourist destinations in Vietnam. Ha Long Bay is renowned for its spectacular seascape of limestone pillars and isles rising from the emerald waters of the Gulf of Tonkin." textFill="#fffcfc" wrapText="true">
                <font>
                      <Font name="Josefin Sans Bold" size="20.0" />
                </font>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Ticket ID:" textFill="#000000b2">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="65.0" text="Tourist attraction:">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="115.0" text="Visit date:">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="706.0" layoutY="65.0" text="Number of Person:">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="414.0" layoutY="65.0" text="Name:">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="414.0" layoutY="115.0" text="Phone number:">
+         <font>
+            <Font name="Alatsi Regular" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="481.0" fitWidth="664.0" layoutX="137.0" layoutY="50.0">
+         <image>
+            <Image url="@../../../img/hanoi0-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

@@ -17,6 +17,7 @@ import model.Schedule;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -202,18 +203,13 @@ public class DestinationViewController {
                     Pane pane = createRoutePane(flight, type);
                     listRoutes.getItems().add(pane);
                     pane.setOnMouseClicked(event -> {
-                       // scheduleID = ((Flight) route).getId().toString();
-                        openFlightBooking(flightID);
-                        System.out.println("Flight route selected: " + scheduleID); // Debugging line
+                        flightID = ((Flight) route).getId().toString();
+                        openFlightBooking(flight);
+                        System.out.println("Flight route selected: " + flightID); // Debugging line
                     });
                 }
             }
         }
-    }
-
-    public void openFlightBooking(String flightID)
-    {
-        //Từ từ bố mày code sau
     }
 
 
@@ -257,7 +253,7 @@ public class DestinationViewController {
         labelBottom.setLayoutY(35);
 
         pane.getChildren().addAll(labelTop, labelBottom);
-        pane.setOnMouseClicked(event -> openTransportBooking(entity));
+//        pane.setOnMouseClicked(event -> openTransportBooking(entity));
         return pane;
     }
 
@@ -289,6 +285,24 @@ public class DestinationViewController {
         }
     }
 
+
+    private void openFlightBooking(Flight flight) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/FlightBookingView.fxml"));
+            Pane flightBookingPane = loader.load();
+            FlightBookingsController controller = loader.getController();
+            System.out.println("FlightBookingsController loaded");
+
+            controller.setFlightID(flight.getId().toString());
+            controller.setBookingDetails(flight);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(flightBookingPane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String getTransportation()
     {

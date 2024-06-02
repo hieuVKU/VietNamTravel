@@ -3,12 +3,8 @@ package model;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Flights")
@@ -55,7 +51,7 @@ public class Flight {
     private Time gioDen;
 
     @Column(name = "GiaVe", nullable = false)
-    private BigDecimal giaVe;
+    private Double giaVe;
 
     public Integer getId() {
         return id;
@@ -111,7 +107,7 @@ public class Flight {
         return diemDen;
     }
 
-    public BigDecimal getGiaVe() {
+    public Double getGiaVe() {
         return giaVe;
     }
 

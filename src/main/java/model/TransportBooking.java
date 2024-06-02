@@ -19,8 +19,8 @@ public class TransportBooking {
     @JoinColumn(name = "Users_ID", nullable = false)
     private User users;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Transportations_ID", nullable = false) 
+    @ManyToOne(fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Transportations_ID")
     private Transportation transportation;
 
     @ManyToOne(fetch = FetchType.LAZY)

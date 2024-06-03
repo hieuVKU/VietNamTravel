@@ -86,6 +86,9 @@ public class TransportBookingController {
     @FXML
     private Pane OrderPane;
 
+    @FXML
+    private TextField brandTF;
+
     private Session session;
 
     private double totalAmount = 0.0;
@@ -176,12 +179,13 @@ public class TransportBookingController {
         });
     }
 
-    public void setBookingDetails(String from, String to, LocalDate goDate, Time startTime, Time endTime, String transportation, String schedule_ID) {
+    public void setBookingDetails(String from, String to, LocalDate goDate, Time startTime, Time endTime, String transportation, String brand, String schedule_ID) {
         FromToLabel.setText(from + " to " + to);
         this.goDateTF.setText(String.valueOf(goDate));
         this.startTF.setText(String.valueOf(startTime));
         this.endTF.setText(String.valueOf(endTime));
         this.TransportationTF.setText(transportation);
+        this.brandTF.setText(brand);
         this.schedule_ID = schedule_ID;
     }
 
@@ -245,7 +249,8 @@ public class TransportBookingController {
     }
     private void handleContinueButton() {
         String loaiPhuongTien = TransportationTF.getText();
-        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien);
+        String hangXe = brandTF.getText();
+        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien, hangXe);
 
         if (transportation == null) {
             bc.showErrorAlert("Error", "Invalid transportation type");
@@ -267,7 +272,8 @@ public class TransportBookingController {
 
     public void handlePurchasetButton() {
         String loaiPhuongTien = TransportationTF.getText();
-        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien);
+        String hangXe = brandTF.getText();
+        Transportation transportation = getTransportationByLoaiPhuongTien(loaiPhuongTien, hangXe);
 
         if (transportation == null) {
             bc.showErrorAlert("Error", "Invalid transportation type");
@@ -321,11 +327,12 @@ public class TransportBookingController {
 
 
     // Phương thức để lấy đối tượng Transportation từ cơ sở dữ liệu dựa trên loại phương tiện
-    private Transportation getTransportationByLoaiPhuongTien(String loaiPhuongTien) {
+    private Transportation getTransportationByLoaiPhuongTien(String loaiPhuongTien, String tenHang) {
         try{
-            String hql = "FROM Transportation T WHERE T.loaiPhuongTien = :loaiPhuongTien";
+            String hql = "FROM Transportation T WHERE T.loaiPhuongTien = :loaiPhuongTien AND T.tenHang = :tenHang ";
             Query<Transportation> query = session.createQuery(hql, Transportation.class);
             query.setParameter("loaiPhuongTien", loaiPhuongTien);
+            query.setParameter("tenHang", tenHang);
             return query.uniqueResultOptional().orElse(null);
         } catch (Exception e) {
             throw new RuntimeException(e);

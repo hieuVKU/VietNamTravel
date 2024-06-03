@@ -11,8 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.Accommodation;
 import org.hibernate.Session;
@@ -136,7 +135,7 @@ public class StayController extends MenuController implements AccountTextControl
                 Label textDiaChi = (Label) hotelItem.lookup("#textDiaChi");
                 Label textMoTa = (Label) hotelItem.lookup("#textMoTa");
                 Label textGiaPhong = (Label) hotelItem.lookup("#textGiaPhong");
-                ImageView imgViewHotel = (ImageView) hotelItem.lookup("#imgViewHotel");
+                Pane imgViewHotel = (Pane) hotelItem.lookup("#imgViewHotel");
                 Label textDoRongPhong1 = (Label) hotelItem.lookup("#textDoRongPhong1");
 
                 // Parse giaVe from BigDecimal to int
@@ -160,26 +159,13 @@ public class StayController extends MenuController implements AccountTextControl
 
 
                 // Decode the image data
-                Image image = new Image(new ByteArrayInputStream(accommodation.getImages().getDuLieuAnh()));
+                Image image2 = new Image(new ByteArrayInputStream(accommodation.getImages().getDuLieuAnh()));
 
-                // Set the ImageView
-                imgViewHotel.setImage(image);
-
-                imgViewHotel.setStyle("-fx-background-size: cover;");
-
-
-                // Create a Circle object
-                Circle clip = new Circle();
-
-                // Set the center of the Circle
-                clip.setCenterX(125); // Half of the ImageView's width
-                clip.setCenterY(125); // Half of the ImageView's height
-
-                // Set the radius of the Circle
-                clip.setRadius(125); // Half of the ImageView's width or height
-
-                // Set the Circle as the clip of the ImageView
-                imgViewHotel.setClip(clip);
+                // Set the background of the root
+                BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, true);
+                BackgroundImage backgroundImage = new BackgroundImage(image2, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
+                Background background = new Background(backgroundImage);
+                imgViewHotel.setBackground(background);
 
                 //Action for btBookNow
                 // Get the Book Now button
@@ -213,7 +199,7 @@ public class StayController extends MenuController implements AccountTextControl
                         controller.setTextTenKhachSan(textNameHotel.getText());
                         controller.setTextDC(textDiaChi.getText());
                         controller.setTextDoRongPhong(textDoRongPhong1.getText());
-                        controller.setBackgroundImage(image);
+                        controller.setBackgroundImage(image2);
                     } catch (IOException eSB) {
                         eSB.printStackTrace();
                     }

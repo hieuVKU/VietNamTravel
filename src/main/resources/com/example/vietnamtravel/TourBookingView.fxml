@@ -172,7 +172,7 @@
                      </font>
                   </Label>
                   <Line endX="-2.0" layoutX="123.0" layoutY="54.0" startX="-100.0" />
-                  <Button fx:id="PurchasetButton" layoutX="133.0" layoutY="464.0" mnemonicParsing="false" onAction="#handlePurchasetButtonAction" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASET" textFill="#f9f7e8">
+                  <Button fx:id="PurchasetButton" layoutX="133.0" layoutY="464.0" mnemonicParsing="false" onAction="#handlePurchasetButtonAction" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASE" textFill="#f9f7e8">
                      <font>
                         <Font name="Berlin Sans FB" size="22.0" />
                      </font>

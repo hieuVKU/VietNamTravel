@@ -322,7 +322,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Button fx:id="PurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" onAction="#handlePurchasetButton" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 30.3318% 0.0% to 100.0% 100.0%, #c9740c 0.0%, #e08334 47.8659%, #e13333 100.0%)linear-gradient(from 30.3318% 0.0% to 100.0% 100.0%, #c9740c 0.0%, #e08334 47.8659%, #e13333 100.0%);" text="PURCHASET" textFill="#f9f7e8">
+                  <Button fx:id="PurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" onAction="#handlePurchasetButton" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 30.3318% 0.0% to 100.0% 100.0%, #c9740c 0.0%, #e08334 47.8659%, #e13333 100.0%)linear-gradient(from 30.3318% 0.0% to 100.0% 100.0%, #c9740c 0.0%, #e08334 47.8659%, #e13333 100.0%);" text="PURCHASE" textFill="#f9f7e8">
                      <font>
                         <Font name="Berlin Sans FB" size="22.0" />
                      </font>

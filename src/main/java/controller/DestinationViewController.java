@@ -53,11 +53,12 @@ public class DestinationViewController extends MenuController implements Account
 
     private String flightID;
 
-    private Session session;
-
-    private ButtonController bc = new ButtonController();
+    private final Session session;
 
     private TransportBookingController tbc = new TransportBookingController();
+
+    private final ButtonController bc = new ButtonController();
+
 
     public DestinationViewController(){
         this.session = HibernateUtil.getSessionFactory().openSession();
@@ -96,8 +97,6 @@ public class DestinationViewController extends MenuController implements Account
 
     @FXML
     private void initialize() {
-//        tbc = new TransportBookingController();
-        System.out.println("TransportBookingController initialized: " + (tbc != null)); // Debugging line
         // Bắt sự kiện click cho các HBox
         System.out.println("Initialize called");
         System.out.println("FromTF: " + FromTF); // Debugging line
@@ -232,7 +231,8 @@ public class DestinationViewController extends MenuController implements Account
                     listRoutes.getItems().add(pane);
                     pane.setOnMouseClicked(event -> {
                         scheduleID = ((Schedule) route).getId().toString();
-                        openTransportBooking(route);
+                        String hangXe = (String) pane.getUserData();
+                        openTransportBooking(route, hangXe);
                         System.out.println("Schedule route selected: " + scheduleID); // Debugging line
                     });
                 } else if (route instanceof Flight) {
@@ -294,16 +294,16 @@ public class DestinationViewController extends MenuController implements Account
         return pane;
     }
 
-    private void openTransportBooking(Object route) {
+    private void openTransportBooking(Object route, String hangXe) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/TransportationBookingView.fxml"));
             Pane bookingPane = loader.load();
             TransportBookingController controller = loader.getController();
-//            String scheduleID = (String) ((Pane) route).getUserData();
-             controller.setScheduleID(scheduleID);
+            controller.setScheduleID(scheduleID);
 
             if (route instanceof Schedule) {
                 Schedule schedule = (Schedule) route;
+                hangXe = schedule.getTransportations().getTenHang();
                 controller.setBookingDetails(
                         schedule.getRoutes().getDiemKhoiHanh(),
                         schedule.getRoutes().getDiemDen(),
@@ -311,6 +311,7 @@ public class DestinationViewController extends MenuController implements Account
                         schedule.getGioKhoiHanh(),
                         schedule.getGioDen(),
                         getTransportation(),
+                        hangXe,
                         scheduleID
                 );
             }

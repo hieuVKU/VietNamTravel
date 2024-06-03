@@ -90,12 +90,12 @@
                               <Font name="Berlin Sans FB" size="16.0" />
                            </font>
                         </Button>
-                        <Label layoutX="602.0" layoutY="250.0" text="Total" textFill="#1c401a">
+                        <Label layoutX="602.0" layoutY="317.0" text="Total" textFill="#1c401a">
                            <font>
                               <Font name="Alatsi Regular" size="23.0" />
                            </font>
                         </Label>
-                        <Label fx:id="totalMoney" alignment="CENTER" contentDisplay="CENTER" layoutX="527.0" layoutY="281.0" opacity="0.9" prefHeight="30.0" prefWidth="200.0" text="XXX.XXX VND" textFill="#1f1943cc">
+                        <Label fx:id="totalMoney" alignment="CENTER" contentDisplay="CENTER" layoutX="527.0" layoutY="342.0" opacity="0.9" prefHeight="30.0" prefWidth="200.0" text="XXX.XXX VND" textFill="#1f1943cc">
                            <font>
                               <Font name="Britannic Bold" size="23.0" />
                            </font>
@@ -154,6 +154,16 @@
                            </font>
                         </Label>
                         <TextField fx:id="endTF" editable="false" layoutX="527.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0">
+                           <font>
+                              <Font name="Alatsi Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="527.0" layoutY="245.0" text="Brand:" textFill="#1c401a">
+                           <font>
+                              <Font name="Alatsi Regular" size="23.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="brandTF" editable="false" layoutX="527.0" layoutY="280.0" prefHeight="35.0" prefWidth="200.0" text="VietNam railway">
                            <font>
                               <Font name="Alatsi Regular" size="16.0" />
                            </font>
@@ -335,7 +345,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Button fx:id="PurchasetButton" onAction="#handlePurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASET" textFill="#f9f7e8">
+                  <Button fx:id="PurchasetButton" layoutX="562.0" layoutY="392.0" mnemonicParsing="false" onAction="#handlePurchasetButton" prefHeight="46.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(from 13.2701% 0.0% to 13.7441% 100.0%, #244f94 0.0%, #244f8f 28.6585%, #244f8f 31.7073%, #244f8f 49.6951%, #244e91 57.3232%, #244f8f 66.1585%, #244f8f 78.0488%, #4694b5 100.0%);" text="PURCHASE" textFill="#f9f7e8">
                      <font>
                         <Font name="Berlin Sans FB" size="22.0" />
                      </font>

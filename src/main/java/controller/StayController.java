@@ -90,7 +90,7 @@ public class StayController extends MenuController implements AccountTextControl
 
     @Override
     public void handleMenuTicketAction(ActionEvent event) throws IOException {
-
+        super.handleMenuTicketAction(event);
     }
 
     @Override

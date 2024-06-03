@@ -57,7 +57,7 @@
             <Font name="Alatsi Regular" size="22.0" />
          </font>
       </Text>
-      <Label layoutX="180.0" layoutY="216.0" text="WELLCOME!" textFill="#fff9d4">
+      <Label layoutX="180.0" layoutY="216.0" text="WELCOME!" textFill="#fff9d4">
          <font>
             <Font name="BenguiatStd-MediumCondensed" size="63.0" />
          </font>
@@ -102,7 +102,7 @@
             <Font name="Agency FB" size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btSubmit" layoutX="614.0" layoutY="449.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8" onAction="#handleSubmit">
+      <Button fx:id="btSubmit" layoutX="614.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="30.0" prefWidth="260.0" style="-fx-background-color: #263e2a;" text="Submit" textFill="#f9f7e8">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>
@@ -122,6 +122,6 @@
             <Image url="@../../../img/twitter.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="linkSignUp" layoutX="825.0" layoutY="419.0" text="Sign up"  textFill="#ffffff" onAction="#openSignUpView" />
+      <Hyperlink fx:id="linkSignUp" layoutX="825.0" layoutY="419.0" onAction="#openSignUpView" text="Sign up" textFill="#ffffff" />
    </children>
 </AnchorPane>

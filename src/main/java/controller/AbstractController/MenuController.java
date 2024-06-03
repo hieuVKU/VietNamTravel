@@ -60,6 +60,7 @@ public abstract class MenuController {
     @FXML
     public void handleMenuTicketAction(ActionEvent event) throws IOException{
         // Implement this method in the child classes
+        openView("/com/example/vietnamtravel/MyTicketView.fxml", event);
     }
 
     @FXML

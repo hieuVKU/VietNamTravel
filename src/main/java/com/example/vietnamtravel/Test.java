@@ -18,6 +18,7 @@ public class Test extends Application {
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TourBookingView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminAttractions.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminDestinations.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HotelAdministrator.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DestinationView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpView.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StayView.fxml"));

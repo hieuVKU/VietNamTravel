@@ -150,5 +150,16 @@
 .scroll-bar .vertical{
     -fx-background-color: transparent;
 }
+.color-textArea{
+    /*-fx-control-inner-background:rgba(255, 255, 255, 0.16);*/
+    -fx-font-family: Consolas;
+    /*-fx-highlight-fill: #00ff00; */
+    /*-fx-highlight-text-fill: rgba(255, 255, 255, 0.16);*/
+    /*-fx-text-fill: #00ff00;*/
+}
 
+#BGPane{
+    -fx-background-image: url("../img/HT1.jpg");
+    -fx-background-size: cover;
+}
 

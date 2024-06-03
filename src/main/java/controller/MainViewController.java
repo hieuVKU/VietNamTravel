@@ -139,7 +139,7 @@ public class MainViewController  extends MenuController implements AccountTextCo
 
     @Override
     public void handleMenuTicketAction(ActionEvent event) throws IOException {
-
+        super.handleMenuTicketAction(event);
     }
 
     @Override

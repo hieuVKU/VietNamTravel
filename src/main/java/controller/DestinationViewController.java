@@ -82,7 +82,7 @@ public class DestinationViewController extends MenuController implements Account
 
     @Override
     public void handleMenuTicketAction(ActionEvent event) throws IOException {
-
+        super.handleMenuTicketAction(event);
     }
 
     @Override

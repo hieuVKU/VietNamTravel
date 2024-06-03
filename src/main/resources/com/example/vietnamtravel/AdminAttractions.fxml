@@ -16,6 +16,7 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="730.0" prefWidth="1350.0" stylesheets="@../../../css/mainView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAttractions">
     <children>
+      <AnchorPane id="BGPane" prefHeight="730.0" prefWidth="1362.0" />
         <AnchorPane layoutY="55.0" opacity="0.65" prefHeight="670.0" prefWidth="567.0" style="-fx-background-color: #f9f7e8;">
             <cursor>
                 <Cursor fx:constant="NONE" />
@@ -35,7 +36,7 @@
                         <ColorAdjust brightness="0.95" />
                     </effect>
                 </ImageView>
-                <Button id="btSave" fx:id="btSave" layoutX="102.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleBtSaveAction" prefHeight="42.0" prefWidth="128.0" style="-fx-background-color: #f9f7e8;" text="SAVE" textFill="#263e2a" >
+                <Button id="btSave" fx:id="btSave" layoutX="102.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleBtSaveAction" prefHeight="42.0" prefWidth="128.0" style="-fx-background-color: #f9f7e8;" text="SAVE" textFill="#263e2a">
                     <font>
                         <Font name="BenguiatStd-MediumCondensed" size="18.0" />
                     </font>
@@ -47,7 +48,7 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <TextArea fx:id="textContent" layoutX="102.0" layoutY="352.0" prefHeight="241.0" prefWidth="626.0" promptText="Content">
+            <TextArea fx:id="textContent" layoutX="102.0" layoutY="352.0" prefHeight="241.0" prefWidth="626.0" promptText="Content" styleClass="color-textArea">
                <font>
                   <Font size="20.0" />
                </font>
@@ -62,21 +63,16 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="textPlace" layoutX="102.0" layoutY="275.0" prefHeight="67.0" prefWidth="626.0" promptText="Place">
+            <TextField fx:id="textPlace" layoutX="102.0" layoutY="275.0" prefHeight="67.0" prefWidth="626.0" promptText="Place" styleClass="blur">
                <font>
                   <Font size="30.0" />
                </font>
             </TextField>
-            <TextField fx:id="textLocation" layoutX="138.0" layoutY="236.0" prefHeight="34.0" prefWidth="590.0" promptText="Location">
+            <TextField fx:id="textLocation" layoutX="138.0" layoutY="236.0" prefHeight="34.0" prefWidth="590.0" promptText="Location" styleClass="blur">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="661.0" layoutY="127.0" prefHeight="67.0" prefWidth="286.0" style="-fx-background-color: black;" text="You are Admin!" textFill="WHITE">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
             <ImageView id="location_logo" fx:id="imgViewData" fitHeight="254.0" fitWidth="262.0" layoutX="1017.0" layoutY="309.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../img/ImageNull.png" />

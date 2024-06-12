@@ -113,11 +113,20 @@ public class TransportBookingController {
 
     @FXML
     private void initialize() {
+
+
+        // Get userID from UserSession
+        Integer userID = LogInController.UserSession.getUserID();
+        String hoten = LogInController.UserSession.getHoTen();
+        String sodenthoai = LogInController.UserSession.getPhoneNumber();
+
+//        model.User user = session.get(model.User.class, userID);
+
         HieuNgu = new User();
-        HieuNgu.setId(1);
-        HieuNgu.setHoTen("hiếu sữa bò");
-        HieuNgu.setEmail("bosuahieu@booo.com");
-        HieuNgu.setSoDienThoai("0123456789");
+        HieuNgu.setId(userID);
+        HieuNgu.setHoTen(hoten);
+//        HieuNgu.setEmail("bosuahieu@booo.com");
+        HieuNgu.setSoDienThoai(sodenthoai);
         PersonNumber.setText("1");
         transportBooking = new TransportBooking();
         passengerPanes = FXCollections.observableArrayList();

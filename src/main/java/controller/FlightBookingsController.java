@@ -118,12 +118,19 @@ public class FlightBookingsController {
     @FXML
     private void initialize()
     {
-        System.out.println("Initialize called in FlightBookingsController");
+        // Get userID from UserSession
+        Integer userID = LogInController.UserSession.getUserID();
+        String hoten = LogInController.UserSession.getHoTen();
+        String sodenthoai = LogInController.UserSession.getPhoneNumber();
+
+        //model.User user = session.get(model.User.class, userID);
+
         HieuNgu = new User();
-        HieuNgu.setId(1);
-        HieuNgu.setHoTen("hiếu sữa bò");
-        HieuNgu.setEmail("bosuahieu@booo.com");
-        HieuNgu.setSoDienThoai("0123456789");
+        HieuNgu.setId(userID);
+        HieuNgu.setHoTen(hoten);
+//        HieuNgu.setEmail("bosuahieu@booo.com");
+        HieuNgu.setSoDienThoai(sodenthoai);
+
         PersonNumber.setText("1");
         transportBooking = new TransportBooking();
         TicketType.getItems().addAll("Economy class","Business class");
@@ -379,7 +386,7 @@ public class FlightBookingsController {
             Transaction transaction = session.beginTransaction();
 
             transportBooking.setUsers(HieuNgu);
-
+            transportBooking.setTotalMoney(Float.parseFloat(totalMoney.getText()));
             Flight flight = session.get(Flight.class, Integer.parseInt(flightID));
             if (flight == null) {
                 bc.showErrorAlert("Error", "Invalid schedule ID.");

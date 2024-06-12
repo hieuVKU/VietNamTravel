@@ -41,22 +41,22 @@
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textNameTour" layoutX="169.0" layoutY="66.0" text="Name">
+      <Label fx:id="textNameTour" layoutX="181.0" layoutY="66.0" prefHeight="26.0" prefWidth="243.0" text="Name">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textName" layoutX="525.0" layoutY="66.0" text="Null">
+      <Label fx:id="textName" layoutX="525.0" layoutY="66.0" prefHeight="26.0" prefWidth="206.0" text="Null">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textPhoneNum" layoutX="525.0" layoutY="115.0" text="000000000">
+      <Label fx:id="textPhoneNum" layoutX="525.0" layoutY="115.0" prefHeight="26.0" prefWidth="148.0" text="000000000">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textAdults" layoutX="951.0" layoutY="64.0" prefHeight="30.0" prefWidth="0.0" text="1">
+      <Label fx:id="textAdults" layoutX="951.0" layoutY="64.0" prefHeight="30.0" prefWidth="51.0" text="1">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textChild" layoutX="951.0" layoutY="112.0" text="0">
+      <Label fx:id="textChild" layoutX="951.0" layoutY="112.0" prefHeight="26.0" prefWidth="51.0" text="0">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>

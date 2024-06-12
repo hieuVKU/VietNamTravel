@@ -43,7 +43,7 @@
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="99.0" fitWidth="776.0" layoutX="94.0" layoutY="157.0">
+      <ImageView fx:id="TypeOfTransport" fitHeight="99.0" fitWidth="776.0" layoutX="94.0" layoutY="157.0">
          <image>
             <Image url="@../../../img/train2-removebg-preview.png" />
          </image>
@@ -83,7 +83,7 @@
             <Font name="Alatsi Regular" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="textTotalPayment" layoutX="887.0" layoutY="183.0" text="000,000,000 VND" textFill="RED">
+      <Label fx:id="textTotalPayment" layoutX="870.0" layoutY="194.0" text="000,000,000 VND" textFill="#21009a">
          <font>
             <Font name="Alatsi Regular" size="20.0" />
          </font>

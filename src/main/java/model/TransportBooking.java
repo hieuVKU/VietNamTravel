@@ -15,6 +15,9 @@ public class TransportBooking {
     @Column(name = "TransportBookings_ID", nullable = false)
     private Integer id;
 
+    @Column(name = "TotalMoney")
+    private float totalMoney;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Users_ID", nullable = false)
     private User users;
@@ -70,6 +73,7 @@ public class TransportBooking {
         return users;
     }
 
+
     public Transportation getTransportation() {
         return transportation;
     }
@@ -82,4 +86,11 @@ public class TransportBooking {
         this.users = users;
     }
 
+    public float getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(float totalMoney) {
+        this.totalMoney = totalMoney;
+    }
 }

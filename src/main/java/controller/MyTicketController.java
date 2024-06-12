@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -136,6 +138,8 @@ public class MyTicketController extends MenuController implements AccountTextCon
                         Label textAdults = (Label) tourItem.lookup("#textAdults");
                         Label textChild = (Label) tourItem.lookup("#textChild");
                         Label textTotalPayment = (Label) tourItem.lookup("#textTotalPayment");
+                        Label textName = (Label) tourItem.lookup("#textName");
+                        Label textPhoneNum = (Label) tourItem.lookup("#textPhoneNum");
 
                         // Set the text of the fields in the TourTicketItem.fxml
                         textTourBookID.setText(String.valueOf(tourBooking.getTourBookingsId()));
@@ -149,6 +153,8 @@ public class MyTicketController extends MenuController implements AccountTextCon
                         textVisitDate.setText(tourBooking.getNgayThamQuan().toString());
                         textAdults.setText(String.valueOf(tourBooking.getSoVe()));
                         textChild.setText(String.valueOf(tourBooking.getSoVeTreEm()));
+                        textName.setText(LogInController.UserSession.getHoTen());
+                        textPhoneNum.setText(LogInController.UserSession.getPhoneNumber());
 
                         // Parse giaVe from BigDecimal to int
                         double giaVe = tourBooking.getTotalPayment();
@@ -268,7 +274,7 @@ public class MyTicketController extends MenuController implements AccountTextCon
                     if(transportBooking.getPlane() != null){
 
                         try {
-                            // Load the HotelTicketItem.fxml
+                            // Load the FLightTicketItem.fxml
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/FLightTicketItem.fxml"));
                             AnchorPane flightTicketItem = loader.load();
 
@@ -282,9 +288,11 @@ public class MyTicketController extends MenuController implements AccountTextCon
                             Label textFlightNum = (Label) flightTicketItem.lookup("#textFlightNum");
                             Label textGo = (Label) flightTicketItem.lookup("#textGo");
                             Label textArrive = (Label) flightTicketItem.lookup("#textArrive");
+                            Label textTotalPayment = (Label) flightTicketItem.lookup("#textTotalPayment");
 
                             // Set the text of the fields in the HotelTicketItem.fxml
                             textID.setText(String.valueOf(transportBooking.getId()));
+
 
                             //
                             Query<Flight> query4 = session.createQuery("from Flight where id = :Flights_ID", Flight.class);
@@ -302,7 +310,21 @@ public class MyTicketController extends MenuController implements AccountTextCon
                             textGo.setText(flight.getDiemKhoiHanh());
                             textArrive.setText(flight.getDiemDen());
 
+                            float giaVe = transportBooking.getTotalMoney();
 
+                            // Create a NumberFormat instance for the default locale
+                            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+
+                            // Set the group size to 3
+                            numberFormat.setGroupingUsed(true);
+                            numberFormat.setMaximumFractionDigits(0);
+
+                            // Format the number
+                            String formattedGiaVe = numberFormat.format(giaVe);
+
+                            textTotalPayment.setText(formattedGiaVe+" VND");
+
+                            System.out.println("transportBooking ID: "+transportBooking.getId());
 
                             flightTicketItem.setStyle("-fx-border-color: black");
 
@@ -340,8 +362,8 @@ public class MyTicketController extends MenuController implements AccountTextCon
                             query5.setParameter("schedulesID", transportBooking.getSchedules().getId());
                             Schedule schedule = query5.getSingleResult();
 
-                            Query<Transportation> query6 = session.createQuery("from Transportation where id = :schedulesID", Transportation.class);
-                            query6.setParameter("schedulesID", schedule.getId());
+                            Query<Transportation> query6 = session.createQuery("from Transportation where id = :TransportationID", Transportation.class);
+                            query6.setParameter("TransportationID", schedule.getTransportations().getId());
                             Transportation transportation = query6.getSingleResult();
 
                             textID.setText(String.valueOf(transportBooking.getId()));
@@ -353,7 +375,27 @@ public class MyTicketController extends MenuController implements AccountTextCon
                             textPhoneNum.setText(LogInController.UserSession.getPhoneNumber());
                             textName.setText(LogInController.UserSession.getHoTen());
                             texCompanyName.setText(transportation.getTenHang());
-//                            textTotalPayment.setText(transportBooking.getTongGiaVe().toString() + " VND");
+                            // Parse giaVe from BigDecimal to int
+                            float giaVe = transportBooking.getTotalMoney();
+
+                            // Create a NumberFormat instance for the default locale
+                            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+
+                            // Set the group size to 3
+                            numberFormat.setGroupingUsed(true);
+                            numberFormat.setMaximumFractionDigits(0);
+
+                            // Format the number
+                            String formattedGiaVe = numberFormat.format(giaVe);
+
+                            textTotalPayment.setText(formattedGiaVe+" VND");
+
+                            ImageView typeOfTrans = (ImageView) (transTicketItem.lookup("#TypeOfTransport"));
+                            if (textType.getText().equals("Bus"))
+                            {
+                                Image busImage = new Image(getClass().getResourceAsStream("/img/bus.png"));
+                                typeOfTrans.setImage(busImage);
+                            }
 
                             transTicketItem.setStyle("-fx-border-color: black");
 
@@ -375,8 +417,4 @@ public class MyTicketController extends MenuController implements AccountTextCon
             e.printStackTrace();
         }
     }
-
-
-
-
 }

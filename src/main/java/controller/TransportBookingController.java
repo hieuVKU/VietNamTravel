@@ -113,14 +113,12 @@ public class TransportBookingController {
 
     @FXML
     private void initialize() {
-
-
         // Get userID from UserSession
         Integer userID = LogInController.UserSession.getUserID();
         String hoten = LogInController.UserSession.getHoTen();
         String sodenthoai = LogInController.UserSession.getPhoneNumber();
 
-//        model.User user = session.get(model.User.class, userID);
+        //model.User user = session.get(model.User.class, userID);
 
         HieuNgu = new User();
         HieuNgu.setId(userID);
@@ -307,6 +305,7 @@ public class TransportBookingController {
             // Lưu thông tin hành khách
             List<PassengerInformation> passengers = getPassengerInformation();
             savePassengerInf(passengers, transportBooking);
+            transportBooking.setTotalMoney(Float.parseFloat(totalMoney.getText()));
 
             // Cập nhật số lượng chỗ ngồi còn lại
             String updateHql = "UPDATE Schedule SET soChoConLai = soChoConLai - :soLuongVe WHERE id = :scheduleId";

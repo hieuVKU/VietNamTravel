@@ -1,6 +1,9 @@
 package controller;
 
 import Util.HibernateUtil;
+import controller.AbstractController.AccountTextController;
+import controller.AbstractController.AdminController;
+import controller.AbstractController.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -32,7 +35,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.*;
 
-public class AdminAttractions {
+public class AdminAttractions extends AdminController implements AccountTextController {
 
     @FXML
     private Button btAccount;
@@ -70,28 +73,39 @@ public class AdminAttractions {
     @FXML
     private TextField textPrice;
 
-    @FXML
-    void handleBookingAction(ActionEvent event) {
+    //Controller MenuBar
+    @Override
+    public void handleMenuDestiAction(ActionEvent event) throws IOException {
 
-    }
-    @FXML
-    void handleMenuDestiAction(ActionEvent event) {
-
+        super.handleMenuDestiAction(event);
     }
 
-    @FXML
-    void handleMenuHomeAction(ActionEvent event) {
+    @Override
+    public void handleMenuHomeAction(ActionEvent event) throws IOException {
 
+        super.handleMenuHomeAction(event);
     }
 
-    @FXML
-    void handleMenuStayAction(ActionEvent event) {
+    @Override
+    public void handleMenuStayAction(ActionEvent event) throws IOException {
 
+        super.handleMenuStayAction(event);
     }
 
-    @FXML
-    void handleMenuTicketAction(ActionEvent event) {
+    @Override
+    public void handleMenuTicketAction(ActionEvent event) throws IOException {
+        super.handleMenuTicketAction(event);
+    }
 
+    @Override
+    public void handleBtAccountAction(ActionEvent event) throws IOException {
+        super.handleBtAccountAction(event);
+    }
+    //setText ACCOUNT BUTTON
+    public void setBtAccountText(String hoTen) {
+        btAccount.setText(hoTen);
+        btAccount.setMinWidth(Button.USE_PREF_SIZE);
+        btAccount.setMaxWidth(Double.MAX_VALUE);
     }
     @FXML
     void handleBtSaveAction(ActionEvent event) {

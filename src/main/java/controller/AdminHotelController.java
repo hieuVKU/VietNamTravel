@@ -1,6 +1,8 @@
 package controller;
 
 import Util.HibernateUtil;
+import controller.AbstractController.AccountTextController;
+import controller.AbstractController.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +28,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class AdminHotelController {
+public class AdminHotelController extends AdminController implements AccountTextController {
 
     @FXML
     private TextField addressTF;
@@ -79,24 +81,40 @@ public class AdminHotelController {
 
     private Session session;
 
-    @FXML
-    void handleMenuDestiAction(ActionEvent event) {
+    //Controller MenuBar
+    @Override
+    public void handleMenuDestiAction(ActionEvent event) throws IOException {
+
+        super.handleMenuDestiAction(event);
+    }
+
+    @Override
+    public void handleMenuHomeAction(ActionEvent event) throws IOException {
+
+        super.handleMenuHomeAction(event);
+    }
+
+    @Override
+    public void handleMenuStayAction(ActionEvent event) throws IOException {
+
+        super.handleMenuStayAction(event);
+    }
+
+    @Override
+    public void handleMenuTicketAction(ActionEvent event) throws IOException {
 
     }
 
-    @FXML
-    void handleMenuHomeAction(ActionEvent event) {
-
+    @Override
+    public void handleBtAccountAction(ActionEvent event) throws IOException {
+        super.handleBtAccountAction(event);
     }
 
-    @FXML
-    void handleMenuStayAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleMenuTicketAction(ActionEvent event) {
-
+    @Override
+    public void setBtAccountText(String hoTen) {
+        btAccount.setText(hoTen);
+        btAccount.setMinWidth(Button.USE_PREF_SIZE);
+        btAccount.setMaxWidth(Double.MAX_VALUE);
     }
     public AdminHotelController() {
         this.session = HibernateUtil.getSessionFactory().openSession();

@@ -101,6 +101,8 @@ public class StayController extends MenuController implements AccountTextControl
     //setText ACCOUNT BUTTON
     public void setBtAccountText(String hoTen) {
         btAccount.setText(hoTen);
+        btAccount.setMinWidth(Button.USE_PREF_SIZE);
+        btAccount.setMaxWidth(Double.MAX_VALUE);
     }
 
     //Controller Stay

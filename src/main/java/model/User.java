@@ -30,6 +30,17 @@ public class User {
     @OneToMany(mappedBy = "users")
     private Set<TransportBooking> transportBookings = new LinkedHashSet<>();
 
+    @Column(name = "AD", length = 5)
+    private String ad;
+
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
     public Integer getId() {
         return id;
     }

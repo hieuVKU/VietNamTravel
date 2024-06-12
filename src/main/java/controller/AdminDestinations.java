@@ -2,6 +2,7 @@ package controller;
 
 import Util.HibernateUtil;
 import controller.AbstractController.AccountTextController;
+import controller.AbstractController.AdminController;
 import controller.AbstractController.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +39,7 @@ import java.util.Locale;
 
 import javafx.scene.input.MouseEvent;
 
-public class AdminDestinations extends MenuController implements AccountTextController {
+public class AdminDestinations extends AdminController implements AccountTextController  {
 
     @FXML
     private HBox BusBox;
@@ -183,7 +184,9 @@ public class AdminDestinations extends MenuController implements AccountTextCont
 
     @Override
     public void setBtAccountText(String hoTen) {
-        btAccount.setText("Admin");
+        btAccount.setText(hoTen);
+        btAccount.setMinWidth(Button.USE_PREF_SIZE);
+        btAccount.setMaxWidth(Double.MAX_VALUE);
     }
 //END Controller MenuBar
     //Controller HBox TrainBox, PlaneBox, BusBox

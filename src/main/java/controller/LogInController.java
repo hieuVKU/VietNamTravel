@@ -1,6 +1,7 @@
 package controller;
 
 import Util.HibernateUtil;
+//import controller.OpenSessionHB.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,50 @@ public class LogInController {
         stage.show();
     }
 
+//    @FXML
+//    public void handleSubmit(ActionEvent event) throws IOException {
+//        String phoneNumber = PhoneNumTF.getText();
+//        String password = passTF.getText();
+//
+//        if (phoneNumber.isEmpty() || password.isEmpty()) {
+//            bc.showErrorAlert("Error", "Phone number and password cannot be empty.");
+//            return;
+//        }
+//
+//        if (isLoginValid(phoneNumber, password)) {
+//            bc.showInformationAlert("Success", "Login successful!");
+//
+//            // Save phoneNumber to UserSession
+//            UserSession.setPhoneNumber(phoneNumber);
+//
+//            // Save userID to UserSession
+//            Integer userId = getUserId(phoneNumber);
+//            UserSession.setUserID(userId);
+//
+//
+//            // Save hoTen to UserSession
+//            UserSession.setHoTen(getHoTen(phoneNumber));
+//
+//            // Open MainView when successfully login
+//            Node node = (Node) event.getSource();
+//            Stage stage = (Stage) node.getScene().getWindow();
+//
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/MainView.fxml"));
+//            Scene scene = new Scene(loader.load());
+//            stage.setScene(scene);
+//            stage.centerOnScreen();
+//            stage.show();
+//
+//            MainViewController mainViewController = loader.getController();
+//
+//            // Get HoTen from SoDienThoai and set it to btAccount
+//            String hoTen = getHoTen(PhoneNumTF.getText());
+//            mainViewController.setBtAccountText(hoTen);
+//        } else {
+//            bc.showErrorAlert("Error", "Invalid phone number or password.");
+//        }
+//    }
+
     @FXML
     public void handleSubmit(ActionEvent event) throws IOException {
         String phoneNumber = PhoneNumTF.getText();
@@ -74,28 +119,50 @@ public class LogInController {
             Integer userId = getUserId(phoneNumber);
             UserSession.setUserID(userId);
 
-
             // Save hoTen to UserSession
             UserSession.setHoTen(getHoTen(phoneNumber));
 
-            // Open MainView when successfully login
+            // Get the user's ad value
+            String ad = getAd(phoneNumber);
+
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader;
+            String fxmlPath;
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/MainView.fxml"));
+            // If the user is an admin, open the AdminAttractions view
+            if ("admin".equals(ad)) {
+                fxmlPath = "/com/example/vietnamtravel/AdminAttractions.fxml";
+            } else {
+                // Otherwise, open the MainView
+                fxmlPath = "/com/example/vietnamtravel/MainView.fxml";
+            }
+
+            loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
 
-            MainViewController mainViewController = loader.getController();
+            if (!"admin".equals(ad)) {
+                MainViewController mainViewController = loader.getController();
 
-            // Get HoTen from SoDienThoai and set it to btAccount
-            String hoTen = getHoTen(PhoneNumTF.getText());
-            mainViewController.setBtAccountText(hoTen);
+                // Get HoTen from SoDienThoai and set it to btAccount
+                String hoTen = getHoTen(PhoneNumTF.getText());
+                mainViewController.setBtAccountText(hoTen);
+            }
         } else {
             bc.showErrorAlert("Error", "Invalid phone number or password.");
         }
+    }
+
+    // Method to get the ad value of a user
+    public String getAd(String phoneNumber) {
+        Session session = factory.openSession();
+        Query<User> query = session.createQuery("FROM User WHERE soDienThoai = :phoneNumber", User.class);
+        query.setParameter("phoneNumber", phoneNumber);
+        User user = query.uniqueResult();
+        return user.getAd();
     }
 
     private static SessionFactory factory; // Tạo SessionFactory tĩnh
@@ -139,6 +206,7 @@ public class LogInController {
         private static String phoneNumber;
 
         private static String hoTen;
+
 
         public static Integer getUserID() {
             return userID;

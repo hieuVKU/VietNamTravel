@@ -96,15 +96,11 @@ public class MyTicketController extends MenuController implements AccountTextCon
     //setText ACCOUNT BUTTON
     public void setBtAccountText(String hoTen) {
         btAccount.setText(hoTen);
+        btAccount.setMinWidth(Button.USE_PREF_SIZE);
+        btAccount.setMaxWidth(Double.MAX_VALUE);
     }
 
     //Controller MyTicket
-
-    void initdata() {
-        // Get the userID from the UserSession
-
-    }
-
 
     @FXML
     public void handleChoiceBoxAction() {

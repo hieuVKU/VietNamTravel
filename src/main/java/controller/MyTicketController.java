@@ -302,6 +302,8 @@ public class MyTicketController extends MenuController implements AccountTextCon
                             textGo.setText(flight.getDiemKhoiHanh());
                             textArrive.setText(flight.getDiemDen());
 
+
+
                             flightTicketItem.setStyle("-fx-border-color: black");
 
                             // Add the TourTicketItem.fxml to vBoxTicket

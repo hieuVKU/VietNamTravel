@@ -79,7 +79,7 @@
                 <Font name="Alatsi Regular" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="textTotalPayment" layoutX="887.0" layoutY="183.0" text="000,000,000 VND">
+        <Label fx:id="textTotalPayment" layoutX="887.0" layoutY="183.0" text="1,000,000 VND">
             <font>
                 <Font name="Alatsi Regular" size="20.0" />
             </font>

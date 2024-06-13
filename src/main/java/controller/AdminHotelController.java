@@ -24,6 +24,7 @@ import java.util.List;
 
 import model.Accommodation;
 import model.Images;
+import model.StayBookings;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -80,6 +81,8 @@ public class AdminHotelController extends AdminController implements AccountText
     private model.Images images;
 
     private Session session;
+
+    private ButtonController bc = new ButtonController();
 
     //Controller MenuBar
     @Override
@@ -259,6 +262,7 @@ private void loadData() {
             Label textContent = (Label) adminHotelPane.lookup("#textContent");
             Label textPrice = (Label) adminHotelPane.lookup("#textPrice");
             Label textCapacity = (Label) adminHotelPane.lookup("#textCapacity");
+            Button btDelete = (Button) adminHotelPane.lookup("#btDelete");
 
             // Set the text of the fields in the Admin_HT_Item.fxml
             textNameHotel.setText(accommodation.getTen());
@@ -266,6 +270,48 @@ private void loadData() {
             textCapacity.setText(String.valueOf(accommodation.getDoRongPhong()));
             textPrice.setText(accommodation.getGiaPhong().toString());
             textContent.setText(accommodation.getMoTa());
+
+            btDelete.setOnAction(e -> {
+                Transaction transaction = null;
+                try {
+                    // Start a new transaction
+                    transaction = session.beginTransaction();
+
+                    Accommodation accommodation2 = session.get(Accommodation.class, accommodation.getId());
+
+                    // Find all StayBooking records related to the Accommodation
+                    Query<StayBookings> querySB = session.createQuery("from StayBookings where accommodationID = :accommodationId", StayBookings.class);
+                    querySB.setParameter("accommodationId", accommodation2);
+                    List<StayBookings> stayBookings = querySB.getResultList();
+
+                    // Delete all found StayBooking records
+                    for (StayBookings stayBooking : stayBookings) {
+                        session.delete(stayBooking);
+                    }
+
+                    // Delete the Accommodation record
+                    session.delete(accommodation);
+
+                    // Delete the Images record
+                    session.delete(accommodation.getImages());
+
+                    // Commit the transaction
+                    transaction.commit();
+
+                    // Remove the adminHotelPane from the vBox
+                    vBoxHotel.getChildren().remove(adminHotelPane);
+
+                    bc.showInformationAlert("Success", "Data has been deleted successfully.");
+                } catch (Exception ex) {
+                    // If there are any exceptions, roll back the changes
+                    if (transaction != null) {
+                        transaction.rollback();
+                    }
+                    ex.printStackTrace();
+                    // And print the error message
+                    bc.showErrorAlert("Error", "Can't delete this item.");
+                }
+            });
 
             try{
                 // Get the image data

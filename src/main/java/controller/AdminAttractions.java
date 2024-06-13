@@ -91,12 +91,6 @@ public class AdminAttractions extends AdminController implements AccountTextCont
 
         super.handleMenuStayAction(event);
     }
-
-    @Override
-    public void handleMenuTicketAction(ActionEvent event) throws IOException {
-        super.handleMenuTicketAction(event);
-    }
-
     @Override
     public void handleBtAccountAction(ActionEvent event) throws IOException {
         super.handleBtAccountAction(event);
@@ -109,10 +103,18 @@ public class AdminAttractions extends AdminController implements AccountTextCont
     }
     @FXML
     void handleBtSaveAction(ActionEvent event) {
-        String moTa = textContent.getText();
-        String diaChi = textLocation.getText();
-        String ten = textPlace.getText();
-        BigDecimal giaVe = new BigDecimal(textPrice.getText());
+
+
+        if (textContent.getText().isEmpty() || textLocation.getText().isEmpty() || textPlace.getText().isEmpty() || textPrice.getText().isEmpty()) {
+            showAlert("Error", "Please fill in all fields.");
+            return;
+        }
+        else {
+
+            String moTa = textContent.getText();
+            String diaChi = textLocation.getText();
+            String ten = textPlace.getText();
+            BigDecimal giaVe = new BigDecimal(textPrice.getText());
 
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
@@ -123,7 +125,7 @@ public class AdminAttractions extends AdminController implements AccountTextCont
                 if (!file.exists() || !file.canRead()) {
                     showAlert("Error", "The image file cannot be accessed. Make sure the file exists and is readable.");
                     return;
-                }else {
+                } else {
                     String filePath = file.getAbsolutePath();
                     System.out.println("File path: " + filePath);
                     String extension = getFileExtension(file);
@@ -133,7 +135,7 @@ public class AdminAttractions extends AdminController implements AccountTextCont
                     if (bufferedImage == null) {
                         showAlert("Error", "Unable to read image file. Make sure the file is a valid image.");
                         return;
-                    }else{
+                    } else {
                         ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
                         ImageIO.write(bufferedImage, extension, byteOutput);
                         byte[] imageData = byteOutput.toByteArray();
@@ -179,10 +181,10 @@ public class AdminAttractions extends AdminController implements AccountTextCont
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             showAlert("Error", "File is not a valid image.");
         }
+    }
     }
 
     private String getFileExtension(File file) {

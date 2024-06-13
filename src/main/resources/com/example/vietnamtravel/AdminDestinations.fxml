@@ -135,51 +135,6 @@
          <content>
             <VBox fx:id="vBox" prefHeight="270.0" prefWidth="1104.0">
                <children>
-<!--                  <AnchorPane fx:id="transPane" prefHeight="88.0" prefWidth="1104.0" styleClass="radiusPane">-->
-<!--                     <children>-->
-<!--                        <Label fx:id="textFrom" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="147.0" text="From -&gt;">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textTo" layoutX="108.0" layoutY="14.0" prefHeight="30.0" prefWidth="147.0" text="To">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textDate" layoutX="9.0" layoutY="41.0" text="01/01/2024" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textGioKhoiHanh" layoutX="126.0" layoutY="41.0" prefHeight="30.0" prefWidth="112.0" text="|| 00:00 -&gt;" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textGioDen" layoutX="221.0" layoutY="41.0" text="00:00" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textTenHang" layoutX="164.0" layoutY="11.0" text="||TenHang" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textSoChoConLai" layoutX="297.0" layoutY="40.0" text="|| SoChoConLai" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="textPrice" layoutX="744.0" layoutY="25.0" text="000,000,000VND" textFill="#000000b3">-->
-<!--                           <font>-->
-<!--                              <Font name="Alatsi Regular" size="20.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Button id="btDelete" fx:id="btDelete" layoutX="982.0" layoutY="25.0" mnemonicParsing="false" text="DELETE" />-->
-<!--                     </children>-->
-<!--                  </AnchorPane>-->
                </children>
             </VBox>
          </content>
@@ -243,15 +198,14 @@
                         <Font name="BenguiatStd-MediumCondensed" size="20.0" />
                     </font>
                 </Label>
-                <AnchorPane id="menuPane" layoutX="361.0" layoutY="1.0" prefHeight="58.0" prefWidth="669.0">
+                <AnchorPane id="menuPane" layoutX="500.0" prefHeight="58.0" prefWidth="663.0">
                     <children>
-                        <Button fx:id="menuHome" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuHomeAction" prefHeight="52.0" prefWidth="128.0" styleClass="btMenu" text="Home" />
+                        <Button fx:id="menuHome" layoutX="-4.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuHomeAction" prefHeight="52.0" prefWidth="148.0" styleClass="btMenu" text="Attractions" />
                         <Button fx:id="menuDes" layoutX="145.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuDestiAction" prefHeight="52.0" prefWidth="172.0" styleClass="btMenu" text="Destinations" />
-                        <Button fx:id="menuStay" layoutX="317.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuStayAction" prefHeight="52.0" prefWidth="118.0" styleClass="btMenu" text="Stay" />
-                        <Button fx:id="menuTicket" layoutX="435.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuTicketAction" prefHeight="52.0" prefWidth="147.0" styleClass="btMenu" text="My Ticket" />
+                        <Button fx:id="menuStay" layoutX="321.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleMenuStayAction" prefHeight="52.0" prefWidth="114.0" styleClass="btMenu" text="Stay" />
                     </children>
                 </AnchorPane>
-                <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="1214.0" layoutY="13.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" text="Admin">
+                <Button id="btAccount" fx:id="btAccount" cache="true" layoutX="1214.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleBtAccountAction" prefHeight="38.0" prefWidth="107.0" text="Admin">
                     <font>
                         <Font name="Alatsi Regular" size="15.0" />
                     </font>

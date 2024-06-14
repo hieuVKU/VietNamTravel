@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
@@ -34,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.*;
+import java.util.Arrays;
 
 public class AdminAttractions extends AdminController implements AccountTextController {
 
@@ -41,10 +43,25 @@ public class AdminAttractions extends AdminController implements AccountTextCont
     private Button btAccount;
 
     @FXML
+    private Button btSave;
+
+    @FXML
     private ImageView imgViewData;
 
     @FXML
     private AnchorPane mainPane;
+
+    @FXML
+    private Button menuDes;
+
+    @FXML
+    private Button menuHome;
+
+    @FXML
+    private Button menuStay;
+
+    @FXML
+    private Button menuTicket;
 
     @FXML
     private TextArea textContent;
@@ -57,6 +74,12 @@ public class AdminAttractions extends AdminController implements AccountTextCont
 
     @FXML
     private TextField textPrice;
+
+    private model.Images images;
+
+    private byte[] imgData;
+
+    private Session session;
 
     //Controller MenuBar
     @Override
@@ -86,8 +109,58 @@ public class AdminAttractions extends AdminController implements AccountTextCont
         btAccount.setMinWidth(Button.USE_PREF_SIZE);
         btAccount.setMaxWidth(Double.MAX_VALUE);
     }
+
+    public AdminAttractions() {
+        this.session = HibernateUtil.getSessionFactory().openSession();
+    }
+
+    @FXML
+    void initialize() {
+
+//Add value
+
+        images = new Images();
+
+        imgViewData.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+            );
+            File selectedFile = fileChooser.showOpenDialog(null);
+            if (selectedFile != null) {
+                try {
+                    imgData = Files.readAllBytes(selectedFile.toPath());
+                    Image image = new Image(selectedFile.toURI().toString());
+                    imgViewData.setImage(image);
+                    String fileName = selectedFile.getName();
+                    String fileFormat = fileName.substring(fileName.lastIndexOf(".") + 1);
+                    System.out.println("File name: " + fileName);
+                    System.out.println("File format: " + fileFormat);
+//                    System.out.println("Image data: " + Arrays.toString(imgData));
+
+                    // Set the image data to the Images table (without saving)
+                    // Assuming you have an Images object named images
+                    images.setTenFile(fileName);
+                    images.setLoaiFile(fileFormat);
+                    images.setDuLieuAnh(imgData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select a valid image file.");
+                alert.showAndWait();
+            }
+        });
+
+    }
+
+
     @FXML
     void handleBtSaveAction(ActionEvent event) {
+
 
         if (textContent.getText().isEmpty() || textLocation.getText().isEmpty() || textPlace.getText().isEmpty() || textPrice.getText().isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
@@ -100,73 +173,40 @@ public class AdminAttractions extends AdminController implements AccountTextCont
             String ten = textPlace.getText();
             BigDecimal giaVe = new BigDecimal(textPrice.getText());
 
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
-        if (file != null) {
-            try {
+            if (imgData != null) {
+                try {
 
-                // Kiểm tra nếu tệp không tồn tại hoặc không đọc được
-                if (!file.exists() || !file.canRead()) {
-                    showAlert("Error", "The image file cannot be accessed. Make sure the file exists and is readable.");
-                    return;
-                } else {
-                    String filePath = file.getAbsolutePath();
-                    System.out.println("File path: " + filePath);
-                    String extension = getFileExtension(file);
-                    BufferedImage bufferedImage = ImageIO.read(file);
+                    // Kiểm tra nếu tệp không tồn tại hoặc không đọc được
+                            TouristAttraction attraction = new TouristAttraction();
+                            attraction.setMoTa(moTa);
+                            attraction.setDiaChi(diaChi);
+                            attraction.setTen(ten);
+                            attraction.setGiaVe(giaVe);
+                            attraction.setImages(images);
 
-                    // Kiểm tra nếu tệp ảnh không hợp lệ
-                    if (bufferedImage == null) {
-                        showAlert("Error", "Unable to read image file. Make sure the file is a valid image.");
-                        return;
-                    } else {
-                        ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
-                        ImageIO.write(bufferedImage, extension, byteOutput);
-                        byte[] imageData = byteOutput.toByteArray();
+                            Transaction transaction = session.beginTransaction();
+                            session.save(images);
+                            session.save(attraction);
+                            transaction.commit();
 
-                        Images image = new Images();
-                        image.setTenFile(file.getName());
-                        image.setLoaiFile(extension);
-                        image.setDuLieuAnh(imageData);
+                            // Show a success message
+                            showAlert("Success", "Data has been saved successfully.");
 
-                        TouristAttraction attraction = new TouristAttraction();
-                        attraction.setMoTa(moTa);
-                        attraction.setDiaChi(diaChi);
-                        attraction.setTen(ten);
-                        attraction.setGiaVe(giaVe);
-                        attraction.setImages(image);
-
-                        Session session = HibernateUtil.getSessionFactory().openSession();
-                        Transaction transaction = session.beginTransaction();
-                        session.save(image);
-                        session.save(attraction);
-                        transaction.commit();
-
-                        imgViewData.setPreserveRatio(true);
-                        imgViewData.setFitWidth(Region.USE_PREF_SIZE);
-                        imgViewData.setFitHeight(Region.USE_PREF_SIZE);
-                        imgViewData.setImage(new Image(file.toURI().toString()));
+                            // Clear the input fields
+                            textContent.clear();
+                            textLocation.clear();
+                            textPlace.clear();
+                            textPrice.clear();
+                            imgViewData.setImage(null);
 
 
-                        // Show a success message
-                        showAlert("Success", "Data has been saved successfully.");
-
-                        // Clear the input fields
-                        textContent.clear();
-                        textLocation.clear();
-                        textPlace.clear();
-                        textPrice.clear();
-                        imgViewData.setImage(null);
-                    }
-
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } else {
+                    showAlert("Error", "File is not a valid image.");
             }
-        } else {
-            showAlert("Error", "File is not a valid image.");
         }
-    }
     }
 
     private String getFileExtension(File file) {

@@ -27,13 +27,14 @@ public abstract class MenuController {
         FXMLLoader loader = loaders.get(fxmlPath);
         if (loader == null) {
             loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            loaders.put(fxmlPath, loader);
+            loaders.put(fxmlPath, loader);  //put: khong hho tro loader nay
         }
 
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+
 
         String hoTen = LogInController.UserSession.getHoTen();
         AccountTextController controller = loader.getController();

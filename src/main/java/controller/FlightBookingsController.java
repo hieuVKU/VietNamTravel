@@ -386,7 +386,16 @@ public class FlightBookingsController {
             Transaction transaction = session.beginTransaction();
 
             transportBooking.setUsers(HieuNgu);
-            transportBooking.setTotalMoney(Float.parseFloat(totalMoney.getText()));
+            try {
+                String totalMoneyText = totalMoney.getText();
+                // Loại bỏ tất cả các ký tự không phải số hoặc dấu chấm
+                totalMoneyText = totalMoneyText.replaceAll("[^\\d.]", "");
+                transportBooking.setTotalMoney(Float.parseFloat(totalMoneyText));
+            } catch (NumberFormatException e) {
+                bc.showErrorAlert("Error", "Invalid total money format.");
+                e.printStackTrace();
+                return;
+            }
             Flight flight = session.get(Flight.class, Integer.parseInt(flightID));
             if (flight == null) {
                 bc.showErrorAlert("Error", "Invalid schedule ID.");

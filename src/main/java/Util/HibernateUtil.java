@@ -36,16 +36,6 @@ public class HibernateUtil {
         return factory;
     }
 
-//    public static Session getSession()
-//    {
-//        if(session == null || !session.isOpen()) session = factory.openSession();
-//        return session;
-//    }
-//
-//    public static void closeSession()
-//    {
-//        if(session != null && session.isOpen()) session.close();
-//    }
 
     public static void shutdown()
     {

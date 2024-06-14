@@ -8,19 +8,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import model.*;
+import model.Flight;
+import model.Schedule;
+import model.Transportation;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import model.Schedule;
+
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -251,15 +251,14 @@ public class DestinationViewController extends MenuController implements Account
         }
     }
 
-
     private Pane createRoutePane(Object entity, String type) {
         Pane pane = new Pane();
         pane.setPrefSize(300, 70);
         pane.setStyle("-fx-border-color: lightgray; -fx-border-width: 1px;");
         Font font = Font.font("Calibri", 20);
 
-        Label labelTop = new Label(); // Label cho hàng trên cùng
-        Label labelBottom = new Label(); // Label cho hàng dưới cùng
+        Label labelTop = new Label();
+        Label labelBottom = new Label();
         labelTop.setFont(font);
         labelBottom.setFont(font);
 
@@ -292,7 +291,6 @@ public class DestinationViewController extends MenuController implements Account
         labelBottom.setLayoutY(35);
 
         pane.getChildren().addAll(labelTop, labelBottom);
-//        pane.setOnMouseClicked(event -> openTransportBooking(entity));
         return pane;
     }
 

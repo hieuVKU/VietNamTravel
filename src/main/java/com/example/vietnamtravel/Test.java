@@ -29,18 +29,7 @@ public class Test extends Application {
             }
         };
         new Thread(openSessionTask).start();
-
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TourBookingView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminAttractions.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminDestinations.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HotelAdministrator.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DestinationView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StayView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MyTicketView.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StayBookingsView.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1350, 730);
         stage.setTitle("Vietnam Travel");

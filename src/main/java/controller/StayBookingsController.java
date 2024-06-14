@@ -182,16 +182,12 @@ public class StayBookingsController {
         }
 
         try{
-
-
-
         int soLuongPhong = Integer.parseInt(soLuongPhongTF.getText());
         BigDecimal giaPhong = StayController.BookingData.getGiaPhong();
         long soNgay = ChronoUnit.DAYS.between(ngayDi, ngayVe);
 
         BigDecimal tongTien = giaPhong.multiply(BigDecimal.valueOf(soLuongPhong * soNgay));
         calAmountTotal();
-
 
         // Save
         StayBookings stayBookings = new StayBookings();
@@ -214,8 +210,6 @@ public class StayBookingsController {
 
         // Set Accommodation object to StayBookings object
         stayBookings.setAccommodationID(accommodation);
-
-
         stayBookings.setCccd(cccdTF.getText());
         stayBookings.setSoLuongPhong(Integer.parseInt(soLuongPhongTF.getText()));
         stayBookings.setTongGiaPhong(tongTien.doubleValue());
@@ -279,5 +273,4 @@ public class StayBookingsController {
             textTongTien.setText("0 VND"); // Hoặc giá trị mặc định khác nếu đầu vào không hợp lệ
         }
     }
-
 }

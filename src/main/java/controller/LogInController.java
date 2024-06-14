@@ -55,50 +55,6 @@ public class LogInController {
         stage.show();
     }
 
-//    @FXML
-//    public void handleSubmit(ActionEvent event) throws IOException {
-//        String phoneNumber = PhoneNumTF.getText();
-//        String password = passTF.getText();
-//
-//        if (phoneNumber.isEmpty() || password.isEmpty()) {
-//            bc.showErrorAlert("Error", "Phone number and password cannot be empty.");
-//            return;
-//        }
-//
-//        if (isLoginValid(phoneNumber, password)) {
-//            bc.showInformationAlert("Success", "Login successful!");
-//
-//            // Save phoneNumber to UserSession
-//            UserSession.setPhoneNumber(phoneNumber);
-//
-//            // Save userID to UserSession
-//            Integer userId = getUserId(phoneNumber);
-//            UserSession.setUserID(userId);
-//
-//
-//            // Save hoTen to UserSession
-//            UserSession.setHoTen(getHoTen(phoneNumber));
-//
-//            // Open MainView when successfully login
-//            Node node = (Node) event.getSource();
-//            Stage stage = (Stage) node.getScene().getWindow();
-//
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/MainView.fxml"));
-//            Scene scene = new Scene(loader.load());
-//            stage.setScene(scene);
-//            stage.centerOnScreen();
-//            stage.show();
-//
-//            MainViewController mainViewController = loader.getController();
-//
-//            // Get HoTen from SoDienThoai and set it to btAccount
-//            String hoTen = getHoTen(PhoneNumTF.getText());
-//            mainViewController.setBtAccountText(hoTen);
-//        } else {
-//            bc.showErrorAlert("Error", "Invalid phone number or password.");
-//        }
-//    }
-
     @FXML
     public void handleSubmit(ActionEvent event) throws IOException {
         String phoneNumber = PhoneNumTF.getText();
@@ -223,6 +179,7 @@ public class LogInController {
         public static void setPhoneNumber(String phoneNumber) {
             UserSession.phoneNumber = phoneNumber;
         }
+
         public static String getHoTen() {
             return hoTen;
         }

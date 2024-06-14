@@ -97,15 +97,13 @@ public class TransportBookingController {
 
     private String schedule_ID;
 
-    private String routeID;
-
     private double ticketPrice;
 
     private ButtonController bc = new ButtonController();
 
     private TransportBooking transportBooking;
 
-    private User HieuNgu;
+    private User User;
 
     public TransportBookingController() {
         this.session = HibernateUtil.getSessionFactory().openSession();
@@ -118,13 +116,11 @@ public class TransportBookingController {
         String hoten = LogInController.UserSession.getHoTen();
         String sodenthoai = LogInController.UserSession.getPhoneNumber();
 
-        //model.User user = session.get(model.User.class, userID);
-
-        HieuNgu = new User();
-        HieuNgu.setId(userID);
-        HieuNgu.setHoTen(hoten);
-//        HieuNgu.setEmail("bosuahieu@booo.com");
-        HieuNgu.setSoDienThoai(sodenthoai);
+        //Set user
+        User = new User();
+        User.setId(userID);
+        User.setHoTen(hoten);
+        User.setSoDienThoai(sodenthoai);
         PersonNumber.setText("1");
         transportBooking = new TransportBooking();
         passengerPanes = FXCollections.observableArrayList();
@@ -290,7 +286,7 @@ public class TransportBookingController {
         try {
             Transaction transaction = session.beginTransaction();
 
-            transportBooking.setUsers(HieuNgu);
+            transportBooking.setUsers(User);
             transportBooking.setTransportation(transportation);
 
             Schedule schedule = session.get(Schedule.class, Integer.parseInt(schedule_ID));
@@ -305,7 +301,17 @@ public class TransportBookingController {
             // Lưu thông tin hành khách
             List<PassengerInformation> passengers = getPassengerInformation();
             savePassengerInf(passengers, transportBooking);
-            transportBooking.setTotalMoney(Float.parseFloat(totalMoney.getText()));
+
+            try {
+                String totalMoneyText = totalMoney.getText();
+                // Loại bỏ tất cả các ký tự không phải số hoặc dấu chấm
+                totalMoneyText = totalMoneyText.replaceAll("[^\\d.]", "");
+                transportBooking.setTotalMoney(Float.parseFloat(totalMoneyText));
+            } catch (NumberFormatException e) {
+                bc.showErrorAlert("Error", "Invalid total money format.");
+                e.printStackTrace();
+                return;
+            }
 
             // Cập nhật số lượng chỗ ngồi còn lại
             String updateHql = "UPDATE Schedule SET soChoConLai = soChoConLai - :soLuongVe WHERE id = :scheduleId";

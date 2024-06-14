@@ -41,25 +41,10 @@ public class AdminAttractions extends AdminController implements AccountTextCont
     private Button btAccount;
 
     @FXML
-    private Button btSave;
-
-    @FXML
     private ImageView imgViewData;
 
     @FXML
     private AnchorPane mainPane;
-
-    @FXML
-    private Button menuDes;
-
-    @FXML
-    private Button menuHome;
-
-    @FXML
-    private Button menuStay;
-
-    @FXML
-    private Button menuTicket;
 
     @FXML
     private TextArea textContent;
@@ -103,7 +88,6 @@ public class AdminAttractions extends AdminController implements AccountTextCont
     }
     @FXML
     void handleBtSaveAction(ActionEvent event) {
-
 
         if (textContent.getText().isEmpty() || textLocation.getText().isEmpty() || textPlace.getText().isEmpty() || textPrice.getText().isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
@@ -157,14 +141,12 @@ public class AdminAttractions extends AdminController implements AccountTextCont
                         session.save(image);
                         session.save(attraction);
                         transaction.commit();
-//                        session.close();
 
                         imgViewData.setPreserveRatio(true);
                         imgViewData.setFitWidth(Region.USE_PREF_SIZE);
                         imgViewData.setFitHeight(Region.USE_PREF_SIZE);
                         imgViewData.setImage(new Image(file.toURI().toString()));
 
-//                imgViewData.setImage(new Image(file.toURI().toString()));
 
                         // Show a success message
                         showAlert("Success", "Data has been saved successfully.");

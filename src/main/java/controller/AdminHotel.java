@@ -6,7 +6,6 @@ import controller.AbstractController.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.List;
 
 import model.Accommodation;
@@ -29,7 +27,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class AdminHotelController extends AdminController implements AccountTextController {
+public class AdminHotel extends AdminController implements AccountTextController {
 
     @FXML
     private TextField addressTF;
@@ -119,7 +117,7 @@ public class AdminHotelController extends AdminController implements AccountText
         btAccount.setMinWidth(Button.USE_PREF_SIZE);
         btAccount.setMaxWidth(Double.MAX_VALUE);
     }
-    public AdminHotelController() {
+    public AdminHotel() {
         this.session = HibernateUtil.getSessionFactory().openSession();
     }
 

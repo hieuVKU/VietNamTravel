@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="730.0" prefWidth="1350.0" stylesheets="@../../../css/AdminHotel.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHotelController">
+<AnchorPane fx:id="mainPane" prefHeight="730.0" prefWidth="1350.0" stylesheets="@../../../css/AdminHotel.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHotel">
     <children>
         <AnchorPane id="blurPane" prefHeight="730.0" prefWidth="1362.0">
          <children>

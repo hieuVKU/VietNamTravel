@@ -153,49 +153,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
         btAccount.setMaxWidth(Double.MAX_VALUE);
     }
 
-//    //CREATE FILE XML FOR SAVE DATA
-//    @XmlRootElement
-//    public static class AttractionData {
-//        private String ten;
-//        private String diaChi;
-//        private String moTa;
-//        private String giaVe;
-//
-//        public String getTen() {
-//            return ten;
-//        }
-//
-//        public void setTen(String ten) {
-//            this.ten = ten;
-//        }
-//
-//        public String getMoTa() {
-//            return moTa;
-//        }
-//
-//        public void setMoTa(String moTa) {
-//            this.moTa = moTa;
-//        }
-//
-//        public String getGiaVe() {
-//            return giaVe;
-//        }
-//
-//        public void setGiaVe(String giaVe) {
-//            this.giaVe = giaVe;
-//        }
-//
-//        public String getDiaChi() {
-//            return diaChi;
-//        }
-//
-//        public void setDiaChi(String diaChi) {
-//            this.diaChi = diaChi;
-//        }
-//
-//    }
-
-
     //SEARCH BUTTON
     @FXML
     public void handleSearchAction(ActionEvent event) {
@@ -223,7 +180,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
                 resultButton.setText(attraction.getTen());
                 resultButton.getStyleClass().add("resultButton");
 
-                // Add an action to the result button
                 // Add an action to the result button
                 resultButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -279,25 +235,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
                         textPlace.setText(attraction.getTen());
                         textLocation.setText(attraction.getDiaChi());
                         textContent.setText(attraction.getMoTa());
-//                        btPrice.setText(attraction.getGiaVe()+" VND");
-
-//                        AttractionData data = new AttractionData();
-//                        data.setTen(attraction.getTen());
-//                        data.setDiaChi(attraction.getDiaChi());
-//                        data.setMoTa(attraction.getMoTa());
-//                        data.setGiaVe(formattedGiaVe);
-
-//                        try{
-//                            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
-//                            Marshaller marshaller = jaxbContext.createMarshaller();
-//                            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-//
-//// Write to file
-//                            marshaller.marshal(data, new File("src/main/resources/data/attractionData.xml"));
-//
-//                        }catch (Exception e){
-//                            e.printStackTrace();
-//                        }
 
                         try{
                             // Get the image data
@@ -328,21 +265,6 @@ public class MainViewController  extends MenuController implements AccountTextCo
     }
     @FXML
     public void handleBookingAction(ActionEvent event) {
-//        try {
-//            JAXBContext jaxbContext = JAXBContext.newInstance(AttractionData.class);
-//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-//
-//            // Read from file
-//            AttractionData data = (AttractionData) unmarshaller.unmarshal(new File("src/main/resources/data/attractionData.xml"));
-//
-//            // Print to console
-//            System.out.println("Ten: " + data.getTen());
-//            System.out.println("Dia Chi: " + data.getDiaChi());
-//            System.out.println("Mo Ta: " + data.getMoTa());
-//            System.out.println("Gia Ve: " + data.getGiaVe());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/vietnamtravel/TourBookingView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
